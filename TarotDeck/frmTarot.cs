@@ -502,9 +502,9 @@ namespace TarotCardsDeck
             int cardWidth = Math.Max(1, (int)(175 * dblScrWidRat));
             int cardHeight = Math.Max(1, (int)(300 * dblScrHgtRat));
             double defaultSpacing = 15 * dblScrWidRat;
-            double availableWidth = Math.Max(0, ClientSize.Width - cardWidth);
-            double spacing = count > 1 ? Math.Min(defaultSpacing, availableWidth / (count - 1)) : 0;
-            double spreadWidth = cardWidth + spacing * (count - 1);
+            double minimumSpreadWidth = cardWidth + defaultSpacing * Math.Max(0, count - 1);
+            double spreadWidth = Math.Max(cardWidth, Math.Min(Math.Max(minimumSpreadWidth, ClientSize.Width * 0.76), ClientSize.Width * 0.9));
+            double spacing = count > 1 ? (spreadWidth - cardWidth) / (count - 1) : 0;
             double startX = Math.Max(0, (ClientSize.Width - spreadWidth) / 2);
             double center = (count - 1) / 2.0;
 
