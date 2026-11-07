@@ -2,22 +2,32 @@
 
 A Windows Forms tarot card picker built with .NET Framework 4.8.
 
-## Choose a deck
+![TarotDeck showing the centered card spread and deck choices](docs/tarotdeck-screenshot.jpg)
 
-Use the selector in the upper left to choose from:
+## Deck options
 
-- **Complete Tarot**: 78 cards (Major and Minor Arcana)
-- **Major Arcana**: 22 cards
-- **Minor Arcana**: 56 cards
+Choose a card set and an artwork deck independently:
 
-The selection applies immediately and starts a fresh, shuffled deck. All choices use the included card artwork.
+- **Card selection:** Complete Tarot (78 cards), Major Arcana (22 cards), or Minor Arcana (56 cards).
+- **Artwork deck:** Classic Tarot (included) or Soimoi Tarot (included). The selected card set and artwork deck are remembered for the next launch.
+- **Add deck…:** Import any complete artwork folder. The app checks for all 78 cards and a card back, then copies the artwork into your local app data folder.
 
-## Add another card artwork set
+### Image names for custom decks
 
-The current build uses one image set in `TarotDeck/images`. To replace that artwork, keep the existing filenames and provide `cardback.jpg` plus one image for each card: `cups01.jpg` through `cups14.jpg`, `pents01.jpg` through `pents14.jpg`, `swords01.jpg` through `swords14.jpg`, `wands01.jpg` through `wands14.jpg`, and `maj01.jpg` through `maj22.jpg`. Images are loaded from the app's `images` folder at runtime.
+Put the images in one folder. Use `cardback.jpg` and these card filenames (the app also accepts `.jpeg`, `.png`, or `.bmp` extensions):
 
-To add a separately selectable artwork set, extend the deck selector in `TarotDeck/frmTarot.cs` with a named set, store its files in a separate image folder, and route `LoadCardImage` and the card-back loader to that set. Keep card filenames aligned with the names generated in `TarotDeck/TarotDeck/Deck.cs`.
+- `maj01` through `maj22`
+- `cups01` through `cups14`
+- `pents01` through `pents14`
+- `swords01` through `swords14`
+- `wands01` through `wands14`
 
-## Build
+The names are case-insensitive. In the app, click **Add deck…** and choose the folder. Imported sets are stored under `%LOCALAPPDATA%\TarotDeck\Decks` and appear in the artwork selector.
 
-Open `TarotDeck.sln` in Visual Studio and build the `TarotDeck` project. The project targets .NET Framework 4.8 and x86.
+## Artwork credits
+
+The Soimoi Tarot images are by Mike Koz and licensed under [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/). Suggested credit: “Soimoi Tarot” by [Mike Koz](https://koz.tv/), licensed under CC BY 4.0. The source license is included at `TarotDeck/images/soimoi/LICENSE`; the filenames were adapted for this application. The custom Soimoi card back was created for TarotDeck.
+
+## Build and run
+
+Open `TarotDeck.sln` in Visual Studio and build the `TarotDeck` project. It targets .NET Framework 4.8 and x86. Card images are copied beside the executable during build.

@@ -22,5 +22,21 @@ namespace TarotDeck.Properties {
                 return defaultInstance;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CardSet {
+            get { return ((int)(this["CardSet"])); }
+            set { this["CardSet"] = value; }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Classic Tarot")]
+        public string ArtworkName {
+            get { return ((string)(this["ArtworkName"])); }
+            set { this["ArtworkName"] = value; }
+        }
     }
 }

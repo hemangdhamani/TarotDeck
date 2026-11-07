@@ -31,7 +31,7 @@ namespace TarotCardsDeck
                 {
                     if (suit != Suit.Maj && (int)value > 14) continue;
                     string image = suit.ToString().ToLowerInvariant() + ((int)value).ToString("00") + ".jpg";
-                    cards.Add(new Card(suit, value, cards.Count + 1, image, true));
+                    cards.Add(new Card(suit, value, image, true));
                 }
             }
             Size = cards.Count;
@@ -42,7 +42,6 @@ namespace TarotCardsDeck
             if (cards.Count == 0) return null;
             Card card = cards[0];
             cards.RemoveAt(0);
-            UpdateIndexes();
             return card;
         }
 
@@ -52,7 +51,6 @@ namespace TarotCardsDeck
             int index = Random.Next(cards.Count);
             Card card = cards[index];
             cards.RemoveAt(index);
-            UpdateIndexes();
             return card;
         }
 
@@ -65,12 +63,6 @@ namespace TarotCardsDeck
                 cards[i] = cards[j];
                 cards[j] = card;
             }
-            UpdateIndexes();
-        }
-
-        private void UpdateIndexes()
-        {
-            for (int i = 0; i < cards.Count; i++) cards[i].cardIndex = i + 1;
         }
     }
 }

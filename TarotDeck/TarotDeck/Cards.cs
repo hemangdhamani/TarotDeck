@@ -17,21 +17,18 @@ namespace TarotCardsDeck
     {
         private readonly Suit suit;
         private readonly CardValue cardVal;
-        private int cardInd;
         private readonly string cardImg;
         private bool isShowCard;
 
         public Suit Suit { get { return suit; } }
         public CardValue CardVal { get { return cardVal; } }
-        public int cardIndex { get { return cardInd; } set { cardInd = value; } }
         public string CardImg { get { return cardImg; } }
         public bool IsCardUp { get { return isShowCard; } set { isShowCard = value; } }
 
-        public Card(Suit suit, CardValue cardVal, int cardInd, string cardImg, bool isShowCard)
+        public Card(Suit suit, CardValue cardVal, string cardImg, bool isShowCard)
         {
             this.suit = suit;
             this.cardVal = cardVal;
-            this.cardIndex = cardInd;
             this.cardImg = cardImg;
             this.isShowCard = isShowCard;
         }

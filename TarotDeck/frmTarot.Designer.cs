@@ -93,7 +93,7 @@
             // 
             // btnDrawCards
             // 
-            this.btnDrawCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDrawCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDrawCards.Location = new System.Drawing.Point(23, 13);
             this.btnDrawCards.Name = "btnDrawCards";
             this.btnDrawCards.Size = new System.Drawing.Size(89, 23);
@@ -104,7 +104,7 @@
             // 
             // btnShufCards
             // 
-            this.btnShufCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShufCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShufCards.Location = new System.Drawing.Point(29, 13);
             this.btnShufCards.Name = "btnShufCards";
             this.btnShufCards.Size = new System.Drawing.Size(89, 23);
