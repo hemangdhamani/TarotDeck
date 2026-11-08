@@ -47,7 +47,22 @@ namespace TarotCardsDeck
         public frmTarot()
         {
             InitializeComponent();
+            foreach (PictureBox card in new[] { pcbCardFirst, pcbCard01, pcbCard02, pcbCard03, pcbCardLast })
+                card.Paint += PaintDrawnCardBorder;
             FormClosed += frmTarot_FormClosed;
+        }
+
+        private void PaintDrawnCardBorder(object sender, PaintEventArgs e)
+        {
+            PictureBox card = (PictureBox)sender;
+            if (card.Image == null) return;
+            int thickness = Math.Max(1, (int)Math.Round(2.0 * card.DeviceDpi / 96));
+            Color border = Color.FromArgb(224, 213, 190);
+            ControlPaint.DrawBorder(e.Graphics, card.ClientRectangle,
+                border, thickness, ButtonBorderStyle.Solid,
+                border, thickness, ButtonBorderStyle.Solid,
+                border, thickness, ButtonBorderStyle.Solid,
+                border, thickness, ButtonBorderStyle.Solid);
         }
 
         private void frmTarot_FormClosed(object sender, FormClosedEventArgs e)
@@ -77,7 +92,7 @@ namespace TarotCardsDeck
         private void frmTarot_Load(object sender, EventArgs e)
         {
             loadingSelections = true;
-            settingsPanel = new Panel { Location = new Point(20, 48), Size = new Size(430, 265),
+            settingsPanel = new Panel { Location = new Point(20, 48), Size = new Size(430, 230),
                 BackColor = Color.FromArgb(35, 35, 35), BorderStyle = BorderStyle.FixedSingle, Visible = false };
             Controls.Add(settingsPanel);
             settingsButton = new Button { Text = "Settings", Location = new Point(20, 12),
@@ -98,20 +113,14 @@ namespace TarotCardsDeck
             deckSelector.Location = new Point(20, 24);
             deckSelector.Width = 210;
             deckSelector.SelectedIndexChanged += DeckSelector_SelectedIndexChanged;
+            deckSelector.Visible = false;
             settingsPanel.Controls.Add(deckSelector);
             deckSelector.BringToFront();
 
-            Label cardSetLabel = new Label();
-            cardSetLabel.AutoSize = true;
-            cardSetLabel.ForeColor = Color.White;
-            cardSetLabel.Text = "Card selection";
-            cardSetLabel.Location = new Point(20, 7);
-            settingsPanel.Controls.Add(cardSetLabel);
-
             artworkSelector = new ComboBox();
             artworkSelector.DropDownStyle = ComboBoxStyle.DropDownList;
-            artworkSelector.Location = new Point(20, 81);
-            artworkSelector.Width = 210;
+            artworkSelector.Location = new Point(20, 40);
+            artworkSelector.Width = 260;
             artworkSelector.SelectedIndexChanged += ArtworkSelector_SelectedIndexChanged;
             settingsPanel.Controls.Add(artworkSelector);
 
@@ -119,40 +128,50 @@ namespace TarotCardsDeck
             artworkLabel.AutoSize = true;
             artworkLabel.ForeColor = Color.White;
             artworkLabel.Text = "Artwork deck";
-            artworkLabel.Location = new Point(20, 64);
+            artworkLabel.Location = new Point(20, 20);
             settingsPanel.Controls.Add(artworkLabel);
 
             addArtworkButton = new Button();
             addArtworkButton.Text = "Add deck...";
-            addArtworkButton.Location = new Point(236, 80);
-            addArtworkButton.Size = new Size(90, 23);
+            addArtworkButton.Location = new Point(292, 39);
+            addArtworkButton.Size = new Size(116, 23);
             addArtworkButton.UseVisualStyleBackColor = true;
             addArtworkButton.Click += AddArtworkButton_Click;
             settingsPanel.Controls.Add(addArtworkButton);
             settingsPanel.Controls.Add(new Label { Text = "Card back", AutoSize = true,
-                ForeColor = Color.White, Location = new Point(20, 118) });
+                ForeColor = Color.White, Location = new Point(20, 80) });
             cardBackSelector = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList,
-                Location = new Point(20, 135), Width = 210 };
+                Location = new Point(20, 100), Width = 260 };
             string backFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", "cardbacks");
             string[] backNames = { "Celestial Garden", "Moonlit Lotus", "Emerald Labyrinth", "Rosewood Mandala",
                 "Sapphire Tides", "Obsidian Eclipse", "Blush Peony", "Lavender Dream", "Ivory Astrolabe", "Teal Phoenix" };
-            foreach (string name in backNames)
+            foreach (string name in backNames.OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase))
                 cardBackSelector.Items.Add(new ArtworkChoice(name, Path.Combine(backFolder,
                     name.ToLowerInvariant().Replace(' ', '-') + ".png")));
             SelectCardBack(TarotDeck.Properties.Settings.Default.CardBackName);
             settingsPanel.Controls.Add(cardBackSelector);
             autoSpreadCheckBox = new CheckBox { Text = "Auto spread after shuffle", AutoSize = true,
-                ForeColor = Color.White, Location = new Point(20, 180),
+                ForeColor = Color.White, Location = new Point(20, 140),
                 Checked = TarotDeck.Properties.Settings.Default.AutoSpread };
             settingsPanel.Controls.Add(autoSpreadCheckBox);
-            Button applySettings = new Button { Text = "Apply", Location = new Point(236, 223),
+            int settingsActionsLeft = (settingsPanel.ClientSize.Width - 180) / 2;
+            Button applySettings = new Button { Text = "Apply", Location = new Point(settingsActionsLeft, 183),
                 Size = new Size(80, 27), UseVisualStyleBackColor = true };
-            Button cancelSettings = new Button { Text = "Cancel", Location = new Point(326, 223),
+            Button cancelSettings = new Button { Text = "Cancel", Location = new Point(settingsActionsLeft + 100, 183),
                 Size = new Size(80, 27), UseVisualStyleBackColor = true };
             applySettings.Click += ApplySettings_Click;
             cancelSettings.Click += (s, args) => { ResetPendingSettings(); HideOverlay(settingsPanel); };
             settingsPanel.Controls.Add(applySettings);
             settingsPanel.Controls.Add(cancelSettings);
+            Action centerSettingsActions = () =>
+            {
+                int left = (settingsPanel.ClientSize.Width - applySettings.Width - cancelSettings.Width - 20) / 2;
+                applySettings.Left = left;
+                cancelSettings.Left = left + applySettings.Width + 20;
+            };
+            settingsPanel.ClientSizeChanged += (s, args) => centerSettingsActions();
+            settingsPanel.HandleCreated += (s, args) => centerSettingsActions();
+            centerSettingsActions();
 
             creditsButton = new Button();
             creditsButton.Text = "Credits";
