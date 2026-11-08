@@ -14,6 +14,12 @@ Choose front artwork and a card back independently in Settings:
 - **Auto spread:** Spread automatically after shuffling, or turn it off to drag the top card manually.
 - Card selection is currently hidden; the existing saved card-set preference is retained.
 
+All 390 bundled card fronts are organized under `TarotDeck/images/classic/`,
+`soimoi/`, `woodcut-marseille/`, `vieville/`, and `lequart-besancon/` (78 per folder).
+Every image and bundled metadata file is explicitly included in the project and
+copied to the same folder structure in Debug and Release builds. Independent card
+backs remain in `images/cardbacks/`; legacy deck-specific backs stay with their original deck.
+
 ### Image names for custom decks
 
 Put the images in one folder using these card filenames (the app also accepts `.jpeg`, `.png`, or `.bmp` extensions):
@@ -38,13 +44,13 @@ Lequart Besançon (Paris, circa 1890) includes 78 full-resolution public-domain 
 
 ## Offline readings
 
-1. Open **Reading setup** to choose a spread, topic, and focus. There is no free-form question field and no AI or online service.
+1. Open **Settings → Reading setup** to choose a spread, topic, and focus. One shared **Apply / Cancel** pair handles this tab and **Cards and artwork**. The default spread is **Situation / Advice / Outcome**; saved spread choices are remembered. There is no free-form question field and no AI or online service.
 2. Pick three reading cards from the fan, or use **Draw Cards**. The outer first/last cards are separate from the three reading positions.
 3. Choose **Read Cards** to interpret the currently displayed page from left to right. Position labels show the selected spread.
-4. Read the overview, open each card's detailed tab, and optionally record reflection notes. Notes never affect the interpretation.
+4. Read the overview with a three-card preview; click a card to open its position-specific details. Highlighted headings separate meaning, position, topic/focus, challenges, practice and reflection. Optionally record notes, which never affect the interpretation.
 5. **Save reading** stores a snapshot on this desktop; **Export text…** writes a plain-text copy. **Journal** reopens or deletes saved readings.
 
-All 78 cards have original upright meanings. The engine uses deterministic position, topic, focus, and card-pattern rules. No credentials, model downloads, payments, or network access are needed. Reversals and physical-card entry are outside this release.
+All 78 cards have original upright meanings. The engine uses deterministic position, topic, focus, and card-pattern rules. Advice positions drive the first practical next step; shared suits include their thematic context, and outcomes remain conditional. No credentials, model downloads, payments, or network access are needed. Reversals and physical-card entry are outside this release.
 
 Readings are symbolic guidance, with conditional possible directions rather than fixed predictions. Opening analysis does not move, redraw, rotate, or shuffle cards. Saved interpretations retain their original content version even after a later library update.
 

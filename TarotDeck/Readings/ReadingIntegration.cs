@@ -9,7 +9,8 @@ namespace TarotCardsDeck
 {
     public partial class frmTarot
     {
-        private Button readingSetupButton, readCardsButton, readingJournalButton;
+        private Button readCardsButton, readingJournalButton;
+        private ComboBox readingSpreadSelector, readingTopicSelector, readingFocusSelector;
         private readonly Label[] readingPositionLabels = new Label[3];
         private string readingSpread, readingTopic, readingFocus;
         private readonly ReadingJournal readingJournal = new ReadingJournal();
@@ -22,27 +23,25 @@ namespace TarotCardsDeck
             readingFocus = preferences.ReadingFocus;
             try { ReadingOptions.Validate(readingSpread, readingTopic, readingFocus); }
             catch (ArgumentException) { readingSpread = ReadingOptions.Spreads[0]; readingTopic = "General"; readingFocus = "Overview"; }
-            readingSetupButton = new Button { Text = "Reading setup", Size = new Size(120, 28), UseVisualStyleBackColor = true };
             readCardsButton = new Button { Text = "Read Cards", Size = new Size(105, 28), UseVisualStyleBackColor = true, Enabled = false };
             readingJournalButton = new Button { Text = "Journal", Size = new Size(90, 28), UseVisualStyleBackColor = true };
-            readingSetupButton.Click += (s, e) => ShowReadingSetup();
             readCardsButton.Click += (s, e) => ReadDisplayedCards();
             readingJournalButton.Click += (s, e) => new ReadingHistoryWindow(readingJournal).Show(this);
-            Controls.AddRange(new Control[] { readingSetupButton, readCardsButton, readingJournalButton });
+            Controls.AddRange(new Control[] { readCardsButton, readingJournalButton });
             for (int i = 0; i < 3; i++) readingPositionLabels[i] = new Label { TextAlign = ContentAlignment.MiddleCenter,
                 ForeColor = Color.FromArgb(224, 213, 190), BackColor = Color.Black, AutoEllipsis = true, Visible = false };
+            InitializeReadingSettings();
         }
         private void PositionReadingControls()
         {
-            if (readingSetupButton == null) return;
-            readingSetupButton.Location = new Point(20, settingsButton.Top);
-            readCardsButton.Location = new Point(readingSetupButton.Right + 8, settingsButton.Top);
+            if (readCardsButton == null) return;
+            readCardsButton.Location = new Point(20, settingsButton.Top);
             readingJournalButton.Location = new Point(readCardsButton.Right + 8, settingsButton.Top);
         }
         private void RaiseReadingControls()
         {
-            if (readingSetupButton == null) return;
-            readingSetupButton.BringToFront(); readCardsButton.BringToFront(); readingJournalButton.BringToFront();
+            if (readCardsButton == null) return;
+            readCardsButton.BringToFront(); readingJournalButton.BringToFront();
         }
         private void LayoutReadingLabels()
         {
@@ -93,45 +92,79 @@ namespace TarotCardsDeck
             catch (Exception error) when (error is ArgumentException || error is InvalidOperationException)
             { MessageBox.Show(this, error.Message, "Reading", MessageBoxButtons.OK, MessageBoxIcon.Information); }
         }
-        private void ShowReadingSetup()
+        private void InitializeReadingSettings()
         {
-            using (var setup = new Form { Text = "Reading setup", StartPosition = FormStartPosition.CenterParent,
-                FormBorderStyle = FormBorderStyle.FixedDialog, MaximizeBox = false, MinimizeBox = false,
-                ShowInTaskbar = false, ClientSize = new Size(480, 340), Font = new Font("Segoe UI", 10),
-                BackColor = Color.FromArgb(35, 35, 35), ForeColor = Color.White })
-            {
-                var layout = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 1, RowCount = 8 };
-                setup.Controls.Add(layout);
-                Func<string, ComboBox> makeChoice = label => {
-                    layout.Controls.Add(new Label { Text = label, AutoSize = true, Margin = new Padding(0, 6, 0, 2) });
-                    var combo = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Dock = DockStyle.Top, Margin = new Padding(0, 0, 0, 5) };
-                    layout.Controls.Add(combo); return combo;
-                };
-                var spread = makeChoice("Spread"); spread.Items.AddRange(ReadingOptions.Spreads); spread.SelectedItem = readingSpread;
-                var topic = makeChoice("Topic"); topic.Items.AddRange(ReadingOptions.Topics); topic.SelectedItem = readingTopic;
-                var focus = makeChoice("Focus"); focus.Items.AddRange(ReadingOptions.Focuses(readingTopic)); focus.SelectedItem = readingFocus;
-                topic.SelectedIndexChanged += (s, e) => { focus.Items.Clear(); focus.Items.AddRange(ReadingOptions.Focuses((string)topic.SelectedItem)); focus.SelectedIndex = 0; };
-                layout.Controls.Add(new Label { Text = "Upright cards · Fully offline\r\nChanges interpret the displayed three cards; saved readings keep their original setup.", AutoSize = true,
-                    MaximumSize = new Size(430, 0), Margin = new Padding(0, 10, 0, 10) });
-                var actions = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.RightToLeft, Height = 38 };
-                var cancel = new Button { Text = "Cancel", DialogResult = DialogResult.Cancel, Width = 90, Height = 30, ForeColor = Color.Black,
-                    BackColor = SystemColors.Control, UseVisualStyleBackColor = true };
-                var apply = new Button { Text = "Apply", Width = 90, Height = 30, ForeColor = Color.Black,
-                    BackColor = SystemColors.Control, UseVisualStyleBackColor = true };
-                actions.Controls.Add(cancel); actions.Controls.Add(apply); layout.Controls.Add(actions);
-                setup.CancelButton = cancel; setup.AcceptButton = apply;
-                apply.Click += (s, e) => {
-                    string newSpread = (string)spread.SelectedItem, newTopic = (string)topic.SelectedItem, newFocus = (string)focus.SelectedItem;
-                    ReadingOptions.Validate(newSpread, newTopic, newFocus);
-                    var preferences = TarotDeck.Properties.Settings.Default;
-                    preferences.ReadingSpread = newSpread; preferences.ReadingTopic = newTopic; preferences.ReadingFocus = newFocus;
-                    try { preferences.Save(); }
-                    catch (System.Configuration.ConfigurationErrorsException error) { MessageBox.Show(setup, "Could not save reading preferences: " + error.Message); return; }
-                    readingSpread = newSpread; readingTopic = newTopic; readingFocus = newFocus;
-                    UpdateReadingAvailability(); setup.DialogResult = DialogResult.OK; setup.Close();
-                };
-                setup.ShowDialog(this);
-            }
+            settingsPanel.Size = new Size(520, 360);
+            var tabs = new TabControl { Location = new Point(18, 16),
+                Size = new Size(settingsPanel.ClientSize.Width - 36, settingsPanel.ClientSize.Height - 80),
+                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
+                AccessibleName = "Settings sections" };
+            var artworkPage = new TabPage("Cards and artwork") { BackColor = settingsPanel.BackColor };
+            var readingPage = new TabPage("Reading setup") { BackColor = settingsPanel.BackColor };
+            // Keep one shared Apply/Cancel pair outside the tabs.
+            foreach (Control control in settingsPanel.Controls.Cast<Control>().ToArray())
+                if (control != deckSelector && !(control is Button && (control.Text == "Apply" || control.Text == "Cancel")))
+                    artworkPage.Controls.Add(control);
+            tabs.TabPages.Add(artworkPage); tabs.TabPages.Add(readingPage);
+            settingsPanel.Controls.Add(tabs);
+            artworkPage.ClientSizeChanged += (s, e) => {
+                addArtworkButton.Left = artworkPage.ClientSize.Width - 20 - addArtworkButton.Width;
+                artworkSelector.Width = Math.Max(100, addArtworkButton.Left - artworkSelector.Left - 12);
+                cardBackSelector.Width = artworkSelector.Width;
+            };
+            Func<string, int, ComboBox> choice = (label, top) => {
+                readingPage.Controls.Add(new Label { Text = label, AutoSize = true, ForeColor = Color.White,
+                    Location = new Point(20, top) });
+                var selector = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList,
+                    Location = new Point(20, top + 20), Width = 420,
+                    AccessibleName = label };
+                readingPage.Controls.Add(selector); return selector;
+            };
+            readingSpreadSelector = choice("Spread", 16);
+            readingSpreadSelector.Items.AddRange(ReadingOptions.Spreads);
+            readingTopicSelector = choice("Topic", 76);
+            readingTopicSelector.Items.AddRange(ReadingOptions.Topics);
+            readingFocusSelector = choice("Focus", 136);
+            readingPage.ClientSizeChanged += (s, e) => {
+                foreach (var selector in new[] { readingSpreadSelector, readingTopicSelector, readingFocusSelector })
+                    selector.Width = Math.Max(100, readingPage.ClientSize.Width - 40);
+            };
+            readingTopicSelector.SelectedIndexChanged += (s, e) => {
+                if (readingTopicSelector.SelectedItem == null) return;
+                PopulatePendingReadingFocus("Overview");
+            };
+            readingPage.Controls.Add(new Label { Text = "Upright cards · Fully offline. Apply updates both tabs.\r\nSaved readings retain their original setup.",
+                ForeColor = Color.White, AutoSize = true, Location = new Point(20, 204) });
+            ResetPendingReadingSettings();
+        }
+        private void PopulatePendingReadingFocus(string preferred)
+        {
+            readingFocusSelector.Items.Clear();
+            readingFocusSelector.Items.AddRange(ReadingOptions.Focuses((string)readingTopicSelector.SelectedItem));
+            readingFocusSelector.SelectedItem = preferred;
+            if (readingFocusSelector.SelectedIndex < 0) readingFocusSelector.SelectedIndex = 0;
+        }
+        private void ResetPendingReadingSettings()
+        {
+            if (readingSpreadSelector == null) return;
+            readingSpreadSelector.SelectedItem = readingSpread;
+            readingTopicSelector.SelectedItem = readingTopic;
+            PopulatePendingReadingFocus(readingFocus);
+        }
+        private void StageReadingSettings()
+        {
+            string spread = (string)readingSpreadSelector.SelectedItem;
+            string topic = (string)readingTopicSelector.SelectedItem;
+            string focus = (string)readingFocusSelector.SelectedItem;
+            ReadingOptions.Validate(spread, topic, focus);
+            var preferences = TarotDeck.Properties.Settings.Default;
+            preferences.ReadingSpread = spread; preferences.ReadingTopic = topic; preferences.ReadingFocus = focus;
+        }
+        private void ActivateReadingSettings()
+        {
+            var preferences = TarotDeck.Properties.Settings.Default;
+            readingSpread = preferences.ReadingSpread; readingTopic = preferences.ReadingTopic; readingFocus = preferences.ReadingFocus;
+            UpdateReadingAvailability();
         }
     }
 }

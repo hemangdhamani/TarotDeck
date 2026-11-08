@@ -24,7 +24,7 @@ namespace TarotDeck.Properties {
         }
 
         [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Situation / Challenge / Advice")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Situation / Advice / Outcome")]
         public string ReadingSpread { get { return ((string)this["ReadingSpread"]); } set { this["ReadingSpread"] = value; } }
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("General")]

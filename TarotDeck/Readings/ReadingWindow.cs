@@ -25,7 +25,7 @@ namespace TarotCardsDeck.Readings
             this.snapshot = snapshot;
             this.report = report;
             this.journal = journal;
-            ReadingUi.Configure(this, "Your reading", new Size(900, 720));
+            ReadingUi.Configure(this, "Your reading", new Size(1100, 840));
 
             var root = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(18),
                 ColumnCount = 1, RowCount = 4, BackColor = BackColor };
@@ -41,14 +41,35 @@ namespace TarotCardsDeck.Readings
             var tabs = new TabControl { Dock = DockStyle.Fill, Margin = Padding.Empty };
             root.Controls.Add(tabs, 0, 1);
             var overview = ReadingUi.Page("Overview");
-            overview.Controls.Add(ReadingUi.ReadOnlyText(BuildOverview(report)));
+            var overviewLayout = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 2, Padding = new Padding(10) };
+            overviewLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 145));
+            overviewLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+            var cardStrip = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 3, RowCount = 1, AccessibleName = "Your three reading cards" };
+            for (int i = 0; i < 3; i++) cardStrip.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / 3));
+            overviewLayout.Controls.Add(cardStrip, 0, 0);
+            overviewLayout.Controls.Add(ReadingUi.ReadOnlyText(BuildOverview(report)), 0, 1);
+            overview.Controls.Add(overviewLayout);
             tabs.TabPages.Add(overview);
 
             var cards = snapshot.Cards ?? new ReadingCard[0];
+            var positions = ReadingOptions.Positions(snapshot.Spread);
             for (int i = 0; i < cards.Length; i++)
             {
                 var card = cards[i];
-                var page = ReadingUi.Page((i + 1) + ". " + card.Name);
+                int tabIndex = i + 1;
+                var tile = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 2, Margin = new Padding(6) };
+                tile.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+                tile.RowStyles.Add(new RowStyle(SizeType.Absolute, 45));
+                var preview = new PictureBox { Dock = DockStyle.Fill, SizeMode = PictureBoxSizeMode.Zoom,
+                    Image = LoadThumbnail(card.ImagePath), Cursor = Cursors.Hand, AccessibleName = positions[i] + ": " + card.Name };
+                preview.Click += (s, e) => tabs.SelectedIndex = tabIndex;
+                tile.Controls.Add(preview, 0, 0);
+                var openCard = ReadingUi.Button(positions[i] + " · " + card.Name);
+                openCard.Dock = DockStyle.Fill; openCard.AutoSize = false; openCard.AutoEllipsis = true;
+                openCard.Margin = new Padding(0, 3, 0, 0); openCard.Padding = Padding.Empty;
+                openCard.Click += (s, e) => tabs.SelectedIndex = tabIndex;
+                tile.Controls.Add(openCard, 0, 1); cardStrip.Controls.Add(tile, i, 0);
+                var page = ReadingUi.Page((i + 1) + ". " + positions[i]);
                 var split = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1,
                     Padding = new Padding(12), BackColor = BackColor };
                 split.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 28));
@@ -61,7 +82,7 @@ namespace TarotCardsDeck.Readings
                 picture.Image = LoadThumbnail(card.ImagePath);
                 imageHost.Controls.Add(picture, 0, 0);
                 imageHost.Controls.Add(new Label { AutoSize = true, ForeColor = ForeColor,
-                    Text = card.Name + "\r\nUpright", Margin = new Padding(0, 0, 12, 0) }, 0, 1);
+                    Text = positions[i] + "\r\n" + card.Name + "\r\nUpright", Margin = new Padding(0, 0, 12, 0) }, 0, 1);
                 split.Controls.Add(imageHost, 0, 0);
                 string detail = report.CardDetails != null && i < report.CardDetails.Length
                     ? report.CardDetails[i] : "See the saved interpretation in the Overview tab.";
@@ -283,8 +304,10 @@ namespace TarotCardsDeck.Readings
                 var area = Screen.FromControl(form.Owner ?? form).WorkingArea;
                 form.MinimumSize = new Size(Math.Min(640, area.Width), Math.Min(500, area.Height));
                 form.Size = new Size(Math.Min(form.Width, area.Width), Math.Min(form.Height, area.Height));
-                form.Location = new Point(Math.Max(area.Left, Math.Min(form.Left, area.Right - form.Width)),
-                    Math.Max(area.Top, Math.Min(form.Top, area.Bottom - form.Height)));
+                Rectangle ownerArea = form.Owner == null ? area : Rectangle.Intersect(area, form.Owner.RectangleToScreen(form.Owner.ClientRectangle));
+                if (ownerArea.Width <= 0 || ownerArea.Height <= 0) ownerArea = area;
+                form.Location = new Point(Math.Max(area.Left, Math.Min(ownerArea.Left + (ownerArea.Width - form.Width) / 2, area.Right - form.Width)),
+                    Math.Max(area.Top, Math.Min(ownerArea.Top + (ownerArea.Height - form.Height) / 2, area.Bottom - form.Height)));
             };
         }
 
@@ -295,10 +318,24 @@ namespace TarotCardsDeck.Readings
 
         public static RichTextBox ReadOnlyText(string text)
         {
-            return new RichTextBox { Dock = DockStyle.Fill, ReadOnly = true, BorderStyle = BorderStyle.None,
+            var box = new RichTextBox { Dock = DockStyle.Fill, ReadOnly = true, BorderStyle = BorderStyle.None,
                 BackColor = Color.FromArgb(29, 29, 29), ForeColor = Color.FromArgb(238, 230, 213),
                 Font = new Font("Segoe UI", 10), Text = text ?? "", DetectUrls = false,
                 ScrollBars = RichTextBoxScrollBars.Vertical, Margin = new Padding(12), TabStop = false };
+            using (var heading = new Font(box.Font, FontStyle.Bold))
+                foreach (string line in box.Text.Split('\n'))
+                {
+                    string title = line.Trim();
+                    if (title.Length > 2 && title.Any(char.IsLetter) && title == title.ToUpperInvariant() && !title.StartsWith("•"))
+                    {
+                        int headingStart = box.Find(title, RichTextBoxFinds.MatchCase);
+                        box.Select(headingStart, title.Length);
+                        box.SelectionFont = heading;
+                        box.SelectionColor = Color.FromArgb(225, 197, 133);
+                    }
+                }
+            box.Select(0, 0);
+            return box;
         }
 
         public static FlowLayoutPanel Actions()

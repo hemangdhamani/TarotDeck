@@ -36,7 +36,7 @@ namespace TarotCardsDeck.Readings
     /// </summary>
     public static class CardMeaningLibrary
     {
-        public const string ContentVersion = "1.0";
+        public const string ContentVersion = "1.1";
         private static readonly ReadOnlyCollection<CardMeaning> meanings;
         private static readonly Dictionary<string, CardMeaning> byId;
 

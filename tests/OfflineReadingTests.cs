@@ -34,6 +34,8 @@ internal static class OfflineReadingTests
             DeterminismAndOptions();
             InvalidInputs();
             JournalRoundTrips();
+            ReadingPresentation();
+            UnifiedSettings();
             Integration(false);
             Integration(true);
             Console.WriteLine("PASS: " + assertions + " assertions; content, deterministic engine, journal, automatic and manual draw integration.");
@@ -54,19 +56,122 @@ internal static class OfflineReadingTests
 
     private static void BundledDecks()
     {
-        foreach (string folder in new[] { "woodcut-marseille", "vieville", "lequart-besancon" })
+        foreach (string folder in new[] { "classic", "soimoi", "woodcut-marseille", "vieville", "lequart-besancon" })
         {
             string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", folder);
             Assert(Directory.Exists(directory), "Missing bundled deck: " + folder);
-            var files = Directory.GetFiles(directory).Where(path => new[] { ".png", ".jpg", ".jpeg" }.Contains(Path.GetExtension(path).ToLowerInvariant())).ToArray();
+            var files = Directory.GetFiles(directory).Where(path => new[] { ".png", ".jpg", ".jpeg" }.Contains(Path.GetExtension(path).ToLowerInvariant()) &&
+                System.Text.RegularExpressions.Regex.IsMatch(Path.GetFileNameWithoutExtension(path), "^(maj|cups|pents|swords|wands)[0-9]{2}$")).ToArray();
             Assert(files.Length == 78, "Deck must contain exactly 78 faces: " + folder);
             Assert(new HashSet<string>(files.Select(Path.GetFileNameWithoutExtension), StringComparer.OrdinalIgnoreCase)
                 .SetEquals(CardMeaningLibrary.All.Select(card => card.Id)), "Noncanonical artwork IDs: " + folder);
             foreach (string file in files)
-                using (var image = Image.FromFile(file)) Assert(image.Width >= 750 && image.Height >= 1400, "Invalid or undersized image: " + file);
-            Assert(File.Exists(Path.Combine(directory, "LICENSE.txt")) && File.Exists(Path.Combine(directory, "SOURCE-MANIFEST.json")), "Missing provenance: " + folder);
+                using (var image = Image.FromFile(file)) Assert(image.Width >= (folder == "classic" ? 350 : folder == "soimoi" ? 720 : 750) &&
+                    image.Height >= (folder == "classic" ? 600 : folder == "soimoi" ? 1080 : 1400), "Invalid or undersized image: " + file);
+            if (folder != "classic" && folder != "soimoi")
+                Assert(File.Exists(Path.Combine(directory, "LICENSE.txt")) && File.Exists(Path.Combine(directory, "SOURCE-MANIFEST.json")), "Missing provenance: " + folder);
         }
-        Console.WriteLine("PASS bundled decks: 234 high-resolution faces decode with exact canonical IDs and provenance.");
+        Assert(!Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images")).Any(path =>
+            System.Text.RegularExpressions.Regex.IsMatch(Path.GetFileNameWithoutExtension(path), "^(maj|cups|pents|swords|wands)[0-9]{2}$")), "Loose card fronts remain in images root.");
+        Console.WriteLine("PASS bundled decks: all 390 faces decode in five respective folders with exact canonical IDs.");
+    }
+
+    private static IEnumerable<Control> Descendants(Control parent)
+    {
+        foreach (Control child in parent.Controls)
+        {
+            yield return child;
+            foreach (var nested in Descendants(child)) yield return nested;
+        }
+    }
+
+    private static void ReadingPresentation()
+    {
+        var input = Snapshot("maj01", "cups02", "swords03");
+        var report = ReadingEngine.Analyze(input);
+        using (var window = new ReadingWindow(input, report, new ReadingJournal(Path.GetTempPath())))
+        {
+            var boxes = Descendants(window).OfType<RichTextBox>().ToArray();
+            Assert(boxes.Length == 4, "Missing overview or detailed reading panels.");
+            var overview = boxes.Single(box => box.Text.Contains("CONNECTIONS"));
+            overview.Find("CONNECTIONS", RichTextBoxFinds.MatchCase);
+            Assert(overview.SelectionFont != null && overview.SelectionFont.Bold, "Overview heading is not emphasized.");
+            overview.Find("Explore", RichTextBoxFinds.MatchCase);
+            Assert(overview.SelectionFont != null && !overview.SelectionFont.Bold, "Heading formatting leaked into body text.");
+            foreach (var box in boxes.Where(box => box.Text.Contains("CORE MEANING")))
+            {
+                box.Find("CORE MEANING", RichTextBoxFinds.MatchCase);
+                Assert(box.SelectionFont != null && box.SelectionFont.Bold, "Card detail heading is not emphasized.");
+            }
+            var tabs = Descendants(window).OfType<TabControl>().Single();
+            var advice = Descendants(window).OfType<Button>().Single(button => button.Text.StartsWith("Advice ·"));
+            typeof(Button).GetMethod("OnClick", Private).Invoke(advice, new object[] { EventArgs.Empty });
+            Assert(tabs.SelectedIndex == 2, "Preview card did not open its correct detail tab.");
+        }
+        Console.WriteLine("PASS reading presentation: emphasized headings, plain body text, and preview navigation.");
+    }
+
+    private static void UnifiedSettings()
+    {
+        var preferencesType = typeof(frmTarot).Assembly.GetType("TarotDeck.Properties.Settings");
+        object preferences = preferencesType.GetProperty("Default").GetValue(null, null);
+        var names = new[] { "ReadingSpread", "ReadingTopic", "ReadingFocus", "AutoSpread", "ArtworkName", "CardBackName", "CardSet" };
+        var saved = names.ToDictionary(name => name, name => preferencesType.GetProperty(name).GetValue(preferences, null));
+        using (var form = new frmTarot())
+        {
+            try
+            {
+                Invoke(form, "frmTarot_Load", null, EventArgs.Empty); StopTimers(form);
+                var panel = (Panel)Field(form, "settingsPanel");
+                var tabs = panel.Controls.OfType<TabControl>().Single();
+                Assert(tabs.TabPages.Count == 2 && tabs.TabPages[1].Text == "Reading setup", "Reading setup is not in Settings.");
+                Assert(panel.Controls.OfType<Button>().Count(button => button.Text == "Apply") == 1 &&
+                    panel.Controls.OfType<Button>().Count(button => button.Text == "Cancel") == 1, "Settings needs one shared Apply/Cancel pair.");
+                Assert(!form.Controls.OfType<Button>().Any(button => button.Text == "Reading setup"), "Separate Reading setup button remains.");
+                var spread = (ComboBox)Field(form, "readingSpreadSelector");
+                var topic = (ComboBox)Field(form, "readingTopicSelector");
+                var focus = (ComboBox)Field(form, "readingFocusSelector");
+                foreach (int width in new[] { 360, 480, 720 })
+                {
+                    tabs.TabPages[1].Size = new Size(width, 300);
+                    foreach (var selector in new[] { spread, topic, focus })
+                        Assert(selector.Left == tabs.TabPages[1].ClientSize.Width - selector.Right && selector.Right < tabs.TabPages[1].ClientSize.Width,
+                            "Reading dropdown overflow or unequal horizontal margins.");
+                }
+                var auto = (CheckBox)Field(form, "autoSpreadCheckBox");
+                string originalSpread = (string)Field(form, "readingSpread"), originalTopic = (string)Field(form, "readingTopic");
+                bool originalAuto = auto.Checked;
+                spread.SelectedItem = ReadingOptions.Spreads.First(value => value != originalSpread);
+                topic.SelectedItem = originalTopic == "Career" ? "Relationships" : "Career";
+                auto.Checked = !originalAuto;
+                Assert((string)Field(form, "readingSpread") == originalSpread && (string)Field(form, "readingTopic") == originalTopic,
+                    "Pending settings changed active reading before Apply.");
+                Assert((string)focus.SelectedItem == "Overview", "Topic change did not reset dependent focus.");
+                Invoke(form, "ResetPendingSettings");
+                Assert((string)spread.SelectedItem == originalSpread && (string)topic.SelectedItem == originalTopic && auto.Checked == originalAuto,
+                    "Cancel did not reset both tabs.");
+                Invoke(form, "btnDrawCards_Click", null, EventArgs.Empty);
+                var images = Pictures(form).Select(picture => picture.Image).ToArray();
+                var bounds = Pictures(form).Select(picture => picture.Bounds).ToArray();
+                spread.SelectedItem = ReadingOptions.Spreads.First(value => value != originalSpread);
+                string newSpread = (string)spread.SelectedItem;
+                topic.SelectedItem = "Career"; focus.SelectedItem = "Making a decision"; auto.Checked = !originalAuto;
+                Invoke(form, "ApplySelectedSettings");
+                Assert((string)Field(form, "readingSpread") == newSpread && (string)Field(form, "readingFocus") == "Making a decision",
+                    "Shared Apply did not activate reading preferences.");
+                Assert((bool)preferencesType.GetProperty("AutoSpread").GetValue(preferences, null) == !originalAuto &&
+                    (string)preferencesType.GetProperty("ReadingSpread").GetValue(preferences, null) == newSpread, "Shared Apply did not save both tabs.");
+                Assert(images.SequenceEqual(Pictures(form).Select(picture => picture.Image)) && bounds.SequenceEqual(Pictures(form).Select(picture => picture.Bounds)),
+                    "Reading-only settings moved or replaced drawn cards.");
+            }
+            finally
+            {
+                StopTimers(form); Invoke(form, "frmTarot_FormClosed", null, new FormClosedEventArgs(CloseReason.None));
+                foreach (var pair in saved) preferencesType.GetProperty(pair.Key).SetValue(preferences, pair.Value, null);
+                preferencesType.GetMethod("Save").Invoke(preferences, null);
+            }
+        }
+        Console.WriteLine("PASS unified settings: two tabs, shared Apply/Cancel, pending-state isolation, persistence, and preserved drawn cards.");
     }
 
     private static void Reject<T>(Action action, string message) where T : Exception
@@ -113,6 +218,11 @@ internal static class OfflineReadingTests
 
     private static void DeterminismAndOptions()
     {
+        Assert(ReadingOptions.Spreads[0] == "Situation / Advice / Outcome", "Default spread differs from requested choice.");
+        Assert(ReadingOptions.Positions(ReadingOptions.Spreads[0]).SequenceEqual(new[] { "Situation", "Advice", "Outcome" }), "Default spread position order incorrect.");
+        var defaultReport = ReadingEngine.Analyze(Snapshot("maj01", "cups02", "swords03"));
+        Assert(defaultReport.CardDetails[1].Contains("In the advice position"), "Second card does not use Advice guidance.");
+        Assert(defaultReport.CardDetails[2].Contains("In the outcome position") && defaultReport.CardDetails[2].Contains("conditional"), "Third card lacks conditional Outcome guidance.");
         var cards = CardMeaningLibrary.All.ToArray();
         int combinations = 0;
         for (int i = 0; i < cards.Length; i++)
@@ -133,7 +243,7 @@ internal static class OfflineReadingTests
             Assert(first.Text == ReadingEngine.Analyze(input).Text, "Journal notes affected interpretation.");
             combinations++;
         }
-        Assert(combinations == 3744, "Expected all 78 × 3 × 4 × 4 structured combinations.");
+        Assert(combinations == cards.Length * ReadingOptions.Spreads.Length * ReadingOptions.Topics.Sum(topic => ReadingOptions.Focuses(topic).Length), "Not all structured combinations were covered.");
         Assert(!typeof(ReadingSnapshot).GetProperties().Any(property => property.Name.IndexOf("Question", StringComparison.OrdinalIgnoreCase) >= 0 || property.Name.IndexOf("Context", StringComparison.OrdinalIgnoreCase) >= 0), "Free-form question input appeared in model.");
         var copies = new[] { Card("maj01"), Card("cups02"), Card("wands03") };
         var snapshot = ReadingSnapshot.Create(copies, ReadingOptions.Spreads[0], "General", "Overview", "Artwork");
@@ -259,9 +369,11 @@ internal static class OfflineReadingTests
             {
                 Invoke(form, "frmTarot_Load", null, EventArgs.Empty); StopTimers(form);
                 var artwork = (ComboBox)Field(form, "artworkSelector");
+                var artworkNames = artwork.Items.Cast<object>().Select(item => item.ToString()).ToArray();
+                Assert(artworkNames.SequenceEqual(artworkNames.OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase)), "Artwork deck dropdown is not alphabetical.");
                 int originalArtwork = artwork.SelectedIndex;
                 typeof(frmTarot).GetField("loadingSelections", Private).SetValue(form, true);
-                foreach (string title in new[] { "Woodcut Marseille", "Tarot de Vieville", "Lequart Besançon" })
+                foreach (string title in new[] { "Classic Tarot", "Soimoi Tarot", "Woodcut Marseille", "Tarot de Vieville", "Lequart Besançon" })
                 {
                     int index = Enumerable.Range(0, artwork.Items.Count).FirstOrDefault(i => artwork.Items[i].ToString() == title);
                     Assert(artwork.Items[index].ToString() == title, "Bundled deck not discovered: " + title);
@@ -269,7 +381,7 @@ internal static class OfflineReadingTests
                     Invoke(form, "RefreshArtworkFileIndex");
                     foreach (var meaning in CardMeaningLibrary.All)
                         Assert(File.Exists((string)Invoke(form, "FindArtworkFile", meaning.Id + ".jpg")), "Bundled image not resolved: " + title + " / " + meaning.Id);
-                    Assert(!((Button)Field(form, "creditsButton")).Visible, "Public-domain deck should not require credits display.");
+                    if (title != "Soimoi Tarot") Assert(!((Button)Field(form, "creditsButton")).Visible, "Public-domain deck should not require credits display.");
                 }
                 artwork.SelectedIndex = originalArtwork;
                 Invoke(form, "RefreshArtworkFileIndex");

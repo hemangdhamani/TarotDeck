@@ -168,6 +168,7 @@ namespace TarotCardsDeck
                 int left = settingsPanel.ClientSize.Width - applySettings.Width - cancelSettings.Width - 40;
                 applySettings.Left = left;
                 cancelSettings.Left = left + applySettings.Width + 20;
+                applySettings.Top = cancelSettings.Top = settingsPanel.ClientSize.Height - applySettings.Height - 20;
             };
             settingsPanel.ClientSizeChanged += (s, args) => alignSettingsActions();
             settingsPanel.HandleCreated += (s, args) => alignSettingsActions();
@@ -260,6 +261,7 @@ namespace TarotCardsDeck
                     artworkSelector.SelectedIndex = i;
             autoSpreadCheckBox.Checked = TarotDeck.Properties.Settings.Default.AutoSpread;
             SelectCardBack(TarotDeck.Properties.Settings.Default.CardBackName);
+            ResetPendingReadingSettings();
             loadingSelections = false;
         }
 
@@ -293,6 +295,7 @@ namespace TarotCardsDeck
 
         private void ApplySelectedSettings()
         {
+            StageReadingSettings();
             bool deckChanged = (int)selectedDeck != deckSelector.SelectedIndex ||
                 TarotDeck.Properties.Settings.Default.ArtworkName != ((ArtworkChoice)artworkSelector.SelectedItem).Name;
             selectedDeck = (DeckChoice)deckSelector.SelectedIndex;
@@ -301,6 +304,7 @@ namespace TarotCardsDeck
             bool backChanged = TarotDeck.Properties.Settings.Default.CardBackName != backName;
             TarotDeck.Properties.Settings.Default.CardBackName = backName;
             SaveSelection();
+            ActivateReadingSettings();
             if (deckChanged)
             {
                 RefreshArtworkFileIndex();
@@ -384,12 +388,14 @@ namespace TarotCardsDeck
             string appImages = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images");
             string userDecks = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TarotDeck", "Decks");
             List<ArtworkChoice> choices = new List<ArtworkChoice>();
-            choices.Add(new ArtworkChoice("Classic Tarot", appImages));
+            string bundledClassic = Path.Combine(appImages, "classic");
+            if (HasCompleteArtwork(bundledClassic)) choices.Add(new ArtworkChoice("Classic Tarot", bundledClassic));
             string bundledSoimoi = Path.Combine(appImages, "soimoi");
             if (Directory.Exists(bundledSoimoi)) choices.Add(new ArtworkChoice("Soimoi Tarot", bundledSoimoi));
             foreach (string directory in Directory.GetDirectories(appImages).OrderBy(path => path, StringComparer.OrdinalIgnoreCase))
             {
-                if (string.Equals(directory, bundledSoimoi, StringComparison.OrdinalIgnoreCase) || !HasCompleteArtwork(directory)) continue;
+                if (string.Equals(directory, bundledClassic, StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(directory, bundledSoimoi, StringComparison.OrdinalIgnoreCase) || !HasCompleteArtwork(directory)) continue;
                 string titleFile = Path.Combine(directory, "DECKNAME.txt");
                 string title = File.Exists(titleFile) ? File.ReadAllText(titleFile).Trim() : Path.GetFileName(directory);
                 choices.Add(new ArtworkChoice(string.IsNullOrWhiteSpace(title) ? Path.GetFileName(directory) : title, directory));
@@ -400,6 +406,7 @@ namespace TarotCardsDeck
                     if (HasCompleteArtwork(directory)) choices.Add(new ArtworkChoice(Path.GetFileName(directory), directory));
             }
 
+            choices = choices.OrderBy(choice => choice.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
             artworkSelector.Items.Clear();
             foreach (ArtworkChoice choice in choices) artworkSelector.Items.Add(choice);
             int selected = choices.FindIndex(x => string.Equals(x.Name, preferredName, StringComparison.OrdinalIgnoreCase));
@@ -579,7 +586,7 @@ namespace TarotCardsDeck
         private void RefreshArtworkFileIndex()
         {
             ArtworkChoice choice = artworkSelector.SelectedItem as ArtworkChoice;
-            string directory = choice == null ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images") : choice.Path;
+            string directory = choice == null ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", "classic") : choice.Path;
             activeArtworkFiles = BuildArtworkFileIndex(directory);
             UpdateArtworkCredits();
         }

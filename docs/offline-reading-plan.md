@@ -23,9 +23,10 @@ saved reading. Keep all existing shuffle, spread, draw, paging, and artwork beha
 
 ## Reading setup
 
-Before drawing, let the user optionally open Reading setup:
+Before drawing, let the user optionally open Settings → Reading setup. Reading and
+artwork preferences share one Apply/Cancel pair; pending edits stay inactive until Apply:
 
-- Spread: Situation / Challenge / Advice (default), Past / Present / Possible
+- Spread: Situation / Advice / Outcome (default), Situation / Challenge / Advice, Past / Present / Possible
   direction, or Mind / Body / Spirit.
 - Topic: General (default), Relationships, Career, or Personal growth.
 - Focus: an optional topic-specific choice, such as making a decision, improving
@@ -151,7 +152,7 @@ and larger layouts, including reversals. Background-color settings are a separat
 
 ## Implemented delivery and validation
 
-- Structured setup has three spreads, four topics, and topic-specific focus choices;
+- Structured setup has four spreads, four topics, and topic-specific focus choices;
   there is no free-form question field. Journal notes remain separate from analysis.
 - All 78 canonical cards have original upright meanings, challenges, actions and
   reflection prompts, combined with explicit position/topic/focus and pattern rules.
@@ -159,7 +160,7 @@ and larger layouts, including reversals. Background-color settings are a separat
   Position labels, partial-spread availability, paging and shuffle clearing are covered.
 - Owned reading and journal windows provide an overview, individual card details,
   local notes, save/reopen/delete and UTF-8 text export. Historical reports are preserved.
-- Regression checks cover 3,744 structured combinations, deterministic results,
+- Regression checks cover 4,992 structured combinations, deterministic results,
   invalid identities/orientations/options, XML line endings, malformed/oversized files,
   path isolation, manual/automatic draws and preservation of card/fan state.
 - HTTP requests are blocked throughout automated reading and integration tests;

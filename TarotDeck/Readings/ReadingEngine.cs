@@ -8,7 +8,7 @@ namespace TarotCardsDeck.Readings
 {
     public static class ReadingOptions
     {
-        public static readonly string[] Spreads = { "Situation / Challenge / Advice", "Past / Present / Possible direction", "Mind / Body / Spirit" };
+        public static readonly string[] Spreads = { "Situation / Advice / Outcome", "Situation / Challenge / Advice", "Past / Present / Possible direction", "Mind / Body / Spirit" };
         public static readonly string[] Topics = { "General", "Relationships", "Career", "Personal growth" };
         public static string[] Focuses(string topic)
         {
@@ -111,14 +111,17 @@ namespace TarotCardsDeck.Readings
                 throw new ArgumentException("Reopen the saved interpretation, or create a new reading with the current content version.");
             var meanings = snapshot.Cards.Select(card => CardMeaningLibrary.Find(card.Id)).ToArray();
             var positions = ReadingOptions.Positions(snapshot.Spread);
-            var connections = Connections(meanings).Take(3).ToArray();
+            var connections = Connections(meanings, positions).Take(3).ToArray();
             var details = meanings.Select((card, index) => Explain(card, positions[index], snapshot.Topic, snapshot.Focus)).ToArray();
-            var actions = new[] { FocusAction(snapshot.Focus, snapshot.Topic), TopicAction(meanings[2].Action, snapshot.Topic), TopicAction(meanings[0].Action, snapshot.Topic) }
+            int adviceIndex = Array.IndexOf(positions, "Advice");
+            int practicalIndex = adviceIndex >= 0 ? adviceIndex : 2;
+            var actions = new[] { TopicAction(meanings[practicalIndex].Action, snapshot.Topic), FocusAction(snapshot.Focus, snapshot.Topic), TopicAction(meanings[0].Action, snapshot.Topic) }
                 .Distinct(StringComparer.Ordinal).Take(3).ToArray();
             var report = new ReadingReport {
-                Summary = string.Format("{0}: {1} → {2} → {3}. Read these as three perspectives on {4}, with {5} as your focus.",
-                    snapshot.Spread, meanings[0].Keywords, meanings[1].Keywords, meanings[2].Keywords,
-                    snapshot.Topic.ToLowerInvariant(), snapshot.Focus.ToLowerInvariant()),
+                Summary = string.Join(Environment.NewLine + Environment.NewLine, meanings.Select((card, index) =>
+                    positions[index] + " — " + card.Name + ": " + card.Keywords + ".")) +
+                    Environment.NewLine + Environment.NewLine + "Explore these themes through " + snapshot.Topic.ToLowerInvariant() +
+                    (snapshot.Focus == "Overview" ? "." : ", focusing on " + snapshot.Focus.ToLowerInvariant() + "."),
                 CardDetails = details, Connections = connections, Actions = actions,
                 Reflections = new[] { meanings[0].Reflection, meanings[2].Reflection }.Distinct().ToArray()
             };
@@ -143,6 +146,7 @@ namespace TarotCardsDeck.Readings
                 case "Situation": role = "Use this card to name a pattern active in the situation, rather than as proof of an external fact."; break;
                 case "Challenge": role = "In the challenge position, examine this card's difficult expression: " + card.Challenge; break;
                 case "Advice": role = "In the advice position, try this constructive response: " + card.Action; break;
+                case "Outcome": role = "In the outcome position, consider a possible direction if the current pattern continues. This is conditional on your choices and circumstances, rather than a fixed prediction."; break;
                 case "Past": role = "Look back for an experience or learned pattern that fits this theme. You decide whether it resonates."; break;
                 case "Present": role = "Notice where this theme is active now, especially in something you can influence."; break;
                 case "Possible direction": role = "This is a possible pattern to explore if present habits continue, not a fixed prediction. " + card.Action; break;
@@ -150,18 +154,25 @@ namespace TarotCardsDeck.Readings
                 case "Body": role = "Consider your daily rhythm, rest, and practical habits through this theme. This position does not assess physical health."; break;
                 default: role = "Consider how this theme relates to meaning, values, and a sense of connection."; break;
             }
-            return card.Keywords + Environment.NewLine + Environment.NewLine + card.Meaning + Environment.NewLine + Environment.NewLine + role +
-                Environment.NewLine + Environment.NewLine + TopicLens(topic) + " " + FocusLens(focus) +
-                Environment.NewLine + Environment.NewLine + "Watch for: " + card.Challenge +
-                Environment.NewLine + "Practice: " + TopicAction(card.Action, topic) +
-                Environment.NewLine + "Reflect: " + card.Reflection;
+            return "KEYWORDS" + Environment.NewLine + card.Keywords + Environment.NewLine + Environment.NewLine +
+                "CORE MEANING" + Environment.NewLine + card.Meaning + Environment.NewLine + Environment.NewLine +
+                "YOUR " + position.ToUpperInvariant() + " POSITION" + Environment.NewLine + role +
+                Environment.NewLine + Environment.NewLine + "TOPIC AND FOCUS" + Environment.NewLine + TopicLens(topic) + " " + FocusLens(focus) +
+                Environment.NewLine + Environment.NewLine + "WATCH FOR" + Environment.NewLine + card.Challenge +
+                Environment.NewLine + Environment.NewLine + "PRACTICE" + Environment.NewLine + TopicAction(card.Action, topic) +
+                Environment.NewLine + Environment.NewLine + "REFLECTION" + Environment.NewLine + card.Reflection;
         }
-        private static IEnumerable<string> Connections(CardMeaning[] cards)
+        private static IEnumerable<string> Connections(CardMeaning[] cards, string[] positions)
         {
+            if (positions.SequenceEqual(new[] { "Situation", "Advice", "Outcome" }))
+                yield return "Start with " + cards[0].Name + " to identify the present pattern. Use " + cards[1].Name +
+                    " as the response to practice, then consider " + cards[2].Name +
+                    " as a possible direction to review after taking that step. The outcome can change as your response changes.";
             var commonSuit = cards.Where(card => card.Suit != "Major Arcana").GroupBy(card => card.Suit)
                 .OrderByDescending(group => group.Count()).ThenBy(group => group.Key, StringComparer.Ordinal).FirstOrDefault();
             if (commonSuit != null && commonSuit.Count() >= 2)
-                yield return string.Join(" and ", commonSuit.Select(card => card.Name)) + " share " + commonSuit.Key + ", so compare how their themes develop across their positions.";
+                yield return string.Join(" and ", commonSuit.Select(card => card.Name)) + " share " + commonSuit.Key + ": " + SuitTheme(commonSuit.Key) +
+                    " Compare how that shared theme appears in their different spread positions.";
             var major = cards.Where(card => card.Suit == "Major Arcana").ToArray();
             if (major.Length >= 2) yield return string.Join(" and ", major.Select(card => card.Name)) + " are Major Arcana: give extra attention to values and recurring life patterns, without assuming an inevitable event.";
             var change = cards.Where(card => new[] { "maj10", "maj13", "maj16", "cups08", "swords06", "wands08" }.Contains(card.Id)).ToArray();
@@ -169,7 +180,18 @@ namespace TarotCardsDeck.Readings
             var pause = cards.FirstOrDefault(card => new[] { "maj09", "maj12", "swords04", "pents07" }.Contains(card.Id));
             var action = cards.FirstOrDefault(card => new[] { "maj07", "wands01", "wands08", "swords12" }.Contains(card.Id));
             if (pause != null && action != null) yield return pause.Name + " invites reflection while " + action.Name + " emphasizes movement. Decide what you need to clarify before taking one bounded step.";
-            yield return cards[0].Name + " opens the reading, " + cards[1].Name + " offers a second perspective, and " + cards[2].Name + " completes it. Compare the position meanings before deciding which pattern fits your experience.";
+            if (!positions.SequenceEqual(new[] { "Situation", "Advice", "Outcome" }) &&
+                (commonSuit == null || commonSuit.Count() < 2) && major.Length < 2 && change.Length < 2 && (pause == null || action == null))
+                yield return cards[0].Name + " opens the reading, " + cards[1].Name + " offers a second perspective, and " + cards[2].Name + " completes it. Compare the position meanings before deciding which pattern fits your experience.";
+        }
+        private static string SuitTheme(string suit)
+        {
+            switch (suit) {
+                case "Cups": return "feelings, connection, and what matters emotionally.";
+                case "Pentacles": return "practical resources, daily habits, and sustainable effort.";
+                case "Swords": return "thoughts, communication, and the assumptions behind a decision.";
+                default: return "motivation, initiative, and how you direct your energy.";
+            }
         }
         private static string TopicLens(string topic)
         {
