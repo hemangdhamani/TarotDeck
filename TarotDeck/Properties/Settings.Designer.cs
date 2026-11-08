@@ -24,6 +24,16 @@ namespace TarotDeck.Properties {
         }
 
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Situation / Advice / Outcome")]
+        public string ReadingSpread { get { return ((string)this["ReadingSpread"]); } set { this["ReadingSpread"] = value; } }
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("General")]
+        public string ReadingTopic { get { return ((string)this["ReadingTopic"]); } set { this["ReadingTopic"] = value; } }
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Overview")]
+        public string ReadingFocus { get { return ((string)this["ReadingFocus"]); } set { this["ReadingFocus"] = value; } }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Emerald Labyrinth")]
         public string CardBackName {
             get { return ((string)(this["CardBackName"])); }

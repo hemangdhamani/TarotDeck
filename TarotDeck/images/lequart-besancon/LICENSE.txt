@@ -1,0 +1,6 @@
+PUBLIC DOMAIN ARTWORK
+
+All 78 card image files are faithful scans of a Lequart (Paris) tarot published in 1890. Each original Wikimedia Commons file page declares Public domain, Copyrighted=False and AttributionRequired=false; these values were checked individually at import and are recorded in SOURCE-MANIFEST.json with original URLs and content hashes. No new copyright is asserted over these unchanged image files by TarotDeck. This is a provenance/status notice, not a new license grant.
+
+Commons identifies this as Tarot de Besançon - Arnoult. The download mirror labels the set Marseille, but the distinctive Juno and Jupiter trumps identify the Besançon pattern. Source collection: https://commons.wikimedia.org/wiki/Category:Tarot_de_Besan%C3%A7on_-_Arnoult
+Historical collection: https://gallica.bnf.fr/ark:/12148/btv1b10539498w

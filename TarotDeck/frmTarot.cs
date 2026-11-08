@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -168,6 +168,7 @@ namespace TarotCardsDeck
                 int left = settingsPanel.ClientSize.Width - applySettings.Width - cancelSettings.Width - 40;
                 applySettings.Left = left;
                 cancelSettings.Left = left + applySettings.Width + 20;
+                applySettings.Top = cancelSettings.Top = settingsPanel.ClientSize.Height - applySettings.Height - 20;
             };
             settingsPanel.ClientSizeChanged += (s, args) => alignSettingsActions();
             settingsPanel.HandleCreated += (s, args) => alignSettingsActions();
@@ -184,6 +185,7 @@ namespace TarotCardsDeck
             PopulateArtworkChoices(TarotDeck.Properties.Settings.Default.ArtworkName);
             RefreshArtworkFileIndex();
             loadingSelections = false;
+            InitializeReadings();
             selectedDeck = (DeckChoice)deckSelector.SelectedIndex;
             StartNewDeck();
             SetScreenRatio();
@@ -233,6 +235,7 @@ namespace TarotCardsDeck
                 Math.Max(available.Top, available.Bottom - settingsButton.Height - margin));
             creditsButton.Location = new Point(settingsButton.Left - creditsButton.Width - 10,
                 settingsButton.Top);
+            PositionReadingControls();
             PositionOverlay(settingsPanel, new Rectangle(
                 new Point(Math.Max(available.Left + margin, available.Right - settingsPanel.Width - margin),
                     Math.Max(available.Top + margin, settingsButton.Top - settingsPanel.Height - 12)),
@@ -258,6 +261,7 @@ namespace TarotCardsDeck
                     artworkSelector.SelectedIndex = i;
             autoSpreadCheckBox.Checked = TarotDeck.Properties.Settings.Default.AutoSpread;
             SelectCardBack(TarotDeck.Properties.Settings.Default.CardBackName);
+            ResetPendingReadingSettings();
             loadingSelections = false;
         }
 
@@ -291,6 +295,7 @@ namespace TarotCardsDeck
 
         private void ApplySelectedSettings()
         {
+            StageReadingSettings();
             bool deckChanged = (int)selectedDeck != deckSelector.SelectedIndex ||
                 TarotDeck.Properties.Settings.Default.ArtworkName != ((ArtworkChoice)artworkSelector.SelectedItem).Name;
             selectedDeck = (DeckChoice)deckSelector.SelectedIndex;
@@ -299,6 +304,7 @@ namespace TarotCardsDeck
             bool backChanged = TarotDeck.Properties.Settings.Default.CardBackName != backName;
             TarotDeck.Properties.Settings.Default.CardBackName = backName;
             SaveSelection();
+            ActivateReadingSettings();
             if (deckChanged)
             {
                 RefreshArtworkFileIndex();
@@ -382,15 +388,25 @@ namespace TarotCardsDeck
             string appImages = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images");
             string userDecks = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TarotDeck", "Decks");
             List<ArtworkChoice> choices = new List<ArtworkChoice>();
-            choices.Add(new ArtworkChoice("Classic Tarot", appImages));
+            string bundledClassic = Path.Combine(appImages, "classic");
+            if (HasCompleteArtwork(bundledClassic)) choices.Add(new ArtworkChoice("Classic Tarot", bundledClassic));
             string bundledSoimoi = Path.Combine(appImages, "soimoi");
             if (Directory.Exists(bundledSoimoi)) choices.Add(new ArtworkChoice("Soimoi Tarot", bundledSoimoi));
+            foreach (string directory in Directory.GetDirectories(appImages).OrderBy(path => path, StringComparer.OrdinalIgnoreCase))
+            {
+                if (string.Equals(directory, bundledClassic, StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(directory, bundledSoimoi, StringComparison.OrdinalIgnoreCase) || !HasCompleteArtwork(directory)) continue;
+                string titleFile = Path.Combine(directory, "DECKNAME.txt");
+                string title = File.Exists(titleFile) ? File.ReadAllText(titleFile).Trim() : Path.GetFileName(directory);
+                choices.Add(new ArtworkChoice(string.IsNullOrWhiteSpace(title) ? Path.GetFileName(directory) : title, directory));
+            }
             if (Directory.Exists(userDecks))
             {
                 foreach (string directory in Directory.GetDirectories(userDecks))
                     if (HasCompleteArtwork(directory)) choices.Add(new ArtworkChoice(Path.GetFileName(directory), directory));
             }
 
+            choices = choices.OrderBy(choice => choice.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
             artworkSelector.Items.Clear();
             foreach (ArtworkChoice choice in choices) artworkSelector.Items.Add(choice);
             int selected = choices.FindIndex(x => string.Equals(x.Name, preferredName, StringComparison.OrdinalIgnoreCase));
@@ -513,6 +529,10 @@ namespace TarotCardsDeck
                 artworkCredits = string.Join(Environment.NewLine + Environment.NewLine, credits);
             }
             creditsButton.Visible = !string.IsNullOrWhiteSpace(artworkCredits);
+            string attributionRequirement = choice == null ? null : Path.Combine(choice.Path, "ATTRIBUTION_REQUIRED.txt");
+            if (attributionRequirement != null && File.Exists(attributionRequirement) &&
+                string.Equals(File.ReadAllText(attributionRequirement).Trim(), "false", StringComparison.OrdinalIgnoreCase))
+                creditsButton.Visible = false;
             if (creditsPanel != null)
             {
                 creditsText.Text = artworkCredits ?? "";
@@ -523,6 +543,7 @@ namespace TarotCardsDeck
         private void RaiseMainControls()
         {
             PositionSettings();
+            RaiseReadingControls();
             settingsButton.BringToFront();
             creditsButton.BringToFront();
             if (settingsPanel.Visible) settingsPanel.BringToFront();
@@ -565,7 +586,7 @@ namespace TarotCardsDeck
         private void RefreshArtworkFileIndex()
         {
             ArtworkChoice choice = artworkSelector.SelectedItem as ArtworkChoice;
-            string directory = choice == null ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images") : choice.Path;
+            string directory = choice == null ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", "classic") : choice.Path;
             activeArtworkFiles = BuildArtworkFileIndex(directory);
             UpdateArtworkCredits();
         }
@@ -602,21 +623,21 @@ namespace TarotCardsDeck
             curCard = deck.DrawRandom();
             if (curCard != null)
             {
-                SetPictureImage(pcbCard01, LoadCardImage(curCard.CardImg));
+                SetPictureImage(pcbCard01, LoadCardImage(curCard.CardImg), curCard);
                 RemoveCardFromDeck(curCard);
             }
 
             curCard = deck.DrawRandom();
             if (curCard != null)
             {
-                SetPictureImage(pcbCard02, LoadCardImage(curCard.CardImg));
+                SetPictureImage(pcbCard02, LoadCardImage(curCard.CardImg), curCard);
                 RemoveCardFromDeck(curCard);
             }
 
             curCard = deck.DrawRandom();
             if (curCard != null)
             {
-                SetPictureImage(pcbCard03, LoadCardImage(curCard.CardImg));
+                SetPictureImage(pcbCard03, LoadCardImage(curCard.CardImg), curCard);
                 RemoveCardFromDeck(curCard);
             }
             //MessageBox.Show(drawn.cards.Count.ToString());
@@ -664,13 +685,13 @@ namespace TarotCardsDeck
 
             if (cardPosition == 0)
             {
-                SetPictureImage(pcbCardFirst, LoadCardImage(curCard.CardImg));
+                SetPictureImage(pcbCardFirst, LoadCardImage(curCard.CardImg), curCard);
                 deck.cards.Remove(curCard);
                 RemoveDeckPictureBox(pcbClick);
             }
             else if (cardPosition == deck.cards.Count - 1)
             {
-                SetPictureImage(pcbCardLast, LoadCardImage(curCard.CardImg));
+                SetPictureImage(pcbCardLast, LoadCardImage(curCard.CardImg), curCard);
                 deck.cards.Remove(curCard);
                 RemoveDeckPictureBox(pcbClick);
             }
@@ -685,19 +706,19 @@ namespace TarotCardsDeck
 
                 if (pcbCard01.Image == null)
                 {
-                    SetPictureImage(pcbCard01, LoadCardImage(curCard.CardImg));
+                    SetPictureImage(pcbCard01, LoadCardImage(curCard.CardImg), curCard);
                     //drawn.cards.Add(curCard);
                     //this.Controls.Remove(pcbClick);
                 }
                 else if (pcbCard02.Image == null)
                 {
-                    SetPictureImage(pcbCard02, LoadCardImage(curCard.CardImg));
+                    SetPictureImage(pcbCard02, LoadCardImage(curCard.CardImg), curCard);
                     //drawn.cards.Add(curCard);
                     //this.Controls.Remove(pcbClick);
                 }
                 else if (pcbCard03.Image == null)
                 {
-                    SetPictureImage(pcbCard03, LoadCardImage(curCard.CardImg));
+                    SetPictureImage(pcbCard03, LoadCardImage(curCard.CardImg), curCard);
                     //drawn.cards.Add(curCard);
                     //this.Controls.Remove(pcbClick);
                 }
@@ -1217,6 +1238,7 @@ namespace TarotCardsDeck
             }
             else
                 drawnPanel.BringToFront();
+            LayoutReadingLabels();
         }
 
         //private void SetCurrentPage()
@@ -1256,19 +1278,19 @@ namespace TarotCardsDeck
 
             if (intCurCard >= 1 && intCurCard <= drawn.cards.Count)
             {
-                SetPictureImage(pcbCard03, LoadCardImage(drawn.cards[intCurCard - 1].CardImg));
+                SetPictureImage(pcbCard03, LoadCardImage(drawn.cards[intCurCard - 1].CardImg), drawn.cards[intCurCard - 1]);
             }
 
             intCurCard--;
             if (intCurCard >= 1 && intCurCard <= drawn.cards.Count)
             {
-                SetPictureImage(pcbCard02, LoadCardImage(drawn.cards[intCurCard - 1].CardImg));
+                SetPictureImage(pcbCard02, LoadCardImage(drawn.cards[intCurCard - 1].CardImg), drawn.cards[intCurCard - 1]);
             }
 
             intCurCard--;
             if (intCurCard >= 1 && intCurCard <= drawn.cards.Count)
             {
-                SetPictureImage(pcbCard01, LoadCardImage(drawn.cards[intCurCard - 1].CardImg));
+                SetPictureImage(pcbCard01, LoadCardImage(drawn.cards[intCurCard - 1].CardImg), drawn.cards[intCurCard - 1]);
             }
         }
 
@@ -1279,11 +1301,13 @@ namespace TarotCardsDeck
             using (Image image = Image.FromFile(path)) return new Bitmap(image);
         }
 
-        private void SetPictureImage(PictureBox pictureBox, Image image)
+        private void SetPictureImage(PictureBox pictureBox, Image image, Card card = null)
         {
             Image previous = pictureBox.Image;
             if (ReferenceEquals(previous, image)) return;
             pictureBox.Image = image;
+            pictureBox.Tag = card;
+            UpdateReadingAvailability();
             if (previous != null && !ReferenceEquals(previous, deckBackImage)) previous.Dispose();
         }
     }

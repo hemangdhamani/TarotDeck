@@ -1,6 +1,6 @@
 # Offline tarot reading plan
 
-Status: planned; implementation has not started.
+Status: implemented on `feature/offline-tarot-readings`; local commit only, no PR to master.
 
 ## Start on a new feature branch
 
@@ -23,24 +23,22 @@ saved reading. Keep all existing shuffle, spread, draw, paging, and artwork beha
 
 ## Reading setup
 
-Before drawing, let the user optionally open Reading setup:
+Before drawing, let the user optionally open Settings → Reading setup. Reading and
+artwork preferences share one Apply/Cancel pair; pending edits stay inactive until Apply:
 
-- Spread: Situation / Challenge / Advice (default), Past / Present / Possible
+- Spread: Situation / Advice / Outcome (default), Situation / Challenge / Advice, Past / Present / Possible
   direction, or Mind / Body / Spirit.
 - Topic: General (default), Relationships, Career, or Personal growth.
 - Focus: an optional topic-specific choice, such as making a decision, improving
   communication, understanding an obstacle, or choosing a next step.
-- Question/context: optional multiline text, stored locally as the user's own
-  question and displayed alongside the reading.
-- Reversals: an explicit option, initially off. Audit the existing orientation
-  behavior before implementing it; never assign a reversal only during analysis.
+- No free-form question or context input. Use only the structured spread, topic,
+  and focus selectors to tailor readings.
+- Upright cards only in the first release. The existing IsCardUp property controls
+  face visibility, not reversal. Reversed readings require a separate future design.
 
-Free-form text is a journal prompt, not an input the offline engine claims to
-understand. Personalization comes from the selected topic, focus, spread position,
-and actual cards. Do not infer intent, sentiment, names, dates, private thoughts,
-or facts from keywords in the question. Explain this briefly beside the text box:
-"Your question is saved with this reading. Choose a topic and focus to tailor the guidance."
-An empty question must still produce a complete, useful reading.
+Personalization comes exclusively from topic, focus, spread position, and actual
+cards. Do not accept or infer intent from free-flow questions. Optional journal
+notes are the user's reflections after a reading; they never enter the engine.
 
 Keep setup compact and optional. Show position labels beside the drawn cards
 without moving them or disrupting their symmetry. Read Cards is available once
@@ -68,9 +66,8 @@ claims, and deterministic yes/no outcomes. Challenging imagery should be explain
 without literal predictions of death, illness, disaster, or another person's intentions.
 Consequential decisions remain the user's; guidance should invite reflection.
 
-For example, a Career / Next step reading should offer relevant workplace prompts
-from reviewed card/topic entries. It must not claim that the engine understood an
-arbitrary account of the user's workplace in the question field.
+For example, Career / Next step offers workplace prompts based on the selected
+cards and structured focus, without any question text or natural-language parsing.
 
 ## Meaning library and deterministic engine
 
@@ -89,8 +86,8 @@ For each card record:
 
 Interpretation pipeline:
 
-1. Validate a snapshot of the three distinct card IDs, orientations, spread, topic,
-   focus, artwork reference, question, and content version.
+1. Validate a snapshot of three distinct card IDs, upright orientation, spread,
+   topic, focus, artwork reference, and content version.
 2. Resolve each card's reviewed meaning and position/topic/focus guidance.
 3. Evaluate a small set of explicit combination rules over card tags and positions.
    Include relevant suit/arcana patterns only when they add useful explanation.
@@ -109,11 +106,11 @@ the opposite of upright meanings.
 - Reading analysis must never redraw, reshuffle, reorder, rotate, or move cards.
 - Preserve immutable reading snapshots; changing a deck/back or paging must not
   rewrite an existing reading. Reinterpretation creates an explicit new revision.
-- Save readings and notes locally, with date, setup, card identities/orientations,
+- Save readings and reflection notes locally, with date, setup, card identities/orientations,
   interpretation, content version, and optional artwork identifiers.
 - Keep historical text as originally generated when the meaning library changes.
 - Provide save/reopen, user-controlled deletion, and plain-text export locally.
-- Do not log question text in diagnostics or upload it. No internet is required.
+- No question input or question storage exists. Never upload journal notes.
 
 ## Delivery sequence
 
@@ -127,18 +124,19 @@ the opposite of upright meanings.
    useful actions, and reflection prompts. Complete content coverage before release.
 5. Journal: local persistence, notes, reopen/delete/export, and version handling.
 6. Verification and polish: validate content, behavior, readability, DPI, window
-   positioning, and offline operation. Create a separate PR for this feature.
+   positioning, and offline operation. Commit on this feature branch; do not create
+   a PR to master for this task.
 
 Later offline extensions, outside the first release: physical-card entry with
 searchable names and duplicate prevention, explicit clarifier cards, custom spreads,
-and larger layouts. Background-color settings are a separate task.
+and larger layouts, including reversals. Background-color settings are a separate task.
 
 ## Acceptance criteria
 
 - Complete, reviewed content for all 78 cards and every supported spread/topic;
   no missing IDs, invalid references, placeholders, or unsupported reversals.
-- Identical reading inputs produce identical output. Question text is preserved
-  verbatim as user context and is not presented as automatically understood.
+- Identical structured inputs produce identical output. There is no free-form
+  question field; journal notes do not affect interpretations.
 - Manual fan selection and Draw Cards produce equivalent interpretations for the
   same explicit snapshot. Card order and position labels agree with the display.
 - No changes to fan slots, drawn-card bounds, images/orientations, or draw order
@@ -149,5 +147,30 @@ and larger layouts. Background-color settings are a separate task.
   no clipped cards, hidden actions, stale overlay pixels, or empty-placeholder borders.
 - Review representative readings for relevance, repetition, tone, and consistency.
   Separate editorial quality checks from automated schema and engine tests.
-- Debug and Release builds pass; demonstrate a complete reading with network
-  access unavailable before considering the offline feature finished.
+- Debug and Release builds pass; demonstrate complete readings with HTTP requests
+  blocked by the regression harness before considering the offline feature finished.
+
+## Implemented delivery and validation
+
+- Structured setup has four spreads, four topics, and topic-specific focus choices;
+  there is no free-form question field. Journal notes remain separate from analysis.
+- All 78 canonical cards have original upright meanings, challenges, actions and
+  reflection prompts, combined with explicit position/topic/focus and pattern rules.
+- Analysis snapshots use the actual three displayed cards in left-to-right order.
+  Position labels, partial-spread availability, paging and shuffle clearing are covered.
+- Owned reading and journal windows provide an overview, individual card details,
+  local notes, save/reopen/delete and UTF-8 text export. Historical reports are preserved.
+- Regression checks cover 4,992 structured combinations, deterministic results,
+  invalid identities/orientations/options, XML line endings, malformed/oversized files,
+  path isolation, manual/automatic draws and preservation of card/fan state.
+- HTTP requests are blocked throughout automated reading and integration tests;
+  the runtime feature has no network client, AI dependency, or external service.
+- Three additional full decks are bundled: Woodcut Marseille (CC0), Tarot de Viéville
+  and Lequart Besançon (public-domain historical artwork). Each contains all 78
+  canonical image IDs, source/license evidence and hashes. Historical trump/court
+  mappings and Besançon's Juno/Jupiter equivalents are documented explicitly.
+- Debug/Release output includes all artwork. Visual checks cover setup, overview,
+  individual card thumbnails/details, saving, history, and visible footer actions.
+
+Future editorial expansion can add further reviewed combination rules and historical
+deck-specific reading systems; current readings consistently use the shared RWS library.
