@@ -154,7 +154,7 @@ namespace TarotCardsDeck
                 ForeColor = Color.White, Location = new Point(20, 140),
                 Checked = TarotDeck.Properties.Settings.Default.AutoSpread };
             settingsPanel.Controls.Add(autoSpreadCheckBox);
-            int settingsActionsLeft = (settingsPanel.ClientSize.Width - 180) / 2;
+            int settingsActionsLeft = settingsPanel.ClientSize.Width - 200;
             Button applySettings = new Button { Text = "Apply", Location = new Point(settingsActionsLeft, 183),
                 Size = new Size(80, 27), UseVisualStyleBackColor = true };
             Button cancelSettings = new Button { Text = "Cancel", Location = new Point(settingsActionsLeft + 100, 183),
@@ -163,15 +163,15 @@ namespace TarotCardsDeck
             cancelSettings.Click += (s, args) => { ResetPendingSettings(); HideOverlay(settingsPanel); };
             settingsPanel.Controls.Add(applySettings);
             settingsPanel.Controls.Add(cancelSettings);
-            Action centerSettingsActions = () =>
+            Action alignSettingsActions = () =>
             {
-                int left = (settingsPanel.ClientSize.Width - applySettings.Width - cancelSettings.Width - 20) / 2;
+                int left = settingsPanel.ClientSize.Width - applySettings.Width - cancelSettings.Width - 40;
                 applySettings.Left = left;
                 cancelSettings.Left = left + applySettings.Width + 20;
             };
-            settingsPanel.ClientSizeChanged += (s, args) => centerSettingsActions();
-            settingsPanel.HandleCreated += (s, args) => centerSettingsActions();
-            centerSettingsActions();
+            settingsPanel.ClientSizeChanged += (s, args) => alignSettingsActions();
+            settingsPanel.HandleCreated += (s, args) => alignSettingsActions();
+            alignSettingsActions();
 
             creditsButton = new Button();
             creditsButton.Text = "Credits";
