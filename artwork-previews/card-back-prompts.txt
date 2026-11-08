@@ -1,0 +1,30 @@
+Card back artwork
+
+Generated using the built-in image generation tool. Celestial Garden is the existing custom Soimoi back, copied unchanged. Emerald Labyrinth uses the approved color-swapped variant: gold background and emerald details.
+
+moonlit-lotus
+Use case: stylized-concept. Asset type: production tarot card back artwork for a desktop app. Create a single flat full-bleed portrait card-back texture, 1024x1536, deep indigo and silver, interlaced lotus petals, mirrored crescent moons, delicate water ripples, tranquil refined ornament. Crisp finely detailed engraved line art with strong legibility at small sizes. Symmetrical ornament, exactly centered, 180-degree rotationally symmetric so upright and reversed look identical. Thin ornate inset double border with equal margins on all sides. Full canvas is the card texture, no surrounding scene, no perspective, no mockup, no shadows, no text, no lettering, no watermark. Design title for metadata only: Moonlit Lotus.
+
+emerald-labyrinth
+Use case: stylized-concept. Asset type: production tarot card back artwork for a desktop app. Create a single flat full-bleed portrait card-back texture, 1024x1536, rich emerald green and warm antique gold, intricate interlaced geometric labyrinth knotwork, central eight-point compass rosette, elegant sacred geometry. Crisp finely detailed engraved line art with strong legibility at small sizes. Symmetrical ornament, exactly centered, 180-degree rotationally symmetric so upright and reversed look identical. Thin ornate inset double border with equal margins on all sides. Full canvas is the card texture, no surrounding scene, no perspective, no mockup, no shadows, no text, no lettering, no watermark. Design title for metadata only: Emerald Labyrinth.
+
+rosewood-mandala
+Use case: stylized-concept. Asset type: production tarot card back artwork for a desktop app. Create a single flat full-bleed portrait card-back texture, 1024x1536, burgundy and rose gold, intricate botanical mandala with curling rose vines and fine symmetrical filigree, warm luxurious ornament. Crisp finely detailed engraved line art with strong legibility at small sizes. Symmetrical ornament, exactly centered, 180-degree rotationally symmetric so upright and reversed look identical. Thin ornate inset double border with equal margins on all sides. Full canvas is the card texture, no surrounding scene, no perspective, no mockup, no shadows, no text, no lettering, no watermark. Design title for metadata only: Rosewood Mandala.
+
+sapphire-tides
+Use case: stylized-concept. Asset type: production tarot card back artwork for a desktop app. Create a single flat full-bleed portrait card-back texture, 1024x1536, deep ocean blue and pale gold, mirrored flowing waves, tiny stars, concentric shell-like compass medallion, graceful fine engraved ornament. Crisp finely detailed engraved line art with strong legibility at small sizes. Symmetrical ornament, exactly centered, 180-degree rotationally symmetric so upright and reversed look identical. Thin ornate inset double border with equal margins on all sides. Full canvas is the card texture, no surrounding scene, no perspective, no mockup, no shadows, no text, no lettering, no watermark. Design title for metadata only: Sapphire Tides.
+
+obsidian-eclipse
+Create a single flat tarot card back artwork called Obsidian Eclipse. Portrait 1024x1536. Deep obsidian black background with fine metallic copper engraved ornamentation. A central eclipse medallion surrounded by intricate celestial rings, mirrored sun rays, small stars and elegant geometric filigree, refined double border. Balanced 180-degree rotationally symmetric composition suitable for reversible tarot cards. Crisp intricate linework and rich restrained contrast, premium printed engraving aesthetic. Entire image is only the card back artwork, full bleed, viewed straight on. No text, lettering, watermark, mockup, tabletop, perspective, cast shadow or extra cards. Distinct from floral lotus, roses, green labyrinth and ocean designs.
+
+blush-peony
+Single flat tarot card back artwork named Blush Peony: soft blush pink background, pearl white and rose gold engraved peonies and delicate lace mandala. Portrait 1024x1536. Elegant intricate engraving, refined decorative double border, balanced 180 degree rotational symmetry for reversible cards. Crisp high quality detail. Full bleed artwork viewed straight on. No text, letters, watermark, mockup, tabletop, perspective, cast shadows or additional cards.
+
+lavender-dream
+Single flat tarot card back artwork named Lavender Dream: lavender background, silver and deep violet engraved butterflies, wisteria and central crystal mandala. Portrait 1024x1536. Elegant intricate engraving, refined decorative double border, balanced 180 degree rotational symmetry for reversible cards. Crisp high quality detail. Full bleed artwork viewed straight on. No text, letters, watermark, mockup, tabletop, perspective, cast shadows or additional cards.
+
+ivory-astrolabe
+Single flat tarot card back artwork named Ivory Astrolabe: warm ivory background, dark bronze fine engraved celestial astrolabe and geometric orbital rings. Portrait 1024x1536. Elegant intricate engraving, refined decorative double border, balanced 180 degree rotational symmetry for reversible cards. Crisp high quality detail. Full bleed artwork viewed straight on. No text, letters, watermark, mockup, tabletop, perspective, cast shadows or additional cards.
+
+teal-phoenix
+Single flat tarot card back artwork named Teal Phoenix: deep teal background, champagne gold two mirrored phoenix birds circling a central radiant medallion. Portrait 1024x1536. Elegant intricate engraving, refined decorative double border, balanced 180 degree rotational symmetry for reversible cards. Crisp high quality detail. Full bleed artwork viewed straight on. No text, letters, watermark, mockup, tabletop, perspective, cast shadows or additional cards.
