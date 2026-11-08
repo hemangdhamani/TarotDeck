@@ -73,7 +73,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <Content Include="images\**\*">
+    <Content Include="images\**\*" Exclude="images\cardbacks\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <!-- Explicit items also refresh Visual Studio's asset list when the project reloads. -->
+    <Content Include="images\cardbacks\celestial-garden.png;images\cardbacks\moonlit-lotus.png;images\cardbacks\emerald-labyrinth.png;images\cardbacks\rosewood-mandala.png;images\cardbacks\sapphire-tides.png;images\cardbacks\obsidian-eclipse.png;images\cardbacks\blush-peony.png;images\cardbacks\lavender-dream.png;images\cardbacks\ivory-astrolabe.png;images\cardbacks\teal-phoenix.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\Settings.settings">

@@ -17,10 +17,30 @@ namespace TarotCardsDeck
         int intCurPage, intMaxPage = 0;
         private ComboBox deckSelector;
         private ComboBox artworkSelector;
+        private ComboBox cardBackSelector;
         private Button addArtworkButton;
         private Button creditsButton;
+        private Button settingsButton;
+        private Panel settingsPanel;
+        private Panel drawnPanel;
+        private Panel creditsPanel;
+        private readonly Dictionary<Panel, Form> overlayWindows = new Dictionary<Panel, Form>();
+        private TextBox creditsText;
+        private CheckBox autoSpreadCheckBox;
+        private string artworkCredits;
         private bool loadingSelections;
         private Bitmap deckBackImage;
+        private readonly Dictionary<int, Bitmap> shufflePackets = new Dictionary<int, Bitmap>();
+        private FanSurface fanSurface;
+        private double fanProgress;
+        private double dragStartProgress;
+        private Point dragStart;
+        private bool fanDragging;
+        private bool fanMoved;
+        private int pressedFanCard = -1;
+        private Timer spreadRevealTimer;
+        private Timer shufflePileTimer;
+        private DateTime shuffleStartedAtUtc;
         private Dictionary<string, string> activeArtworkFiles = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private DeckChoice selectedDeck = DeckChoice.CompleteTarot;
 
@@ -32,17 +52,45 @@ namespace TarotCardsDeck
 
         private void frmTarot_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (spreadRevealTimer != null)
+            {
+                spreadRevealTimer.Stop();
+                spreadRevealTimer.Dispose();
+                spreadRevealTimer = null;
+            }
+            if (shufflePileTimer != null)
+            {
+                shufflePileTimer.Stop();
+                shufflePileTimer.Dispose();
+                shufflePileTimer = null;
+            }
             RemoveDeck();
             SetPictureImage(pcbCard01, null);
             SetPictureImage(pcbCard02, null);
             SetPictureImage(pcbCard03, null);
             SetPictureImage(pcbCardFirst, null);
             SetPictureImage(pcbCardLast, null);
+            foreach (Form overlay in overlayWindows.Values) overlay.Dispose();
+            overlayWindows.Clear();
         }
 
         private void frmTarot_Load(object sender, EventArgs e)
         {
             loadingSelections = true;
+            settingsPanel = new Panel { Location = new Point(20, 48), Size = new Size(430, 265),
+                BackColor = Color.FromArgb(35, 35, 35), BorderStyle = BorderStyle.FixedSingle, Visible = false };
+            Controls.Add(settingsPanel);
+            settingsButton = new Button { Text = "Settings", Location = new Point(20, 12),
+                Size = new Size(110, 28), UseVisualStyleBackColor = true };
+            settingsButton.Click += (s, args) =>
+            {
+                if (settingsPanel.Visible) { overlayWindows[settingsPanel].Activate(); return; }
+                ResetPendingSettings();
+                if (creditsPanel != null) HideOverlay(creditsPanel);
+                PositionSettings();
+                ShowOverlay(settingsPanel);
+            };
+            Controls.Add(settingsButton);
             deckSelector = new ComboBox();
             deckSelector.DropDownStyle = ComboBoxStyle.DropDownList;
             deckSelector.Items.AddRange(new object[] { "Complete Tarot (78 cards)", "Major Arcana (22 cards)", "Minor Arcana (56 cards)" });
@@ -50,7 +98,7 @@ namespace TarotCardsDeck
             deckSelector.Location = new Point(20, 24);
             deckSelector.Width = 210;
             deckSelector.SelectedIndexChanged += DeckSelector_SelectedIndexChanged;
-            Controls.Add(deckSelector);
+            settingsPanel.Controls.Add(deckSelector);
             deckSelector.BringToFront();
 
             Label cardSetLabel = new Label();
@@ -58,21 +106,21 @@ namespace TarotCardsDeck
             cardSetLabel.ForeColor = Color.White;
             cardSetLabel.Text = "Card selection";
             cardSetLabel.Location = new Point(20, 7);
-            Controls.Add(cardSetLabel);
+            settingsPanel.Controls.Add(cardSetLabel);
 
             artworkSelector = new ComboBox();
             artworkSelector.DropDownStyle = ComboBoxStyle.DropDownList;
             artworkSelector.Location = new Point(20, 81);
             artworkSelector.Width = 210;
             artworkSelector.SelectedIndexChanged += ArtworkSelector_SelectedIndexChanged;
-            Controls.Add(artworkSelector);
+            settingsPanel.Controls.Add(artworkSelector);
 
             Label artworkLabel = new Label();
             artworkLabel.AutoSize = true;
             artworkLabel.ForeColor = Color.White;
             artworkLabel.Text = "Artwork deck";
             artworkLabel.Location = new Point(20, 64);
-            Controls.Add(artworkLabel);
+            settingsPanel.Controls.Add(artworkLabel);
 
             addArtworkButton = new Button();
             addArtworkButton.Text = "Add deck...";
@@ -80,12 +128,36 @@ namespace TarotCardsDeck
             addArtworkButton.Size = new Size(90, 23);
             addArtworkButton.UseVisualStyleBackColor = true;
             addArtworkButton.Click += AddArtworkButton_Click;
-            Controls.Add(addArtworkButton);
+            settingsPanel.Controls.Add(addArtworkButton);
+            settingsPanel.Controls.Add(new Label { Text = "Card back", AutoSize = true,
+                ForeColor = Color.White, Location = new Point(20, 118) });
+            cardBackSelector = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList,
+                Location = new Point(20, 135), Width = 210 };
+            string backFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", "cardbacks");
+            string[] backNames = { "Celestial Garden", "Moonlit Lotus", "Emerald Labyrinth", "Rosewood Mandala",
+                "Sapphire Tides", "Obsidian Eclipse", "Blush Peony", "Lavender Dream", "Ivory Astrolabe", "Teal Phoenix" };
+            foreach (string name in backNames)
+                cardBackSelector.Items.Add(new ArtworkChoice(name, Path.Combine(backFolder,
+                    name.ToLowerInvariant().Replace(' ', '-') + ".png")));
+            SelectCardBack(TarotDeck.Properties.Settings.Default.CardBackName);
+            settingsPanel.Controls.Add(cardBackSelector);
+            autoSpreadCheckBox = new CheckBox { Text = "Auto spread after shuffle", AutoSize = true,
+                ForeColor = Color.White, Location = new Point(20, 180),
+                Checked = TarotDeck.Properties.Settings.Default.AutoSpread };
+            settingsPanel.Controls.Add(autoSpreadCheckBox);
+            Button applySettings = new Button { Text = "Apply", Location = new Point(236, 223),
+                Size = new Size(80, 27), UseVisualStyleBackColor = true };
+            Button cancelSettings = new Button { Text = "Cancel", Location = new Point(326, 223),
+                Size = new Size(80, 27), UseVisualStyleBackColor = true };
+            applySettings.Click += ApplySettings_Click;
+            cancelSettings.Click += (s, args) => { ResetPendingSettings(); HideOverlay(settingsPanel); };
+            settingsPanel.Controls.Add(applySettings);
+            settingsPanel.Controls.Add(cancelSettings);
 
             creditsButton = new Button();
             creditsButton.Text = "Credits";
-            creditsButton.Location = new Point(332, 80);
-            creditsButton.Size = new Size(70, 23);
+            creditsButton.Location = new Point(140, 12);
+            creditsButton.Size = new Size(85, 28);
             creditsButton.UseVisualStyleBackColor = true;
             creditsButton.Click += CreditsButton_Click;
             Controls.Add(creditsButton);
@@ -96,13 +168,17 @@ namespace TarotCardsDeck
             selectedDeck = (DeckChoice)deckSelector.SelectedIndex;
             StartNewDeck();
             SetScreenRatio();
+            PositionSettings();
+            ClientSizeChanged += (s, args) => { LayoutDrawnCards(); PositionSettings(); };
+            LocationChanged += (s, args) => PositionSettings();
+            Shown += (s, args) => BeginInvoke((MethodInvoker)(() => { LayoutDrawnCards(); PositionSettings(); }));
             Shuffle();
             SpreadDeck();
         }
 
         private void DeckSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (loadingSelections) return;
+            if (loadingSelections || settingsPanel.Visible) return;
             selectedDeck = (DeckChoice)deckSelector.SelectedIndex;
             SaveSelection();
             StartNewDeck();
@@ -112,7 +188,7 @@ namespace TarotCardsDeck
 
         private void ArtworkSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (loadingSelections || artworkSelector.SelectedIndex < 0) return;
+            if (loadingSelections || settingsPanel.Visible || artworkSelector.SelectedIndex < 0) return;
             RefreshArtworkFileIndex();
             SaveSelection();
             StartNewDeck();
@@ -125,6 +201,161 @@ namespace TarotCardsDeck
             TarotDeck.Properties.Settings.Default.CardSet = deckSelector.SelectedIndex;
             TarotDeck.Properties.Settings.Default.ArtworkName = ((ArtworkChoice)artworkSelector.SelectedItem).Name;
             TarotDeck.Properties.Settings.Default.Save();
+        }
+
+        private void PositionSettings()
+        {
+            if (settingsButton == null || creditsButton == null) return;
+            int margin = 20;
+            Rectangle available = Rectangle.Intersect(ClientRectangle,
+                RectangleToClient(Screen.FromControl(this).WorkingArea));
+            if (available.Width <= 0 || available.Height <= 0) return;
+            settingsButton.Location = new Point(Math.Max(available.Left, available.Right - settingsButton.Width - margin),
+                Math.Max(available.Top, available.Bottom - settingsButton.Height - margin));
+            creditsButton.Location = new Point(settingsButton.Left - creditsButton.Width - 10,
+                settingsButton.Top);
+            PositionOverlay(settingsPanel, new Rectangle(
+                new Point(Math.Max(available.Left + margin, available.Right - settingsPanel.Width - margin),
+                    Math.Max(available.Top + margin, settingsButton.Top - settingsPanel.Height - 12)),
+                settingsPanel.Size));
+            if (creditsPanel != null)
+            {
+                creditsPanel.Size = new Size(Math.Min(520, Math.Max(240, available.Width - margin * 2)),
+                    Math.Min(260, Math.Max(160, settingsButton.Top - available.Top - margin * 2)));
+                PositionOverlay(creditsPanel, new Rectangle(
+                    new Point(Math.Max(available.Left + margin, available.Right - creditsPanel.Width - margin),
+                        Math.Max(available.Top + margin, settingsButton.Top - creditsPanel.Height - 12)),
+                    creditsPanel.Size));
+            }
+        }
+
+        private void ResetPendingSettings()
+        {
+            loadingSelections = true;
+            deckSelector.SelectedIndex = (int)selectedDeck;
+            string activeName = TarotDeck.Properties.Settings.Default.ArtworkName;
+            for (int i = 0; i < artworkSelector.Items.Count; i++)
+                if (((ArtworkChoice)artworkSelector.Items[i]).Name == activeName)
+                    artworkSelector.SelectedIndex = i;
+            autoSpreadCheckBox.Checked = TarotDeck.Properties.Settings.Default.AutoSpread;
+            SelectCardBack(TarotDeck.Properties.Settings.Default.CardBackName);
+            loadingSelections = false;
+        }
+
+        private void SelectCardBack(string name)
+        {
+            cardBackSelector.SelectedIndex = 2; // Emerald Labyrinth is the default.
+            for (int i = 0; i < cardBackSelector.Items.Count; i++)
+                if (((ArtworkChoice)cardBackSelector.Items[i]).Name == name)
+                    cardBackSelector.SelectedIndex = i;
+        }
+
+        private void ApplySettings_Click(object sender, EventArgs e)
+        {
+            // Complete closing the panel before changing images or rebuilding controls.
+            // Hiding it halfway through Apply leaves native child-window paints mixed
+            // with the image updates on the same UI message.
+            HideOverlay(settingsPanel);
+            settingsButton.Enabled = false;
+            BeginInvoke((MethodInvoker)(() =>
+            {
+                try
+                {
+                    if (!IsDisposed) ApplySelectedSettings();
+                }
+                finally
+                {
+                    if (!settingsButton.IsDisposed) settingsButton.Enabled = true;
+                }
+            }));
+        }
+
+        private void ApplySelectedSettings()
+        {
+            bool deckChanged = (int)selectedDeck != deckSelector.SelectedIndex ||
+                TarotDeck.Properties.Settings.Default.ArtworkName != ((ArtworkChoice)artworkSelector.SelectedItem).Name;
+            selectedDeck = (DeckChoice)deckSelector.SelectedIndex;
+            TarotDeck.Properties.Settings.Default.AutoSpread = autoSpreadCheckBox.Checked;
+            string backName = ((ArtworkChoice)cardBackSelector.SelectedItem).Name;
+            bool backChanged = TarotDeck.Properties.Settings.Default.CardBackName != backName;
+            TarotDeck.Properties.Settings.Default.CardBackName = backName;
+            SaveSelection();
+            if (deckChanged)
+            {
+                RefreshArtworkFileIndex();
+                StartNewDeck();
+                Shuffle();
+                SpreadDeck();
+            }
+            else if (backChanged)
+            {
+                // Change only the back; preserve the fan slots and already drawn cards.
+                Bitmap replacement = LoadCardBack();
+                Bitmap previous = deckBackImage;
+                deckBackImage = replacement;
+                foreach (PictureBox card in pcbDeck)
+                    if (card != null && !card.IsDisposed) card.Image = replacement;
+                foreach (Bitmap packet in shufflePackets.Values) packet.Dispose();
+                shufflePackets.Clear();
+                if (shufflePileTimer != null) PrepareShufflePackets();
+                if (fanSurface != null) fanSurface.Invalidate();
+                if (previous != null) previous.Dispose();
+            }
+        }
+
+        private Bitmap LoadCardBack()
+        {
+            string selectedName = TarotDeck.Properties.Settings.Default.CardBackName;
+            ArtworkChoice choice = cardBackSelector.Items.Cast<ArtworkChoice>()
+                .FirstOrDefault(item => item.Name == selectedName) ?? (ArtworkChoice)cardBackSelector.Items[2];
+            using (Image image = Image.FromFile(choice.Path)) return new Bitmap(image);
+        }
+
+        private void HideOverlay(Panel panel)
+        {
+            Form overlay;
+            if (overlayWindows.TryGetValue(panel, out overlay)) overlay.Hide();
+            else panel.Hide();
+            if (!IsDisposed && settingsButton != null) settingsButton.Focus();
+        }
+
+        private void ShowOverlay(Panel panel)
+        {
+            Form overlay;
+            if (!overlayWindows.TryGetValue(panel, out overlay))
+            {
+                Rectangle bounds = RectangleToScreen(panel.Bounds);
+                overlay = new Form { FormBorderStyle = FormBorderStyle.None,
+                    ShowInTaskbar = false, StartPosition = FormStartPosition.Manual,
+                    AutoScaleMode = AutoScaleMode.None, Font = Font,
+                    BackColor = panel.BackColor, ClientSize = panel.Size,
+                    Location = bounds.Location, Text = panel == settingsPanel ? "Settings" : "Artwork credits" };
+                Controls.Remove(panel);
+                overlay.Controls.Add(panel);
+                panel.Dock = DockStyle.Fill;
+                overlayWindows.Add(panel, overlay);
+                overlay.FormClosing += (s, args) =>
+                {
+                    if (args.CloseReason != CloseReason.UserClosing) return;
+                    args.Cancel = true;
+                    if (panel == settingsPanel) ResetPendingSettings();
+                    HideOverlay(panel);
+                };
+            }
+            panel.Show();
+            overlay.Show(this);
+            overlay.Activate();
+        }
+
+        private void PositionOverlay(Panel panel, Rectangle bounds)
+        {
+            Form overlay;
+            if (overlayWindows.TryGetValue(panel, out overlay))
+            {
+                overlay.Location = PointToScreen(bounds.Location);
+                overlay.ClientSize = bounds.Size;
+            }
+            else panel.Bounds = bounds;
         }
 
         private void PopulateArtworkChoices(string preferredName)
@@ -151,7 +382,7 @@ namespace TarotCardsDeck
         {
             using (FolderBrowserDialog picker = new FolderBrowserDialog())
             {
-                picker.Description = "Choose a folder containing cardback.jpg and all 78 tarot card images.";
+                picker.Description = "Choose a folder containing all 78 tarot card front images.";
                 if (picker.ShowDialog(this) != DialogResult.OK) return;
                 Dictionary<string, string> sourceArtwork = BuildArtworkFileIndex(picker.SelectedPath);
                 if (!HasCompleteArtwork(sourceArtwork))
@@ -174,7 +405,6 @@ namespace TarotCardsDeck
                     Directory.CreateDirectory(destination);
                     foreach (string file in GetRequiredImageNames())
                         File.Copy(sourceArtwork[Path.GetFileNameWithoutExtension(file)], Path.Combine(destination, file), true);
-                    File.Copy(sourceArtwork["cardback"], Path.Combine(destination, "cardback.jpg"), true);
                     foreach (string creditFile in new[] { "LICENSE", "LICENSE.txt", "LICENSE.md", "CREDITS.txt", "ATTRIBUTION.txt" })
                     {
                         string creditPath = Path.Combine(picker.SelectedPath, creditFile);
@@ -184,6 +414,7 @@ namespace TarotCardsDeck
 
                 loadingSelections = true;
                 PopulateArtworkChoices(Path.GetFileName(destination));
+                if (settingsPanel.Visible) { loadingSelections = false; return; }
                 RefreshArtworkFileIndex();
                 loadingSelections = false;
                 SaveSelection();
@@ -195,9 +426,88 @@ namespace TarotCardsDeck
 
         private void CreditsButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(this,
-                "Soimoi Tarot artwork by Mike Koz (https://koz.tv/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). The artwork was adapted to this app's card filename format. The custom card back was created for TarotDeck.",
-                "Artwork credits", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (string.IsNullOrWhiteSpace(artworkCredits)) return;
+            if (creditsPanel == null)
+            {
+                creditsPanel = new Panel { BackColor = Color.FromArgb(35, 35, 35),
+                    BorderStyle = BorderStyle.FixedSingle, Visible = false };
+                Label heading = new Label { Text = "Artwork credits", ForeColor = Color.White,
+                    AutoSize = true, Location = new Point(16, 12) };
+                creditsText = new TextBox { Multiline = true, ReadOnly = true,
+                    ScrollBars = ScrollBars.None, BorderStyle = BorderStyle.None,
+                    BackColor = creditsPanel.BackColor, ForeColor = Color.White,
+                    Location = new Point(16, 40), Size = new Size(486, 164),
+                    Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right };
+                creditsPanel.Size = new Size(520, 260);
+                Button close = new Button { Text = "Close", Size = new Size(80, 27),
+                    Location = new Point(422, 217), Anchor = AnchorStyles.Bottom | AnchorStyles.Right,
+                    UseVisualStyleBackColor = true };
+                close.Click += (s, args) => HideOverlay(creditsPanel);
+                creditsPanel.Controls.Add(heading);
+                creditsPanel.Controls.Add(creditsText);
+                creditsText.TextChanged += (s, args) => UpdateCreditsScrollbar();
+                creditsText.SizeChanged += (s, args) => UpdateCreditsScrollbar();
+                creditsPanel.Controls.Add(close);
+                Controls.Add(creditsPanel);
+            }
+            // Discard pending Settings edits when switching panels.
+            if (settingsPanel.Visible) { ResetPendingSettings(); HideOverlay(settingsPanel); }
+            creditsText.Text = artworkCredits;
+            PositionSettings();
+            ShowOverlay(creditsPanel);
+            UpdateCreditsScrollbar();
+        }
+
+        private void UpdateCreditsScrollbar()
+        {
+            if (creditsText == null || creditsText.ClientSize.Width <= 0) return;
+            // Measure against the width available without a scrollbar so an existing
+            // scrollbar cannot cause itself to remain visible through extra wrapping.
+            int width = creditsText.ClientSize.Width +
+                (creditsText.ScrollBars == ScrollBars.Vertical ? SystemInformation.VerticalScrollBarWidth : 0);
+            Size required = TextRenderer.MeasureText(creditsText.Text, creditsText.Font,
+                new Size(width, int.MaxValue), TextFormatFlags.WordBreak |
+                TextFormatFlags.TextBoxControl | TextFormatFlags.NoPrefix);
+            ScrollBars desired = required.Height > creditsText.ClientSize.Height
+                ? ScrollBars.Vertical : ScrollBars.None;
+            if (creditsText.ScrollBars != desired) creditsText.ScrollBars = desired;
+        }
+
+        private void UpdateArtworkCredits()
+        {
+            ArtworkChoice choice = artworkSelector.SelectedItem as ArtworkChoice;
+            artworkCredits = null;
+            if (choice != null && choice.Name == "Soimoi Tarot")
+                artworkCredits = "Soimoi Tarot artwork by Mike Koz (https://koz.tv/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). The artwork was adapted to this app's card filename format. The custom card back was created for TarotDeck.";
+            else if (choice != null && choice.Name != "Classic Tarot")
+            {
+                List<string> credits = new List<string>();
+                foreach (string file in new[] { "CREDITS.txt", "ATTRIBUTION.txt", "LICENSE", "LICENSE.txt", "LICENSE.md" })
+                {
+                    string path = Path.Combine(choice.Path, file);
+                    if (File.Exists(path))
+                    {
+                        string text = File.ReadAllText(path);
+                        if (!string.IsNullOrWhiteSpace(text)) credits.Add(text.Trim());
+                    }
+                }
+                artworkCredits = string.Join(Environment.NewLine + Environment.NewLine, credits);
+            }
+            creditsButton.Visible = !string.IsNullOrWhiteSpace(artworkCredits);
+            if (creditsPanel != null)
+            {
+                creditsText.Text = artworkCredits ?? "";
+                if (!creditsButton.Visible) HideOverlay(creditsPanel);
+            }
+        }
+
+        private void RaiseMainControls()
+        {
+            PositionSettings();
+            settingsButton.BringToFront();
+            creditsButton.BringToFront();
+            if (settingsPanel.Visible) settingsPanel.BringToFront();
+            if (creditsPanel != null && creditsPanel.Visible) creditsPanel.BringToFront();
         }
 
         private static bool HasCompleteArtwork(string directory)
@@ -210,7 +520,7 @@ namespace TarotCardsDeck
         {
             foreach (string file in GetRequiredImageNames())
                 if (!files.ContainsKey(Path.GetFileNameWithoutExtension(file))) return false;
-            return files.ContainsKey("cardback");
+            return true;
         }
 
         private static IEnumerable<string> GetRequiredImageNames()
@@ -238,6 +548,7 @@ namespace TarotCardsDeck
             ArtworkChoice choice = artworkSelector.SelectedItem as ArtworkChoice;
             string directory = choice == null ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images") : choice.Path;
             activeArtworkFiles = BuildArtworkFileIndex(directory);
+            UpdateArtworkCredits();
         }
 
         private string FindArtworkFile(string expectedName)
@@ -294,7 +605,9 @@ namespace TarotCardsDeck
 
         private void btnShufCards_Click(object sender, EventArgs e)
         {
-            StartNewDeck();
+            // Match the original app: reshuffle the current deck unless cards were already drawn.
+            if (deck.cards.Count < deck.Size)
+                StartNewDeck();
 
             this.Shuffle();
             this.SpreadDeck();
@@ -320,6 +633,8 @@ namespace TarotCardsDeck
 
         private void pcbDeck_Click(object sender, EventArgs e)
         {
+            if (spreadRevealTimer != null || shufflePileTimer != null) return;
+
             PictureBox pcbClick = (PictureBox)sender;
             Card curCard = (Card)pcbClick.Tag;
             int cardPosition = deck.cards.IndexOf(curCard);
@@ -428,16 +743,29 @@ namespace TarotCardsDeck
         private void RemoveDeckPictureBox(PictureBox pictureBox)
         {
             if (pictureBox == null) return;
+            pictureBox.Visible = false;
             pictureBox.Image = null;
             pictureBox.Click -= pcbDeck_Click;
             Controls.Remove(pictureBox);
             pictureBox.Dispose();
             for (int i = 0; i < pcbDeck.Length; i++)
                 if (ReferenceEquals(pcbDeck[i], pictureBox)) pcbDeck[i] = null;
+
+            // Paint the underlying cards at their existing locations.
+            if (fanSurface != null) fanSurface.Invalidate();
+            Refresh();
         }
 
         private void RemoveDeck()
         {
+            foreach (Bitmap packet in shufflePackets.Values) packet.Dispose();
+            shufflePackets.Clear();
+            if (fanSurface != null)
+            {
+                Controls.Remove(fanSurface);
+                fanSurface.Dispose();
+                fanSurface = null;
+            }
             SuspendLayout();
             try
             {
@@ -466,7 +794,7 @@ namespace TarotCardsDeck
         private void ShuffleDeck()
         {
             RemoveDeck();
-            deckBackImage = LoadCardImage("cardback.jpg");
+            deckBackImage = LoadCardBack();
             pcbDeck = new PictureBox[deck.cards.Count];
             SuspendLayout();
             try
@@ -475,14 +803,14 @@ namespace TarotCardsDeck
                 {
                     PictureBox pictureBox = new PictureBox();
                     pcbDeck[i] = pictureBox;
-                    pictureBox.Size = new Size((int)(300 * dblScrWidRat), (int)(175 * dblScrHgtRat));
+                    pictureBox.Size = new Size(Math.Max(1, (int)(175 * dblScrWidRat)),
+                        Math.Max(1, (int)(300 * dblScrHgtRat)));
                     pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox.Image = deckBackImage;
                     pictureBox.Tag = deck.cards[i];
                     pictureBox.Click += pcbDeck_Click;
                     pictureBox.Visible = false;
-
-                    pictureBox.Location = new Point((int)(550 * dblScrWidRat), 100);
+                    pictureBox.Location = new Point(ClientSize.Width / 2, ClientSize.Height / 2);
                     Controls.Add(pictureBox);
                     pictureBox.BringToFront();
                 }
@@ -495,119 +823,381 @@ namespace TarotCardsDeck
 
         private void SpreadDeck()
         {
+            if (spreadRevealTimer != null)
+            {
+                spreadRevealTimer.Stop();
+                spreadRevealTimer.Dispose();
+                spreadRevealTimer = null;
+            }
+            if (shufflePileTimer != null)
+            {
+                shufflePileTimer.Stop();
+                shufflePileTimer.Dispose();
+                shufflePileTimer = null;
+            }
+
             ShuffleDeck();
-            int count = pcbDeck.Length;
-            if (count == 0) return;
+            btnShufCards.Enabled = false;
+            btnDrawCards.Enabled = false;
+            PrepareShufflePackets();
+            shuffleStartedAtUtc = DateTime.UtcNow;
+            fanSurface = new FanSurface();
+            fanSurface.Bounds = ClientRectangle;
+            fanSurface.PaintCards = PaintShuffle;
+            Controls.Add(fanSurface);
+            fanSurface.BringToFront();
+            RaiseMainControls();
+            shufflePileTimer = new Timer();
+            shufflePileTimer.Interval = 16;
+            shufflePileTimer.Tick += ShufflePileTimer_Tick;
+            shufflePileTimer.Start();
+        }
 
-            int cardWidth = Math.Max(1, (int)(175 * dblScrWidRat));
-            int cardHeight = Math.Max(1, (int)(300 * dblScrHgtRat));
-            double defaultSpacing = 15 * dblScrWidRat;
-            double minimumSpreadWidth = cardWidth + defaultSpacing * Math.Max(0, count - 1);
-            double spreadWidth = Math.Max(cardWidth, Math.Min(Math.Max(minimumSpreadWidth, ClientSize.Width * 0.76), ClientSize.Width * 0.9));
-            double spacing = count > 1 ? (spreadWidth - cardWidth) / (count - 1) : 0;
-            double startX = Math.Max(0, (ClientSize.Width - spreadWidth) / 2);
-            double center = (count - 1) / 2.0;
-
-            SuspendLayout();
-            try
+        private void ShufflePileTimer_Tick(object sender, EventArgs e)
+        {
+            if ((DateTime.UtcNow - shuffleStartedAtUtc).TotalSeconds >= 2)
             {
-                for (int i = 0; i < count; i++)
+                StopShufflePileTimer();
+                Controls.Remove(fanSurface);
+                fanSurface.Dispose();
+                fanSurface = null;
+                BeginFanSpread();
+                return;
+            }
+            fanSurface.Invalidate();
+        }
+
+        private static double SmoothStep(double value)
+        {
+            value = Math.Max(0, Math.Min(1, value));
+            return value * value * (3 - 2 * value);
+        }
+
+        private void PaintShuffle(Graphics graphics)
+        {
+            double elapsed = Math.Max(0, (DateTime.UtcNow - shuffleStartedAtUtc).TotalSeconds);
+            float width = Math.Min((float)(175 * dblScrWidRat), ClientSize.Width * 0.18f);
+            float height = width * 300f / 175f;
+            double gather = SmoothStep((elapsed - 1.6) / 0.4);
+            float remaining = (float)(1 - gather);
+            float destinationX = ClientSize.Width * 0.05f + height * 0.08f + width / 2;
+            float peak = Math.Max(height * 0.10f + 8, (float)(42 * dblScrHgtRat));
+            float destinationY = peak + Math.Min(76f, flpMain.Top * 0.12f) + height / 2;
+            float centerX = (float)(ClientSize.Width / 2f * (1 - gather) + destinationX * gather);
+            float centerY = (float)(ClientSize.Height / 2f * (1 - gather) + destinationY * gather);
+            const int packetDrops = 6;
+            const double dropDuration = 1.6 / packetDrops;
+            int completed = Math.Min(packetDrops, (int)(elapsed / dropDuration));
+            double phase = elapsed < 1.6 ? (elapsed % dropDuration) / dropDuration : 1;
+            // Lift gently, then let a small packet fall onto the receiving stack.
+            double drop = SmoothStep((phase - 0.25) / 0.75);
+            float lift = (float)(Math.Sin(Math.PI * Math.Min(1, phase / 0.25)) * height * 0.035);
+            float sourceX = centerX + width * 0.13f * remaining;
+            float sourceY = centerY - height * 0.10f * remaining;
+            float receiverX = centerX - width * 0.10f * remaining;
+            float receiverY = centerY + height * 0.08f * remaining;
+            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+            if (completed > 0)
+                PaintShufflePacket(graphics, receiverX, receiverY, width, height, 0,
+                    Math.Min(4, completed), remaining);
+            PaintShufflePacket(graphics, sourceX, sourceY, width, height,
+                -2 * remaining, Math.Max(1, 4 - completed * 3 / packetDrops), remaining);
+            if (elapsed < 1.6)
+            {
+                float packetX = (float)(sourceX * (1 - drop) + receiverX * drop);
+                float packetY = (float)(sourceY * (1 - drop) + receiverY * drop) - lift;
+                PaintShufflePacket(graphics, packetX, packetY, width, height,
+                    (float)(-2 * (1 - drop)), 2, remaining);
+            }
+        }
+
+        private void PaintShufflePacket(Graphics graphics, float x, float y,
+            float width, float height, float angle, int depth, float depthScale)
+        {
+            if (depth <= 0) return;
+            var saved = graphics.Save();
+            graphics.TranslateTransform(x, y);
+            graphics.RotateTransform(angle);
+            Bitmap packet = shufflePackets[depth];
+            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Bilinear;
+            graphics.DrawImage(packet, -width / 2, -height / 2,
+                width + (packet.Width - (int)Math.Ceiling(width)) * depthScale,
+                height + (packet.Height - (int)Math.Ceiling(height)) * depthScale);
+            graphics.Restore(saved);
+        }
+
+        private void PrepareShufflePackets()
+        {
+            int width = (int)Math.Ceiling(Math.Min(175 * dblScrWidRat, ClientSize.Width * 0.18));
+            int height = (int)Math.Ceiling(width * 300.0 / 175);
+            int edge = Math.Max(1, (int)Math.Round(width * 0.005));
+            for (int depth = 1; depth <= 4; depth++)
+            {
+                Bitmap packet = new Bitmap(width + (depth - 1) * edge, height + (depth - 1) * edge);
+                using (Graphics graphics = Graphics.FromImage(packet))
                 {
-                    PictureBox pictureBox = pcbDeck[i];
-                    pictureBox.Size = new Size(cardWidth, cardHeight);
-                    int x = (int)Math.Round(startX + i * spacing);
-                    int y = (int)Math.Round(130 * dblScrHgtRat + Math.Abs(i - center) * 2 * dblScrHgtRat);
-                    pictureBox.Location = new Point(x, y);
-                    pictureBox.Visible = true;
+                    graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+                    for (int layer = depth - 1; layer >= 0; layer--)
+                        graphics.DrawImage(deckBackImage, layer * edge, layer * edge, width, height);
                 }
+                shufflePackets.Add(depth, packet);
             }
-            finally
+        }
+
+        private void StopShufflePileTimer()
+        {
+            if (shufflePileTimer == null) return;
+            shufflePileTimer.Stop();
+            shufflePileTimer.Dispose();
+            shufflePileTimer = null;
+        }
+
+        private void BeginFanSpread()
+        {
+            foreach (PictureBox card in pcbDeck)
             {
-                ResumeLayout(false);
+                card.Visible = false;
+                card.Image = deckBackImage;
             }
-            // Keep the last card in the shuffled deck visually on top at the right edge.
-            for (int i = 0; i < pcbDeck.Length; i++)
-                Controls.SetChildIndex(pcbDeck[i], 0);
-            Invalidate();
-            Update();
+            fanProgress = 0;
+            fanDragging = false;
+            fanSurface = new FanSurface();
+            fanSurface.Bounds = new Rectangle(0, 0, ClientSize.Width,
+                Math.Max(1, flpMain.Top));
+            fanSurface.PaintCards = PaintFan;
+            fanSurface.MouseDown += FanMouseDown;
+            fanSurface.MouseMove += FanMouseMove;
+            fanSurface.MouseUp += FanMouseUp;
+            Controls.Add(fanSurface);
+            fanSurface.BringToFront();
+            RaiseMainControls();
+            deckSelector.BringToFront();
+            artworkSelector.BringToFront();
+            addArtworkButton.BringToFront();
+            creditsButton.BringToFront();
+            foreach (Control control in Controls)
+                if (control is Label) control.BringToFront();
+            btnShufCards.Enabled = true;
+            btnDrawCards.Enabled = false;
+            fanSurface.Cursor = Cursors.Hand;
+            fanSurface.Invalidate();
+            if (TarotDeck.Properties.Settings.Default.AutoSpread)
+            {
+                DateTime started = DateTime.UtcNow;
+                btnShufCards.Enabled = false;
+                spreadRevealTimer = new Timer { Interval = 16 };
+                spreadRevealTimer.Tick += (s, args) =>
+                {
+                    double progress = (DateTime.UtcNow - started).TotalSeconds / 0.9;
+                    fanProgress = SmoothStep(progress);
+                    fanSurface.Invalidate();
+                    if (progress >= 1)
+                    {
+                        spreadRevealTimer.Stop();
+                        spreadRevealTimer.Dispose();
+                        spreadRevealTimer = null;
+                        btnShufCards.Enabled = true;
+                        btnDrawCards.Enabled = deck.cards.Count >= 3;
+                    }
+                };
+                spreadRevealTimer.Start();
+            }
+        }
+
+        // One geometry calculation is shared by painting and hit testing.
+        // The end cards have equal heights; the central pair have equal minimum Y.
+        private RectangleF FanCardBounds(int index, out float angle)
+        {
+            int count = pcbDeck.Length;
+            float width = Math.Min((float)(175 * dblScrWidRat), ClientSize.Width * 0.18f);
+            float height = width * 300f / 175f;
+            float rotationPadding = height * 0.08f;
+            float left = ClientSize.Width * 0.05f + rotationPadding;
+            float span = Math.Max(0, ClientSize.Width - 2 * left - width);
+            double t = count > 1 ? index / (double)(count - 1) : 0.5;
+            double u = 2 * t - 1;
+            double centralU = count % 2 == 0 ? 1.0 / Math.Max(1, count - 1) : 0;
+            float rise = Math.Min(76f, fanSurface.Height * 0.12f);
+            float peak = Math.Max(height * 0.10f + 8, (float)(42 * dblScrHgtRat));
+            float baseY = peak + rise;
+            float x = left + (float)(span * t * fanProgress);
+            float y = baseY - (float)(rise * (1 - (u * u - centralU * centralU)) * fanProgress);
+            angle = (float)(u * 7 * fanProgress);
+            return new RectangleF(x, y, width, height);
+        }
+
+        private void PaintFan(Graphics graphics)
+        {
+            bool moving = fanDragging || spreadRevealTimer != null;
+            graphics.InterpolationMode = moving
+                ? System.Drawing.Drawing2D.InterpolationMode.Bilinear
+                : System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            graphics.PixelOffsetMode = moving
+                ? System.Drawing.Drawing2D.PixelOffsetMode.Default
+                : System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            graphics.CompositingQuality = moving
+                ? System.Drawing.Drawing2D.CompositingQuality.Default
+                : System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            for (int i = fanProgress <= 0 ? pcbDeck.Length - 1 : 0; i < pcbDeck.Length; i++)
+            {
+                if (pcbDeck[i] == null) continue;
+                float angle;
+                RectangleF bounds = FanCardBounds(i, out angle);
+                var saved = graphics.Save();
+                graphics.TranslateTransform(bounds.Left + bounds.Width / 2,
+                    bounds.Top + bounds.Height / 2);
+                graphics.RotateTransform(angle);
+                graphics.DrawImage(deckBackImage, -bounds.Width / 2, -bounds.Height / 2,
+                    bounds.Width, bounds.Height);
+                graphics.Restore(saved);
+            }
+            if (!TarotDeck.Properties.Settings.Default.AutoSpread && fanProgress == 0 && pcbDeck.Length > 0)
+            {
+                float angle;
+                RectangleF stack = FanCardBounds(pcbDeck.Length - 1, out angle);
+                graphics.DrawString("Drag the top card to the right to spread the deck", Font,
+                    Brushes.White, stack.Left, stack.Bottom + 12);
+            }
+        }
+
+        private int HitFan(Point point)
+        {
+            for (int i = pcbDeck.Length - 1; i >= 0; i--)
+            {
+                if (pcbDeck[i] == null) continue;
+                float angle;
+                RectangleF bounds = FanCardBounds(i, out angle);
+                double radians = -angle * Math.PI / 180;
+                double dx = point.X - (bounds.Left + bounds.Width / 2);
+                double dy = point.Y - (bounds.Top + bounds.Height / 2);
+                double x = dx * Math.Cos(radians) - dy * Math.Sin(radians);
+                double y = dx * Math.Sin(radians) + dy * Math.Cos(radians);
+                if (Math.Abs(x) <= bounds.Width / 2 && Math.Abs(y) <= bounds.Height / 2)
+                    return i;
+            }
+            return -1;
+        }
+
+        private void FanMouseDown(object sender, MouseEventArgs e)
+        {
+            if (spreadRevealTimer != null) return;
+            if (e.Button != MouseButtons.Left) return;
+            pressedFanCard = HitFan(e.Location);
+            if (pressedFanCard < 0) return;
+            dragStart = e.Location;
+            dragStartProgress = fanProgress;
+            fanMoved = false;
+            fanDragging = true;
+            fanSurface.Capture = true;
+        }
+
+        private void FanMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!fanDragging || deck.cards.Count != deck.Size) return;
+            int delta = e.X - dragStart.X;
+            if (Math.Abs(delta) < SystemInformation.DragSize.Width && !fanMoved) return;
+            fanMoved = true;
+            float unusedAngle;
+            RectangleF first = FanCardBounds(0, out unusedAngle);
+            float distance = Math.Max(1, ClientSize.Width * 0.9f - first.Width - first.Height * 0.16f);
+            fanProgress = Math.Max(0, Math.Min(1, dragStartProgress + delta / distance));
+            fanSurface.Invalidate();
+        }
+
+        private void FanMouseUp(object sender, MouseEventArgs e)
+        {
+            if (!fanDragging) return;
+            fanDragging = false;
+            fanSurface.Capture = false;
+            btnDrawCards.Enabled = fanProgress > 0 && deck.cards.Count >= 3;
+            if (!fanMoved && fanProgress > 0 && pressedFanCard >= 0 &&
+                pcbDeck[pressedFanCard] != null && HitFan(e.Location) == pressedFanCard)
+                pcbDeck_Click(pcbDeck[pressedFanCard], EventArgs.Empty);
+            fanSurface.Invalidate();
+        }
+
+        private sealed class FanSurface : Control
+        {
+            public Action<Graphics> PaintCards;
+            public FanSurface()
+            {
+                BackColor = Color.Black;
+                SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint |
+                    ControlStyles.OptimizedDoubleBuffer, true);
+            }
+            protected override void OnPaint(PaintEventArgs e)
+            {
+                base.OnPaint(e);
+                if (PaintCards != null) PaintCards(e.Graphics);
+            }
         }
 
         private void SetScreenRatio()
         {
-            Rectangle rct = Screen.GetWorkingArea(this);
-            //int intTemp = 0;
-            
-            //MessageBox.Show(rct.Width.ToString());
+            Rectangle working = Screen.GetWorkingArea(this);
+            dblScrHgtRat = (double)working.Height / 860;
+            dblScrWidRat = (double)working.Width / 1600;
+            LayoutDrawnCards();
+        }
 
-            dblScrHgtRat = (double)rct.Height / 860;
-            dblScrWidRat = (double)rct.Width / 1600;
-
-            btnShufCards.Top = (int)(btnShufCards.Top * dblScrHgtRat);
-            btnShufCards.Left = (int)(btnShufCards.Left * dblScrWidRat);
-            btnShufCards.Width = (int)(btnShufCards.Width * dblScrWidRat);
-            btnShufCards.Height = (int)(btnShufCards.Height * dblScrHgtRat);
-
-            btnDrawCards.Top = (int)(btnDrawCards.Top * dblScrHgtRat);
-            btnDrawCards.Left = (int)(btnDrawCards.Left * dblScrWidRat);
-            btnDrawCards.Width = (int)(btnDrawCards.Width * dblScrWidRat);
-            btnDrawCards.Height = (int)(btnDrawCards.Height * dblScrHgtRat);
-
-            btnGoBack.Top = (int)(btnGoBack.Top * dblScrHgtRat);
-            btnGoBack.Left = (int)(btnGoBack.Left * dblScrWidRat);
-            btnGoBack.Width = (int)(btnGoBack.Width * dblScrWidRat);
-            btnGoBack.Height = (int)(btnGoBack.Height * dblScrHgtRat);
-
-            btnGoFowd.Top = (int)(btnGoFowd.Top * dblScrHgtRat);
-            btnGoFowd.Left = (int)(btnGoFowd.Left * dblScrWidRat);
-            btnGoFowd.Width = (int)(btnGoFowd.Width * dblScrWidRat);
-            btnGoFowd.Height = (int)(btnGoFowd.Height * dblScrHgtRat);
-
-            pcbCard01.Height = (int)(pcbCard01.Height * dblScrHgtRat);
-            pcbCard01.Width = (int)(pcbCard01.Width * dblScrWidRat);
-
-            pcbCard02.Height = (int)(pcbCard02.Height * dblScrHgtRat);
-            pcbCard02.Width = (int)(pcbCard02.Width * dblScrWidRat);
-
-            pcbCard03.Height = (int)(pcbCard03.Height * dblScrHgtRat);
-            pcbCard03.Width = (int)(pcbCard03.Width * dblScrWidRat);
-
-            pcbCardFirst.Height = (int)(pcbCardFirst.Height * dblScrHgtRat);
-            pcbCardFirst.Width = (int)(pcbCardFirst.Width * dblScrWidRat);
-
-            pcbCardLast.Height = (int)(pcbCardLast.Height * dblScrHgtRat);
-            pcbCardLast.Width = (int)(pcbCardLast.Width * dblScrWidRat);
-
-            flpCard01.Padding = new Padding((int)(flpCard01.Padding.Left * dblScrWidRat), (int)(flpCard01.Padding.Top * dblScrHgtRat), (int)(flpCard01.Padding.Right * dblScrWidRat), (int)(flpCard01.Padding.Bottom * dblScrHgtRat));
-            flpCard02.Padding = new Padding((int)(flpCard02.Padding.Left * dblScrWidRat), (int)(flpCard02.Padding.Top * dblScrHgtRat), (int)(flpCard02.Padding.Right * dblScrWidRat), (int)(flpCard02.Padding.Bottom * dblScrHgtRat));
-            flpCard03.Padding = new Padding((int)(flpCard03.Padding.Left * dblScrWidRat), (int)(flpCard03.Padding.Top * dblScrHgtRat), (int)(flpCard03.Padding.Right * dblScrWidRat), (int)(flpCard03.Padding.Bottom * dblScrHgtRat));
-
-            flpCardFirst.Padding = new Padding((int)(flpCardFirst.Padding.Left * dblScrWidRat), (int)(flpCardFirst.Padding.Top * dblScrHgtRat), (int)(flpCardFirst.Padding.Right * dblScrWidRat), (int)(flpCardFirst.Padding.Bottom * dblScrHgtRat));
-            flpCardLast.Padding = new Padding((int)(flpCardLast.Padding.Left * dblScrWidRat), (int)(flpCardLast.Padding.Top * dblScrHgtRat), (int)(flpCardLast.Padding.Right * dblScrWidRat), (int)(flpCardLast.Padding.Bottom * dblScrHgtRat));
-
-            flpGoBack.Padding = new Padding((int)(flpGoBack.Padding.Left * dblScrWidRat), (int)(flpGoBack.Padding.Top * dblScrHgtRat), (int)(flpGoBack.Padding.Right * dblScrWidRat), (int)(flpGoBack.Padding.Bottom * dblScrHgtRat));
-            flpGoFowd.Padding = new Padding((int)(flpGoFowd.Padding.Left * dblScrWidRat), (int)(flpGoFowd.Padding.Top * dblScrHgtRat), (int)(flpGoFowd.Padding.Right * dblScrWidRat), (int)(flpGoFowd.Padding.Bottom * dblScrHgtRat));
-
-            //flpCard01.AutoSize = true;
-            //flpCard02.AutoSize = true;
-            //flpCard03.AutoSize = true;
-            //flpCardFirst.AutoSize = true;
-            //flpCardLast.AutoSize = true;
-            //flpGoBack.AutoSize = true;
-            //flpGoFowd.AutoSize = true;
-
-            flpMain.Width = (int)(flpMain.Width * dblScrWidRat);
-            //flpMain.Left = (int)(flpMain.Left * dblScrWidRat);
-            flpMain.Top = (int)(flpMain.Top * dblScrHgtRat);
-            flpMain.Height = (int)(flpMain.Height * dblScrHgtRat);
-
-            flpMain.Left = (int)((rct.Width-flpMain.Width)/2);
-
-            //MessageBox.Show(this.Width.ToString());
-            //MessageBox.Show(flpMain.Width.ToString());
-            //MessageBox.Show(flpMain.Left.ToString());
-
-            //MessageBox.Show(dblScrHgtRat.ToString());
-            //MessageBox.Show(dblScrWidRat.ToString());
+        private void LayoutDrawnCards()
+        {
+            if (drawnPanel == null)
+            {
+                drawnPanel = new Panel { BackColor = Color.Black };
+                Controls.Add(drawnPanel);
+                foreach (Control control in new Control[] { pcbCardFirst, pcbCard01, pcbCard02,
+                    pcbCard03, pcbCardLast, btnGoBack, btnShufCards, btnDrawCards, btnGoFowd })
+                {
+                    control.Margin = Padding.Empty;
+                    drawnPanel.Controls.Add(control);
+                }
+                flpMain.Visible = false;
+                flpMain.AutoSize = false;
+            }
+            Rectangle available = Rectangle.Intersect(ClientRectangle,
+                RectangleToClient(Screen.FromControl(this).WorkingArea));
+            int cardWidth = Math.Max(1, (int)Math.Round(Math.Min(175 * dblScrWidRat, ClientSize.Width * 0.18)));
+            int cardHeight = (int)Math.Round(cardWidth * 300.0 / 175);
+            int gap = Math.Max(12, Math.Min((int)Math.Round(cardWidth * 0.40),
+                (ClientSize.Width - 5 * cardWidth - 40) / 4));
+            int buttonHeight = Math.Max(28, (int)Math.Round(28 * dblScrWidRat));
+            int buttonWidth = Math.Max(90, (int)Math.Round(90 * dblScrWidRat));
+            int buttonGap = Math.Max(12, (int)Math.Round(12 * dblScrWidRat));
+            int cardButtonGap = Math.Max(24, (int)Math.Round(cardHeight * 0.08));
+            int rowHeight = cardHeight + buttonHeight + cardButtonGap;
+            int footer = settingsButton == null ? 60 : settingsButton.Height + 50;
+            int top = Math.Max(0, available.Bottom - footer - rowHeight);
+            drawnPanel.Bounds = new Rectangle(0, top, ClientSize.Width, rowHeight);
+            // The three reading cards are centered; first/last cards mirror each other outside them.
+            PictureBox[] cards = { pcbCardFirst, pcbCard01, pcbCard02, pcbCard03, pcbCardLast };
+            for (int i = 0; i < cards.Length; i++)
+            {
+                int x = (int)Math.Round((ClientSize.Width - cardWidth) / 2.0 + (i - 2) * (cardWidth + gap));
+                cards[i].Bounds = new Rectangle(x, 0, cardWidth, cardHeight);
+            }
+            Button[] buttons = { btnGoBack, btnShufCards, btnDrawCards, btnGoFowd };
+            double readingWidth = 3 * cardWidth + 2 * gap;
+            double buttonSpacing = Math.Max(buttonWidth + buttonGap, (readingWidth - buttonWidth) / 3.0);
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                int x = (int)Math.Round((ClientSize.Width - buttonWidth) / 2.0 + (i - 1.5) * buttonSpacing);
+                buttons[i].Bounds = new Rectangle(x, cardHeight + cardButtonGap, buttonWidth, buttonHeight);
+            }
+            // The fan uses the remaining upper area; the reading row has its own layout.
+            flpMain.Top = top;
+            if (fanSurface != null && shufflePileTimer == null)
+                fanSurface.Bounds = new Rectangle(0, 0, ClientSize.Width, Math.Max(1, top));
+            // Initial scaling and resize can run while the shuffle is active.
+            // Keep its full-window surface above the reading row until it finishes.
+            if (shufflePileTimer != null && fanSurface != null)
+            {
+                fanSurface.Bounds = ClientRectangle;
+                fanSurface.BringToFront();
+                RaiseMainControls();
+            }
+            else
+                drawnPanel.BringToFront();
         }
 
         //private void SetCurrentPage()
