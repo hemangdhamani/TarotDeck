@@ -1,0 +1,635 @@
+{
+  "name": "Woodcut Marseille",
+  "author": "SONDLecT",
+  "license": "CC0-1.0",
+  "source_commit": "e017dd5c8eb6991b53325f69c53acd9568d63201",
+  "source": "https://github.com/SONDLecT/woodcut-tarot",
+  "conversion": "Rendered full-color self-contained SVG paths to 1000 × 1720 PNG using resvg-js. No retouching, cropping, recoloring or added imagery.",
+  "mapping_notes": "Canonical maj08 Strength uses source 11-strength.svg; maj11 Justice uses 08-justice.svg; maj22 Fool uses 00-fool.svg. Page=11, Knight=12, Queen=13, King=14. Coins map to Pentacles. Original Roman-numeral captions remain unchanged.",
+  "cards": [
+    {
+      "source_filename": "00-fool.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/00-fool.svg",
+      "source_sha256": "40c00286c4b040173a526e976f4dcd6165b5c1a1eeb2ab59a00f96299d70a8cc",
+      "canonical_id": "maj22",
+      "output_filename": "maj22.png",
+      "output_sha256": "0bd9030b2359c56d94bdc1e3791fe16867b368c1ed94a14dadef8b92acb4eee3"
+    },
+    {
+      "source_filename": "01-magician.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/01-magician.svg",
+      "source_sha256": "21e7ed58b95d1920a27220de915647391841d50c63e032863865005562983511",
+      "canonical_id": "maj01",
+      "output_filename": "maj01.png",
+      "output_sha256": "d15668d966f24a0479636c8b9d055f852cd5d17d0c073a1668ce05b0638516d9"
+    },
+    {
+      "source_filename": "02-high-priestess.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/02-high-priestess.svg",
+      "source_sha256": "0f0327a06ddf1ac251206354b6e8b7feaec13f33a4dfbc2589ba23c29135c087",
+      "canonical_id": "maj02",
+      "output_filename": "maj02.png",
+      "output_sha256": "cab039165a98e8384a20f62ae4c42c7f9e07c4f6edba3eb5a2fdf1e47e81efad"
+    },
+    {
+      "source_filename": "03-empress.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/03-empress.svg",
+      "source_sha256": "de9ff2bb9f7eda5bf65b61cb051074ef0e6245b001fc23bb801b32013fc7dfa3",
+      "canonical_id": "maj03",
+      "output_filename": "maj03.png",
+      "output_sha256": "e5bde07a110ae4fb821dd1baa8babec5de49447f3d111c15a60384c7d70963a4"
+    },
+    {
+      "source_filename": "04-emperor.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/04-emperor.svg",
+      "source_sha256": "e9056718fe58be44dccb6afcd4bb4a5b38a479df0951d7776f786eec15fe2890",
+      "canonical_id": "maj04",
+      "output_filename": "maj04.png",
+      "output_sha256": "8fb3b7ffd7c23ac12ccdfd0847b6ee75c5c2769101e4aa119762918a070a2963"
+    },
+    {
+      "source_filename": "05-pope.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/05-pope.svg",
+      "source_sha256": "35b834dbea326ea0ee99c0d0e76de5b714e196688b436520b30cfc6d6677921d",
+      "canonical_id": "maj05",
+      "output_filename": "maj05.png",
+      "output_sha256": "e3dff6970ded55e2ab53e1d81504b40720be043be7210d8770fbb1437a14e34a"
+    },
+    {
+      "source_filename": "06-lovers.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/06-lovers.svg",
+      "source_sha256": "c1708adf139bdd06709288dcfd880b69990caa25da5ef52c808760e423f932eb",
+      "canonical_id": "maj06",
+      "output_filename": "maj06.png",
+      "output_sha256": "e4ad9a4242e64cc08f7676e86bf03e4b91e3a5b12ac75bf1e52eebe4cc8b2cf3"
+    },
+    {
+      "source_filename": "07-chariot.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/07-chariot.svg",
+      "source_sha256": "024b5361eb3bc3a2991cc8853bb1d84cd0d72948029312e56e14df65ce22e177",
+      "canonical_id": "maj07",
+      "output_filename": "maj07.png",
+      "output_sha256": "ab3ee4735f1da2a2184cee4a4e77ac365ee7a7c193f4813a51486b9bbc6a8d44"
+    },
+    {
+      "source_filename": "08-justice.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/08-justice.svg",
+      "source_sha256": "dd613b82739e8d25cdfb038e6fbd99017ee80f2c604470c9162949f5bb873f5b",
+      "canonical_id": "maj11",
+      "output_filename": "maj11.png",
+      "output_sha256": "c0fb0c40fd20bb6f85c9890febd502a7413c1703a4c44f49bcc01c41fbfa98a2"
+    },
+    {
+      "source_filename": "09-hermit.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/09-hermit.svg",
+      "source_sha256": "29a6cc1e11fcb33715a7c6d341308bedcaa03ce66e4fa28591cc776b56b58b6a",
+      "canonical_id": "maj09",
+      "output_filename": "maj09.png",
+      "output_sha256": "d1811d4f570da5127332b4d0663a386fef2418386b45d3b1d33af3db5dd0e3b0"
+    },
+    {
+      "source_filename": "10-wheel-of-fortune.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/10-wheel-of-fortune.svg",
+      "source_sha256": "8325ec62252ea009afadb95d579b40ac1b46ea3347852cec863ac3c33f35ffee",
+      "canonical_id": "maj10",
+      "output_filename": "maj10.png",
+      "output_sha256": "11cc613f0cce3539a314b1135ea108342ba131bf4efdf6fc4c22d287e1f482ec"
+    },
+    {
+      "source_filename": "11-strength.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/11-strength.svg",
+      "source_sha256": "a54b78ef2cfe4d1c2c87c7dbfeb1539cdd0cc86cf67156abbbb76a2af481a1d2",
+      "canonical_id": "maj08",
+      "output_filename": "maj08.png",
+      "output_sha256": "7ab12864b114b26d92b28e8de1e43aefa5c7fedc4c23797401f36f2e46f90472"
+    },
+    {
+      "source_filename": "12-hanged-man.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/12-hanged-man.svg",
+      "source_sha256": "e60725961e24739b9aab65438972e38c5bb4939436c60f1e788db54ad1b6fb4b",
+      "canonical_id": "maj12",
+      "output_filename": "maj12.png",
+      "output_sha256": "79ce4926521a4c68425bb5f3011865442fc5942a12eeac246c23f24ba828ffce"
+    },
+    {
+      "source_filename": "13-death.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/13-death.svg",
+      "source_sha256": "8753cd95d197539f73636546af4a340502337aa5ec3375bbccef21b9ea8b1c67",
+      "canonical_id": "maj13",
+      "output_filename": "maj13.png",
+      "output_sha256": "f443a1f43b4bb5cbd9e881136f8aee2ad494b7d9a4af96a92c2b52fb6cca38d7"
+    },
+    {
+      "source_filename": "14-temperance.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/14-temperance.svg",
+      "source_sha256": "eaccb4d26cbe2aeb82427b25e774a1fcdfcf65bdf6e668be0580bc2d85b9a94f",
+      "canonical_id": "maj14",
+      "output_filename": "maj14.png",
+      "output_sha256": "31e0020e4ee38a6355ba11f75802b2099c9b172aaead72691a0de83a93c7e9e0"
+    },
+    {
+      "source_filename": "15-devil.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/15-devil.svg",
+      "source_sha256": "fb6676bfc908a5a178253b121674488969ec7e2d0192afbcdcd564db63183d22",
+      "canonical_id": "maj15",
+      "output_filename": "maj15.png",
+      "output_sha256": "d7a52e9d9d33cc70156254a9cbb38c6f20029b90d4be80b065fe14a33f2dbc01"
+    },
+    {
+      "source_filename": "16-tower.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/16-tower.svg",
+      "source_sha256": "6c39edd9f100e9ae0382b3fbbc39565f9f790f4faeaccd7ed3219e16bb99d9d3",
+      "canonical_id": "maj16",
+      "output_filename": "maj16.png",
+      "output_sha256": "a350266ebbbd55ad151951ce1c83cef32d0bbe7cdb76b0c01316957ba5b6082a"
+    },
+    {
+      "source_filename": "17-star.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/17-star.svg",
+      "source_sha256": "0e63796c4c52c5704c767bda818aceffc5d45b24a3da7ce8c102b694b604e458",
+      "canonical_id": "maj17",
+      "output_filename": "maj17.png",
+      "output_sha256": "b2e455529b5f2d60ba1a45861910faf595e2c04267afcc36ecfed20f12e18c68"
+    },
+    {
+      "source_filename": "18-moon.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/18-moon.svg",
+      "source_sha256": "a75a2fe885dc1432724592e69c0b0ab9557f31dc53361df14a715c199ca161f6",
+      "canonical_id": "maj18",
+      "output_filename": "maj18.png",
+      "output_sha256": "43467bb6974224a529cd7e211fe3fac04e13045561c5b0ec642eb930ccd954dc"
+    },
+    {
+      "source_filename": "19-sun.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/19-sun.svg",
+      "source_sha256": "55c45aaa7a2959564f8f6b62b57ba2bd07d26a6d898280432ee05a90ad2f619f",
+      "canonical_id": "maj19",
+      "output_filename": "maj19.png",
+      "output_sha256": "49bda507133a0d594ecd947d29d4ad3760405d9ad16a957951a092f1e8791325"
+    },
+    {
+      "source_filename": "20-judgement.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/20-judgement.svg",
+      "source_sha256": "12a06bc2b4457d5bbf1b1689f219595f431dc9efa1e609210a7907574c06d798",
+      "canonical_id": "maj20",
+      "output_filename": "maj20.png",
+      "output_sha256": "9bb5e0cc47bd94d63653faa16ea99acbb5b79e82d5d6f49277b918fd4119bfa2"
+    },
+    {
+      "source_filename": "21-world.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/21-world.svg",
+      "source_sha256": "10ea168bf02dd629088e786d014d5cba8dc11f3c1883ae74f52658452f9cff86",
+      "canonical_id": "maj21",
+      "output_filename": "maj21.png",
+      "output_sha256": "26543afb7025425f5e5167db3b0ffe5137a14ca80887bd6c40b70d911e6878e5"
+    },
+    {
+      "source_filename": "coins-02.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-02.svg",
+      "source_sha256": "0ad0f85ab5df18b3a567ba0b1a0663f57539e37a4aace385f4ab5d26b94af407",
+      "canonical_id": "pents02",
+      "output_filename": "pents02.png",
+      "output_sha256": "72362615fb994b5a128e152dc52c4f4d6f2aa7e822b9bd58c918baa2bf243b84"
+    },
+    {
+      "source_filename": "coins-03.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-03.svg",
+      "source_sha256": "fb7424489e993d9f93012c07b12c3a195f185911c054d07537aa62e9e801dfce",
+      "canonical_id": "pents03",
+      "output_filename": "pents03.png",
+      "output_sha256": "4ba9098f048756b91df8c9793192d49d34ea9b4082fdbc06a343a24f51f1bdad"
+    },
+    {
+      "source_filename": "coins-04.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-04.svg",
+      "source_sha256": "46f4516b0e67411f52f488666de4e1449515840678c62e595408a2b4dd0228ee",
+      "canonical_id": "pents04",
+      "output_filename": "pents04.png",
+      "output_sha256": "836be1e1dbbfdb4637ae6021229aa7fab39915b1ec0fece904105f8c45a0bc56"
+    },
+    {
+      "source_filename": "coins-05.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-05.svg",
+      "source_sha256": "3f586947f3d54054ac3fe1f8d569ab9191a57c3fb98ee6eb001018e022479dca",
+      "canonical_id": "pents05",
+      "output_filename": "pents05.png",
+      "output_sha256": "2f927f588c903f4ab5c9ebb94df250563e68886a736f021f32516d23af3b8542"
+    },
+    {
+      "source_filename": "coins-06.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-06.svg",
+      "source_sha256": "49bf46084b4d9b99bd7bd46d2f42fc20178f7e7d30835c90a9cc84043747889f",
+      "canonical_id": "pents06",
+      "output_filename": "pents06.png",
+      "output_sha256": "ec1693ccd5b5d09a30b88e4312f6bac13d39eb2dafa6d480d05df52958575994"
+    },
+    {
+      "source_filename": "coins-07.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-07.svg",
+      "source_sha256": "372eda2dd84e6ef14d8f24a59afd1522f4ab524a9c1a5f68a8f66a6425e9e3d0",
+      "canonical_id": "pents07",
+      "output_filename": "pents07.png",
+      "output_sha256": "2eb7e730dbe21433fc22362f8052c81f22ffea68752166afc1454199baa046eb"
+    },
+    {
+      "source_filename": "coins-08.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-08.svg",
+      "source_sha256": "c9953bcf8341e3c2ec5fdf38a9c428f3a29dc18df4216122331d9dd566742070",
+      "canonical_id": "pents08",
+      "output_filename": "pents08.png",
+      "output_sha256": "3c73ca60ddce72d232852be8d8445af2cb7d749e18062c289e27f68cb430217e"
+    },
+    {
+      "source_filename": "coins-09.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-09.svg",
+      "source_sha256": "2731d41dc38a781bff23575a0a4f1edfcad927e635d6572b28f3b33195a42739",
+      "canonical_id": "pents09",
+      "output_filename": "pents09.png",
+      "output_sha256": "6f37b9f50c05ff13bef0273ba21b9238272c6599594d57d152038287bf930572"
+    },
+    {
+      "source_filename": "coins-10.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-10.svg",
+      "source_sha256": "9a34faec13ae0e29c930f61b136bf55dbd82687d916e0f3ed15c2b9cc23e22f0",
+      "canonical_id": "pents10",
+      "output_filename": "pents10.png",
+      "output_sha256": "8baaf2beef65bfd508c3412e77ff16cfaabf7d415fb664448c09d274bcbc8cd1"
+    },
+    {
+      "source_filename": "coins-ace.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-ace.svg",
+      "source_sha256": "fe3c15f26939cdff6543e5cedbb29ec5420aece133f85226d37ebeafa7fac00a",
+      "canonical_id": "pents01",
+      "output_filename": "pents01.png",
+      "output_sha256": "c8c21eca4eb4914d3af512061934dcd4bcca9582dca3862956aa3d5155727313"
+    },
+    {
+      "source_filename": "coins-king.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-king.svg",
+      "source_sha256": "47a45e562d28a7e43dee93db038949cd0f539e1efac44814ee1ea001b23b2409",
+      "canonical_id": "pents14",
+      "output_filename": "pents14.png",
+      "output_sha256": "41c8c0b9701b10376bc141ee55159264c4638e7ddee1968ff972e5d9121a5873"
+    },
+    {
+      "source_filename": "coins-knight.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-knight.svg",
+      "source_sha256": "5365d60f7a4b2f143a2e68c0a2fb4923406ffc0eea7db2fd79e33cda9bd984af",
+      "canonical_id": "pents12",
+      "output_filename": "pents12.png",
+      "output_sha256": "cad428e7fd990fc92dc137983dd5aa3b624a7218a492679b685b82b4501dc0c0"
+    },
+    {
+      "source_filename": "coins-page.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-page.svg",
+      "source_sha256": "ff5586cdbe29a4e025acd62f5973d6038adae4a82e5b907134495d698806756c",
+      "canonical_id": "pents11",
+      "output_filename": "pents11.png",
+      "output_sha256": "4f4121d21b3b6bf897c1d823244ee943140b9517f331c9c442f54a8d8afbc05c"
+    },
+    {
+      "source_filename": "coins-queen.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/coins-queen.svg",
+      "source_sha256": "61a0db7049ab9eaca359e89a0386c588a084b06116c9cd9a0ee88150cf21d47e",
+      "canonical_id": "pents13",
+      "output_filename": "pents13.png",
+      "output_sha256": "4367d0d73a8d6f77e3f66acae51cd34e7870bddde8266bd98a46504d05f0a949"
+    },
+    {
+      "source_filename": "cups-02.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-02.svg",
+      "source_sha256": "b57a96b8c6e6974baac278683caed49f13aa22fa291564322ca3bc165108e259",
+      "canonical_id": "cups02",
+      "output_filename": "cups02.png",
+      "output_sha256": "6c462adee0da36c59204408f1c4f24f7b3c46a2ae6c476c4d978c1d5a7ac9ac1"
+    },
+    {
+      "source_filename": "cups-03.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-03.svg",
+      "source_sha256": "37ef8cf29e3c4dd0d5913c1445c0a3802c82a5d6b4a12f939be5c06a7e06e234",
+      "canonical_id": "cups03",
+      "output_filename": "cups03.png",
+      "output_sha256": "b1929f2211ad12d3bb0eae3beb3a1a0e8ed3151bfa2518bbc5a24810450ab738"
+    },
+    {
+      "source_filename": "cups-04.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-04.svg",
+      "source_sha256": "4047dac702d2d7b994e024253854e32e3ff981f5e34c00deeab611cfecfa9fa0",
+      "canonical_id": "cups04",
+      "output_filename": "cups04.png",
+      "output_sha256": "b5c8be643df879594ff1b98dcec5c1b22e00d730fd475530edc5f888bd5906e1"
+    },
+    {
+      "source_filename": "cups-05.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-05.svg",
+      "source_sha256": "e8c1506a65e1b4555259c923aa7e3032c367afcdc2198d22cae6f41ca1c523df",
+      "canonical_id": "cups05",
+      "output_filename": "cups05.png",
+      "output_sha256": "1f14fadb078356d94a97eb66d11b0fca14948dd1cbe4aa98abc9045210689ad1"
+    },
+    {
+      "source_filename": "cups-06.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-06.svg",
+      "source_sha256": "345dedd8d9576c3d2814cdb98217e6ddb299d6a41a640ecd45f7a1fa26b026af",
+      "canonical_id": "cups06",
+      "output_filename": "cups06.png",
+      "output_sha256": "7cda12259891deb5265500e24e432926df0a95147aa5607c92f7dd3e1834eed7"
+    },
+    {
+      "source_filename": "cups-07.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-07.svg",
+      "source_sha256": "83d8b14854476deab0750e4c48cf5eb529fa049141b3c6d5baad1e37f396752b",
+      "canonical_id": "cups07",
+      "output_filename": "cups07.png",
+      "output_sha256": "bab31f660dbaefd89ad1c854ac1a244ce03b3f97ab36e03426ada84f72d1c3e9"
+    },
+    {
+      "source_filename": "cups-08.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-08.svg",
+      "source_sha256": "4db67d7d4d218868b3a83f143390a5137aafc43527a1681e0b99e526d992674d",
+      "canonical_id": "cups08",
+      "output_filename": "cups08.png",
+      "output_sha256": "337dddf5062e08773f6fb5e20ba0ead867d629a632600c469268d81f0ecbefa4"
+    },
+    {
+      "source_filename": "cups-09.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-09.svg",
+      "source_sha256": "5bc94323f6a2267708020b58b20124130ec6fd95f9645d5566e84f8bd323de88",
+      "canonical_id": "cups09",
+      "output_filename": "cups09.png",
+      "output_sha256": "6b42f0eba4753996983b82ea64c4c86246f15640b7ee4a62c3b1ee7345effb0b"
+    },
+    {
+      "source_filename": "cups-10.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-10.svg",
+      "source_sha256": "37a25c24aea7ecef4a8ec55e45734d09550b9f0beef8831bd669cd00e0d61fc1",
+      "canonical_id": "cups10",
+      "output_filename": "cups10.png",
+      "output_sha256": "29abfa8a03ba8c5963987d00bc38756a37aedab00e2c02671840f6df2e50fec1"
+    },
+    {
+      "source_filename": "cups-ace.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-ace.svg",
+      "source_sha256": "885ff8649af2a70dc0977c1520f0ed3a6fd8261d0752ebd44dec3473f8f6c1b0",
+      "canonical_id": "cups01",
+      "output_filename": "cups01.png",
+      "output_sha256": "6934b7cb4d657b07afd5978ecbc5e923071aad5fb9a328526a539e877b78ef45"
+    },
+    {
+      "source_filename": "cups-king.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-king.svg",
+      "source_sha256": "4f4e0a7800e812cc69cfe567cfb30dd581baf5ce3fbd11c66a6e81a8f66538ef",
+      "canonical_id": "cups14",
+      "output_filename": "cups14.png",
+      "output_sha256": "5e42fb28ba997d7e9bb256b144289de00d621315d01402363151ac57712cc561"
+    },
+    {
+      "source_filename": "cups-knight.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-knight.svg",
+      "source_sha256": "500f0c862da01727eae27017aaf36a353952a671688a2598e4b23541d00070c0",
+      "canonical_id": "cups12",
+      "output_filename": "cups12.png",
+      "output_sha256": "f5da5feb640f2cbcf8f3014165a086e7a7e5e8fde79fccfd6c261c410bf98802"
+    },
+    {
+      "source_filename": "cups-page.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-page.svg",
+      "source_sha256": "8b5e472d2d118d3ac44408a7361412c2e1dfad97b23b4f89016cab469b970769",
+      "canonical_id": "cups11",
+      "output_filename": "cups11.png",
+      "output_sha256": "cfa3cad118923ca3038586461fb3716a6e0f57db32c5cd897dca290d76d950d7"
+    },
+    {
+      "source_filename": "cups-queen.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/cups-queen.svg",
+      "source_sha256": "c7cad0b43f58a508a5a74c1bfca1afe249a54f9df338c1bf159b01721225cd80",
+      "canonical_id": "cups13",
+      "output_filename": "cups13.png",
+      "output_sha256": "2742396fdd4cffede2cec0cb6f2c39b12cbbc5dcc626140770130bd3a284b726"
+    },
+    {
+      "source_filename": "swords-02.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-02.svg",
+      "source_sha256": "a3b8228ec6bf6a7b3b858afb8f0f2ffff1cbd03a7824c37235125b0dd159e7c4",
+      "canonical_id": "swords02",
+      "output_filename": "swords02.png",
+      "output_sha256": "2be52e5018af0b5a6c65c64c0afb3b8bc87e801fed12b1a552b6d952e0103286"
+    },
+    {
+      "source_filename": "swords-03.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-03.svg",
+      "source_sha256": "647875d27308f8c40e50e28dcac68646306c65650a19103c58f60a84be4e1daa",
+      "canonical_id": "swords03",
+      "output_filename": "swords03.png",
+      "output_sha256": "86f1f965b308f5a97259454a0c8958bc25c9d6fd8074e2f0017f21013b8fcf85"
+    },
+    {
+      "source_filename": "swords-04.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-04.svg",
+      "source_sha256": "8e0d1541f2a9b121deeb8b859dfb4fd9699e07f8064640355d5f380ad83191a8",
+      "canonical_id": "swords04",
+      "output_filename": "swords04.png",
+      "output_sha256": "3ab1b20553ddd119c74533bdc7fcd3d3d9c3aa5b95cf0e5151a096156ee1dadc"
+    },
+    {
+      "source_filename": "swords-05.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-05.svg",
+      "source_sha256": "5f0101506242ee2ace28ee189c889c9138c02c925115257a36bcfbfc412d04fb",
+      "canonical_id": "swords05",
+      "output_filename": "swords05.png",
+      "output_sha256": "0ccc1497deb58f26fb84c199e9bb6e3a554b6ccaba22cdfca70cbbbe24b04e95"
+    },
+    {
+      "source_filename": "swords-06.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-06.svg",
+      "source_sha256": "255ee5d2ba3919969c08ed0c5730b25d05675f0b657ce84de79edf70f95b617b",
+      "canonical_id": "swords06",
+      "output_filename": "swords06.png",
+      "output_sha256": "0c323f25763252eb2df15955bcd1f4c99d44acd9266dfb6ad0db8d528b31bc3a"
+    },
+    {
+      "source_filename": "swords-07.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-07.svg",
+      "source_sha256": "23bfd90940a486f180b49bb71b04426fbcad01f26711c84d5768c61e768fcdda",
+      "canonical_id": "swords07",
+      "output_filename": "swords07.png",
+      "output_sha256": "9dafb54b526fdebebd0394cddccfcbc1240639705c650ca06b3f108eed5211c6"
+    },
+    {
+      "source_filename": "swords-08.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-08.svg",
+      "source_sha256": "0840665c49d4e3265d1ad61e9420e2f7133530fc92586cc1ba7b6a1c7925f146",
+      "canonical_id": "swords08",
+      "output_filename": "swords08.png",
+      "output_sha256": "0f9340b7d285b367c39ee1d8687a744e8dcdebd89302d8bbf959cc9645acc0b3"
+    },
+    {
+      "source_filename": "swords-09.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-09.svg",
+      "source_sha256": "6ec86051d497993742d62918f73e16460ab14ba48591ce86b908d3f9edf6361a",
+      "canonical_id": "swords09",
+      "output_filename": "swords09.png",
+      "output_sha256": "81c4d1521169e80b09150369e29ac0a328ab13f9f5848b2904e3f33e414b5c7d"
+    },
+    {
+      "source_filename": "swords-10.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-10.svg",
+      "source_sha256": "eb8ab37bd3c73dd3fb8312a871a1985ff59e5f666a0056b22ef6e3b3f9b1c6cc",
+      "canonical_id": "swords10",
+      "output_filename": "swords10.png",
+      "output_sha256": "9cf3bf9e18b351d4a8c553710fd7ba199f938fa62a3f650afff3140930f93cd1"
+    },
+    {
+      "source_filename": "swords-ace.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-ace.svg",
+      "source_sha256": "bf0ce3d8e6f9e47f9d9744553613bb40a5e00974cfa0368eb55a49762640cab2",
+      "canonical_id": "swords01",
+      "output_filename": "swords01.png",
+      "output_sha256": "b33fb71093eef2c9032fb9a5ce887ee15260b8ede131605fb18edbe5a5c71de5"
+    },
+    {
+      "source_filename": "swords-king.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-king.svg",
+      "source_sha256": "03c11be27fe804af96dfd9240a9b14bc3a9835f8c8aae2cf3d1126233052d691",
+      "canonical_id": "swords14",
+      "output_filename": "swords14.png",
+      "output_sha256": "1ef372ee94a5178416d4a3420148c05e19e1a144624e19af21f1020eadbe31ff"
+    },
+    {
+      "source_filename": "swords-knight.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-knight.svg",
+      "source_sha256": "7fa3c2154c627da33cd2294da4a123b0a10d224c504ecbb16c5c8539d3f4e606",
+      "canonical_id": "swords12",
+      "output_filename": "swords12.png",
+      "output_sha256": "d14ccfc86a289e0928b7114b28c7d8bb08bf75ab25b83a5aed8fbbbd6cc5754e"
+    },
+    {
+      "source_filename": "swords-page.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-page.svg",
+      "source_sha256": "7841f93c3befe2ba2d197bc57acd23dbf9320631d490244045ca3eb4edbe5f5d",
+      "canonical_id": "swords11",
+      "output_filename": "swords11.png",
+      "output_sha256": "9560d496c606b8561a1076dd5f3e147763df102f2a4da7f2cb7f9ff6aab830dc"
+    },
+    {
+      "source_filename": "swords-queen.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/swords-queen.svg",
+      "source_sha256": "0d6654f0d20ff60691bca2cf1685ff28ddae900acb04eff10f705802d69996a9",
+      "canonical_id": "swords13",
+      "output_filename": "swords13.png",
+      "output_sha256": "58919c490c7feb9b6ed4dfb089aebacd9285793d100932bc6013656f7b50efa0"
+    },
+    {
+      "source_filename": "wands-02.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-02.svg",
+      "source_sha256": "c02b536971619e1968b9807e4c525945a8308ca04c640462fa76955600ba17ac",
+      "canonical_id": "wands02",
+      "output_filename": "wands02.png",
+      "output_sha256": "75cbe5885ecfd8c7eb3dace8464dacc7c831ec1347b52c4a984a10fc72b7833d"
+    },
+    {
+      "source_filename": "wands-03.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-03.svg",
+      "source_sha256": "b9ae5de19479f360be8b05061850627062de050682189dd3652cc905a3bfdc32",
+      "canonical_id": "wands03",
+      "output_filename": "wands03.png",
+      "output_sha256": "8f88301fdac253f41307040be0a66ab57d3e74b5f186d702df8893e1c29bf39c"
+    },
+    {
+      "source_filename": "wands-04.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-04.svg",
+      "source_sha256": "ba934882f60fce648115e0678ea756c25d4147990a363c59deba21506a8f35f3",
+      "canonical_id": "wands04",
+      "output_filename": "wands04.png",
+      "output_sha256": "1cfff415ab8b3549a3571ba7ea4626280b7cb81e7d3ec8d122ac47665304612b"
+    },
+    {
+      "source_filename": "wands-05.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-05.svg",
+      "source_sha256": "2874cd7d8020dfc9a9199728a4f0f8a997d892b55ae19337c9e3d7f1303984de",
+      "canonical_id": "wands05",
+      "output_filename": "wands05.png",
+      "output_sha256": "3b960b93e90f3013ff99067d304d229952889640006172d471b6874240d8d0a6"
+    },
+    {
+      "source_filename": "wands-06.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-06.svg",
+      "source_sha256": "3917da614464ec8c52f13ae5c0e2bb6ff1f6fa2ea85b77b2990bb805c4ec60bd",
+      "canonical_id": "wands06",
+      "output_filename": "wands06.png",
+      "output_sha256": "d3dae3cee5181e2661ec4ee1784eea232dc2718379c324f20311c621424d3d3d"
+    },
+    {
+      "source_filename": "wands-07.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-07.svg",
+      "source_sha256": "8e412ea68b65e1c1ded309c6406578286c7149d70e3e572d6a3fe3b90ddaad9b",
+      "canonical_id": "wands07",
+      "output_filename": "wands07.png",
+      "output_sha256": "7e6f6ffa150946eaea312cafe31a1f24d13ef29e0664fba78777f7edc75adb70"
+    },
+    {
+      "source_filename": "wands-08.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-08.svg",
+      "source_sha256": "337e9d799badf19a41c672d1d56a69e0ea0c036a41d9721922f888986a40930b",
+      "canonical_id": "wands08",
+      "output_filename": "wands08.png",
+      "output_sha256": "35e49c35b4877ac890de5b1d8ad5fc6178ed691cac6cfb84c6260f4cc065b257"
+    },
+    {
+      "source_filename": "wands-09.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-09.svg",
+      "source_sha256": "eca97d89ea3c162d757df9ee61076466144f55e82d10419985e5242fcb08b7c8",
+      "canonical_id": "wands09",
+      "output_filename": "wands09.png",
+      "output_sha256": "a354d94be19dd02fa6135ad12a301acde9c5c699ce74df12d6a1cb6b88185b00"
+    },
+    {
+      "source_filename": "wands-10.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-10.svg",
+      "source_sha256": "d2c02511021afc324e61533920dfe23539b8b4eadb17aaf075f28d56bd1504dc",
+      "canonical_id": "wands10",
+      "output_filename": "wands10.png",
+      "output_sha256": "062af30df7df2a99ad11ce40a482f8c4bb3d13b4d0f05c63d3646b23c0a8bd7b"
+    },
+    {
+      "source_filename": "wands-ace.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-ace.svg",
+      "source_sha256": "940edae663a7ad5266b1985d4e12d527a65d381f32ddc3fe7fcb189f38baff66",
+      "canonical_id": "wands01",
+      "output_filename": "wands01.png",
+      "output_sha256": "756f1f9b55ffa51de0a8192f214524896ca59a08413faca654b4489633a74079"
+    },
+    {
+      "source_filename": "wands-king.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-king.svg",
+      "source_sha256": "95ba4e59b796d9f02feb43b3b99bf8e11646a326ed77b32c99b344fe801d3d6c",
+      "canonical_id": "wands14",
+      "output_filename": "wands14.png",
+      "output_sha256": "63f91de7f7e1d7062665cf88274796a4d2fa8d74b502f0316c3cd38086ea5f02"
+    },
+    {
+      "source_filename": "wands-knight.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-knight.svg",
+      "source_sha256": "f8da9ea664dbc02ff4a9b8ad7158ce4aec281b42d10d973a564cc3fbb715bb7c",
+      "canonical_id": "wands12",
+      "output_filename": "wands12.png",
+      "output_sha256": "5170edef36aa800cd01354e925e658faef0d400ddd5c41175ed075db3e00ff03"
+    },
+    {
+      "source_filename": "wands-page.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-page.svg",
+      "source_sha256": "d10a84a522d57cd1920c05e463768e859b10a3ab12a23584ad650ed256f6fb40",
+      "canonical_id": "wands11",
+      "output_filename": "wands11.png",
+      "output_sha256": "e049c6d66be8c70dd342d29742184e9d1ce48be545b6dd9f32a86b985e2a3269"
+    },
+    {
+      "source_filename": "wands-queen.svg",
+      "source_url": "https://github.com/SONDLecT/woodcut-tarot/blob/e017dd5c8eb6991b53325f69c53acd9568d63201/colori/wands-queen.svg",
+      "source_sha256": "7de81077ce4694231d40b031ae9397ec08cdbd2215a3cd82ab9d4ac1ea1b1827",
+      "canonical_id": "wands13",
+      "output_filename": "wands13.png",
+      "output_sha256": "befc581ba8c8ea6fde9d90f1d5dc63a14558616013dc6185dd9293728f247c0e"
+    }
+  ]
+}

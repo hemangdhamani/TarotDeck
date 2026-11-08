@@ -4,6 +4,9 @@
     <Profile Name="(Default)" />
   </Profiles>
   <Settings>
+    <Setting Name="ReadingSpread" Type="System.String" Scope="User"><Value Profile="(Default)">Situation / Challenge / Advice</Value></Setting>
+    <Setting Name="ReadingTopic" Type="System.String" Scope="User"><Value Profile="(Default)">General</Value></Setting>
+    <Setting Name="ReadingFocus" Type="System.String" Scope="User"><Value Profile="(Default)">Overview</Value></Setting>
     <Setting Name="CardBackName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Emerald Labyrinth</Value>
     </Setting>
