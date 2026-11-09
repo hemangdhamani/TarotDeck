@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "14609d8c58429953ca4f5e475a09abc9c6f83da0e89939825044e76601f5b8e5",
+      "source": "06-illuminated-engraving/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "5981ae4411e61a6ee34dc6fbf121602686638bccba5cbe8950c57ec7afaadc5d",
+      "source": "06-illuminated-engraving/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "58768564291e6e57e4bc3ad15e710b585994896c32a61a906a825bf348867dbc",
+      "source": "06-illuminated-engraving/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "04f91e11d0b645fe076de066eb456acf5f2219925b9c43a428bffcee6ffb7880",
+      "source": "06-illuminated-engraving/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "f1a2858d2aa291015a01732dc9d89a76074d72049e7a0e0d6139a9d12bfaa439",
+      "source": "06-illuminated-engraving/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "a72707b4d110e1889a616020e6ab8d23ef193f50d99c6c556cdd09610645e948",
+      "source": "06-illuminated-engraving/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "3daefee79c37fcc0d64e5193130f4ff5910d977ab459aecdb5a562a2f28e3465",
+      "source": "06-illuminated-engraving/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "cbdc179c9f0ae3023c5f254a8beb49035d80b4d73325826d1c2ee6ba9d29c0e6",
+      "source": "06-illuminated-engraving/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "aadc5b7550266f89d505932f3093a5fbb6298fd2f40fd48f8be46687bec40dac",
+      "source": "06-illuminated-engraving/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "c9371a91af00ed6727b9fb1996518e4cb779a958b3f7178d23803583e1f2de04",
+      "source": "06-illuminated-engraving/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "d1d960ab95dc5c2bd50b42a801a96292fdb08f805568acfbb284c168df4dc787",
+      "source": "06-illuminated-engraving/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "d7924971ccb86d82510e14d9b618e5280b26c60658e75941e78e87bf034e0ed0",
+      "source": "06-illuminated-engraving/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "cfd44cbca93a80697ee48d0264bf7dc2512f532e5dc654917bec02f6beb5bd8b",
+      "source": "06-illuminated-engraving/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "943832dc8723d365cd2e57db3a80feb40028bf79be87306cba67d737d7d903ae",
+      "source": "06-illuminated-engraving/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "7eb0066b65529f27a45f6a81fd4265e190d94df984683335326a437d35a79b67",
+      "source": "06-illuminated-engraving/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "cf4e39791d7380a94c82172cf56dca0b523b958a32f0b2b9913c5d2f5a6fc3af",
+      "source": "06-illuminated-engraving/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "eec024a2b624c84d272979e315d2b4452fcc8bfc5d294baee4c67635450ec092",
+      "source": "06-illuminated-engraving/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "cf21c7dcfb018cc0a6c6dcfbafbf4f1f8f45570343868ee5bc750b8fa6fde91d",
+      "source": "06-illuminated-engraving/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "904207c27409a1584c4041d0a47aeaeb5b31134654ea57d05b0ba2b06ccbd4e8",
+      "source": "06-illuminated-engraving/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "4ce478931c7b2696ac27fd84590d543acc447b5a0ac3a340228033ce59a9edbb",
+      "source": "06-illuminated-engraving/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "80901c7bace23f61b07daaaa97aa4eefc8243619e7868ec6c39be2cd42014489",
+      "source": "06-illuminated-engraving/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "f01213716df95568c6b62c5cef558b0041aa7a8be30a9b019d299f6bb6b0ae5a",
+      "source": "06-illuminated-engraving/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "41f8f37a0fb4b0ae1e8c6a8010d59e248edc90e7bb786ee9e9df409acd1f6cf5",
+      "source": "06-illuminated-engraving/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "667cfcdd88df51a91ccdc9df65e78aaf56d49ac36b178666eca3497a23ebdbf8",
+      "source": "06-illuminated-engraving/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "6d3bff2bba0656a67b7b6735f274225bd3c3cbbfb1933895ae0417b02b99c4d6",
+      "source": "06-illuminated-engraving/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "c98fc7d8ef239f88bf4ed0366da3e9dbd47eb6cdc0562cc797899e61ec8786de",
+      "source": "06-illuminated-engraving/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "79d2891958447fe3d8369e5b9c196b58ab9339258b435f184578480804166c06",
+      "source": "06-illuminated-engraving/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "c3f796850f2c7e5f2c1e1f411d6f38f0c9f9d5cbff6cf4f398e83bfc219039c3",
+      "source": "06-illuminated-engraving/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "c1472b923e41c4082acf3a9e053e0ba571a1f7baa7fa5715ae313fd0e06c7597",
+      "source": "06-illuminated-engraving/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "39e1f3de9b47b1b1ab377e5cd69f3bf02ad4ae118cfed0f47574f21c7a928db5",
+      "source": "06-illuminated-engraving/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "14cb5dd76b82730ce5dbd9578801591cd6d2b1fc9596e28cc3b430dd8b496e29",
+      "source": "06-illuminated-engraving/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "69eec290351374534e49d615c9ef0e84ed9826f898ef1ebdf04cfb11c6c3bf69",
+      "source": "06-illuminated-engraving/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "37d869536782e8b8d99857c07474defb6447ddbf19e662309cb792c739de7675",
+      "source": "06-illuminated-engraving/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "cfd9c6a99711188514fb307418f3e1089ba9f86f23fa1aa235ee401df93a9553",
+      "source": "06-illuminated-engraving/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "576fb6923c24f001eee0e3588c274ea27b8d31889825c838abe5aefd8f62eacd",
+      "source": "06-illuminated-engraving/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "7fe9c89f001d29c63071f074fea8b502065aedb43d389cef1eae7c1dbaafbf07",
+      "source": "06-illuminated-engraving/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "1128d083a119e7406c22d055bdce9d984463b11df11486502cceb5a9279d3b10",
+      "source": "06-illuminated-engraving/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "2c31fb19d31cff5c375d9c0333c3207c287cf3742bb180af5a9377ee69bc052c",
+      "source": "06-illuminated-engraving/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "e11fa583185e8c2666038e93effcba0850e535fdb03e76a2fff83d8ba82ac108",
+      "source": "06-illuminated-engraving/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "eebc77da92b50ca37ea212b2cf9cdbf8edafbc889be6078939846a006a01fab5",
+      "source": "06-illuminated-engraving/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "329ce4e88cff9383bdc9d3328ca44ab73799ca5b7fc3ee60d9b07085f1dd62e8",
+      "source": "06-illuminated-engraving/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "3b7edb92c3df946774982f19b9d042c229c705b74ad74efbe86c5f21a495ff8c",
+      "source": "06-illuminated-engraving/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "9e3654f1086ec55e9f7483ee0c69f407015c07b212245cecddda6f81abf847d1",
+      "source": "06-illuminated-engraving/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "2d834590339dcc8451af8a603c93ad501841a99749ca4317fd6ce27017f28239",
+      "source": "06-illuminated-engraving/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "f65b26948a04dce2e661a2348999a102e047f868b69fb56fa4da1903ce6bb109",
+      "source": "06-illuminated-engraving/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "3c2ba8c8e5e49c34d3fdf3eab51d330d997129bbffe62e77736e80e0419bb0f0",
+      "source": "06-illuminated-engraving/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "4d73faac2af29e99ea0e2cea638fec5ce0e8a64ff5f80bfed6adc06a36bcfecc",
+      "source": "06-illuminated-engraving/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "4c772f4547a7a9cacc8d5d0dfa69f475f83f5a8b11ec4256c350deae255a2180",
+      "source": "06-illuminated-engraving/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "02f8865461cbb833b740d1a4ff197229df2c8605e19c45e0f3f0cc37fd8ccbab",
+      "source": "06-illuminated-engraving/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "01b128fa8af7f19ce9b42f97c3affa8c19c3d5576f0aa4b175072003e019fc96",
+      "source": "06-illuminated-engraving/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "b6493458afc5723b6f116c96dee75cb847d73aa38481d580f7d302f9fd4f2eb0",
+      "source": "06-illuminated-engraving/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "32715a4dd9873087d8b6f43e6aa17a343b081bf84c2020e172241f8f4735e88e",
+      "source": "06-illuminated-engraving/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "9cc5828cff835a7cdfb7111210a4bedfca0b500a01582f864666cd21ce1f0b1c",
+      "source": "06-illuminated-engraving/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "df386b941429d66fde6cfb1a9a3648223799fc10959be8268e76530d8eafdcc8",
+      "source": "06-illuminated-engraving/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "90f326fa01940e9f1a9f1404342b11d9d33fd2914fd0181b0e9470a85da4ae7b",
+      "source": "06-illuminated-engraving/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "be11de2be06decfc63cae2e9d5877bd350770afc7c2a91535c505b630d97aa8b",
+      "source": "06-illuminated-engraving/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "03a74200e917e441a3c43fa686fe1091bbab971b2e70054eade9858c20ed66c9",
+      "source": "06-illuminated-engraving/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "7e98ff7455c672b35fcd9a2ef45f417c1f6626112422a0f7f35727f1bcfe6812",
+      "source": "06-illuminated-engraving/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "ca3bf8e50db45ada32844868d0b30b1bb9cf753cffa1264b4431b40f9fbed1bc",
+      "source": "06-illuminated-engraving/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "b17304420ed77ab7238999d5aa2ea217ace1264b925137ac989fd525ebb1263d",
+      "source": "06-illuminated-engraving/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "046cf08ee488b6c7d654867367e544d3c05ac819f87e2b4df662371398ca7e52",
+      "source": "06-illuminated-engraving/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "c4aa46bd5b78cd1cab54b617fbfeff7c9d471b36a8f2a74f284c526439317ddd",
+      "source": "06-illuminated-engraving/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "8adaaa0b555617bedfc1b0ddd1dcfc2ff1ccba06260610d7c59e4f251271885d",
+      "source": "06-illuminated-engraving/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "45df911c109e2a6641f1a04d69e3e7f50baffff12bd3974354974b53dad135c5",
+      "source": "06-illuminated-engraving/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "877e36d3a8adb7bf7fbd8526489aea7bfabecae2ffb4db27fe39713df9969ddf",
+      "source": "06-illuminated-engraving/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "9ae8c2181e4c929e5b24f6891cb77d5a6f07729f57359898187e0faa7563caa6",
+      "source": "06-illuminated-engraving/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "4112cc3546d47d88075fbfc4eb3173acef18ec8f82d65f6dfda192ca2fa02400",
+      "source": "06-illuminated-engraving/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "fefcd77ad70a800f31c0774e95c1905709f59ba6dd1329f40bd403603754a241",
+      "source": "06-illuminated-engraving/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "f24b9cd8f8b05d5f86e113203161e0826fcd25cd45dc64a591013232a0a9c73e",
+      "source": "06-illuminated-engraving/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "aea123c64279d5a61d16bca2e8518a5385d65cbd3cf0b0d0027ae82c4c05b68c",
+      "source": "06-illuminated-engraving/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "4d192f03353769bc8d74a66df61230ab1c39e12629ec7930f0e0d070fb45daa7",
+      "source": "06-illuminated-engraving/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "b74b471c9b7bd8ed415fdbf9e139afcfc8226cd9ab7206e56011d980fa459d9d",
+      "source": "06-illuminated-engraving/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "0065fa721a61eebf2bd6159787c00e1c3dd94995964fba716c9aed08b74e487c",
+      "source": "06-illuminated-engraving/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "888222ef1e95256576f4448b700bd6f28d1024ee0fb5559fdb943b12b68d8e17",
+      "source": "06-illuminated-engraving/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "af7889ea73a2d7522d64eb3d56421c100c1adce8e207d86ccc9a4dec339d62ba",
+      "source": "06-illuminated-engraving/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "189c3b23bb7fa617e9fb0f29fed9f35af423525cdea7be754c33d1ad9cf09e34",
+      "source": "06-illuminated-engraving/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "cf14477ebe2d9388b7b9927158a532261f3cc01a0f6daa38c7963df0dc8ff5d6",
+      "source": "06-illuminated-engraving/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "69daf0fb572f7441e004b1d9502878e1e30440c66a5a1b79f9a92665e1e99817",
+      "source": "06-illuminated-engraving/cards/wands14.png"
+    }
+  ]
+}

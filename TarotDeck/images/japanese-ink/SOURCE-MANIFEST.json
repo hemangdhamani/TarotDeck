@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "39581dfe8442a0f198353d916723f47fa6514b8a1c17596aaf6b272b470e5d67",
+      "source": "02-japanese-ink/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "11a263ddd4b59f4c87135ad868720e5d44f6ed191b042669adcf2a6a3cab2c10",
+      "source": "02-japanese-ink/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "12ed5e08f4f5a576d51420449ae2082b756f2748291ba0f31151152fbf2863d8",
+      "source": "02-japanese-ink/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "d60113d3943492db787c386e40002510fa7200b5c3acf77a14b8a3897068c175",
+      "source": "02-japanese-ink/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "3bfe8d2d178610df8cb3c4441fb4c459e2d60de3227dbf8d83d1113ddffc37e8",
+      "source": "02-japanese-ink/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "30efabf702d891af516a536e66144e16f13b07dfb3d75c2416b0e4b42780e898",
+      "source": "02-japanese-ink/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "4b06cfe8ef83a738f15db9bebee61c3420a00ec28b4ae5d68dd3fdfe71cc10c6",
+      "source": "02-japanese-ink/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "6cb9b534653638da2a613807bf71650a35a8c5929e07611755be2be7829b91b7",
+      "source": "02-japanese-ink/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "82ba25a78194eea1c5178d4eab505eed51ce7849649a673cdc5b36d2f7f4471a",
+      "source": "02-japanese-ink/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "8110bba205acc428363fe181adbe699f027c989e4b5b1e81c42e6f29f7a714b1",
+      "source": "02-japanese-ink/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "f738fb392d796956328ee5b86eda147bd43ae9ed941e3b5256ad63d56d49904a",
+      "source": "02-japanese-ink/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "2da03e0acc9218166cd7571a997f226d27147298b26037220c0446bab8493e25",
+      "source": "02-japanese-ink/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "30bfb61aeb66f528738a0bcbb814a8b9bcf60af00ef72b8a13db44f0c89714a7",
+      "source": "02-japanese-ink/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "b22b3aa8014f8ada868edb57783727c51af041f150cbf2e161c5e5c11bdcbc5b",
+      "source": "02-japanese-ink/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "a51a118db575bc280d0e6c2de38187396f7475b2d0755d502a8c57ad6623d73b",
+      "source": "02-japanese-ink/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "5eb4525d2773f78ab087faa76c5f07a91d93c0ed0fac6987b6b12c15dec1d738",
+      "source": "02-japanese-ink/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "98e1368021b5d6cf4ab130d20413515ac3189206296bb1ace3fa2cadd9d8b144",
+      "source": "02-japanese-ink/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "df5e941ee7e0659d7b1f015d7aab8d16075832922ed2620e86797eddbcb880b4",
+      "source": "02-japanese-ink/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "9172c9a537dec898cc6b75f271582cdc03882bcea3b317d72de43631eb50911d",
+      "source": "02-japanese-ink/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "ecd7d15c7b655f40f101a18016b97e2abfb4d994f0c0eaabf608ed6c40cf7dd3",
+      "source": "02-japanese-ink/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "df969ffa36218f5445eee0c0635997d7c538bb2b99fcc46cc305c6a905bcf6ed",
+      "source": "02-japanese-ink/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "d44ed05daf7c442b717fc4cc8368d5007e357473391eb15c0dd939641be514c2",
+      "source": "02-japanese-ink/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "1c805c641214d364597bc111e9525234fb727634e4400f6eac28781487256d03",
+      "source": "02-japanese-ink/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "a91cdbcc843cba54cf89f1cec047a99eecc16a72c2b3f8196b04f280658a8150",
+      "source": "02-japanese-ink/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "57fdcfa95bb11490c61efb168482fed87ec8c7d2e959bfeb81df54089ea5597f",
+      "source": "02-japanese-ink/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "30ac22a7247cdb7e11dea2e99a04cba899132254b26420843146be871a69cdca",
+      "source": "02-japanese-ink/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "63b5daf529ad2df56d942c5a93f089b79072fc47a68182b4f5b0c3a42f66b307",
+      "source": "02-japanese-ink/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "df185bb11bbe9bb5cd5444d8af98e1f0f1c5947550b0252a4f8bbc7759bd908a",
+      "source": "02-japanese-ink/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "dfd3a25e096e732a88e7b6555396cb4e59483d63abd70bf19596f4d3960eae96",
+      "source": "02-japanese-ink/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "80af62395541ea73d74ac0e2fc313cf6aed88d57b8dabb61ec885f04728d1c45",
+      "source": "02-japanese-ink/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "68e9ac1ca8b88349fc1d5bc2d71b3aedab634af228d5c86feeba5ad1b7a4d9b0",
+      "source": "02-japanese-ink/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "3d12e567db53368fef8f55f93f611c4adab7858258d676e6ebac577956bc3ad1",
+      "source": "02-japanese-ink/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "fe4f042b5b8c11cfcb2604b9e30b8c59ad169660c7c07233ffd34f53f278ea60",
+      "source": "02-japanese-ink/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "2c0d6edbadfd8875aa57434e6a10da4d3aefacf6c8c51d9b031c8de01f79b237",
+      "source": "02-japanese-ink/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "84359622792c1f93b18adedc45878164f52a13cc55a84972fd1bbb89c3cb04d5",
+      "source": "02-japanese-ink/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "77a9e20c37edc9744195de21b224790d450416e0f671720d25dc0070487d5d1c",
+      "source": "02-japanese-ink/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "8aa798ccfcb107029570fd5efb217ff6745175115256bac38c8d5738be6bcf7e",
+      "source": "02-japanese-ink/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "4461c0219da9f9d5a6464133c90637e114437ae372ea920ff343b9b3ab4d6df0",
+      "source": "02-japanese-ink/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "23f0047bfa0ab4ce70bef97b9b77c49759b03512cd715680a8555e71955fb578",
+      "source": "02-japanese-ink/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "9f96b4ebe2fef78ee75aad87000f0fd1b6140c8a20895e36b6c7e0997381d799",
+      "source": "02-japanese-ink/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "d4d10860b56415ec5c835b8b7d4f86f6b40e5ad0c6c92d53df69b4c7297f7f5b",
+      "source": "02-japanese-ink/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "9258c83d9dfabab36d41f096d02c975a0d156afa41bcdfd3cf6ec9bf15526ff9",
+      "source": "02-japanese-ink/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "6176aab3918ab99e24c282b2d728c455a789c3a8513c5eaac812447cac5b25bf",
+      "source": "02-japanese-ink/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "b88bde6de5a6d3c9cfb9fb1ef563b891a833fa8ad9a27fcce4a2b523ca2d4bb3",
+      "source": "02-japanese-ink/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "1d8651dced6b700ef655e28bf0ba31bfc4cefa7606b136519c367b318ddc55bb",
+      "source": "02-japanese-ink/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "c85f8c590c5a1a5add36d31454329f8491aaa1e785cff1df412a6f345187ebda",
+      "source": "02-japanese-ink/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "07ec9551a6072d5fefcf1c6313efc8a891b6f50824e0eab04d430381f13c79c3",
+      "source": "02-japanese-ink/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "1c34dc4409125c83d036efc066008ea256c04c23946b7d759d17ee8e98a91c10",
+      "source": "02-japanese-ink/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "79ddbbda86b763a5a602dd189a3ed6d46a1139f6fe334cd609917eef96c4959c",
+      "source": "02-japanese-ink/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "8efaf92abba463c43334c3aa148046830287a559abdb64b128c56f311a7efe1f",
+      "source": "02-japanese-ink/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "d83631886bf4a464a3ba8bec255556d7ef694a8b95b5b89b779c8508526317df",
+      "source": "02-japanese-ink/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "588b7611cc60ed551d3f10ebd19cf601828b4cbdaf11554c2fbabb15367255ed",
+      "source": "02-japanese-ink/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "1a65667cea5046cae5f24ab27afc49dfeaf0e9199d428ec155a49c3ae18a3fc5",
+      "source": "02-japanese-ink/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "50090ba626c91074f83b3ac6e2524d133cbfe577e0ac4ee701636676dff02757",
+      "source": "02-japanese-ink/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "600aaee69b43c1f0903525016999138efdb16fc3d7aec267208acd249a8547d5",
+      "source": "02-japanese-ink/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "354faf0f41888d4e21c84f0e38a868d4d9c2974c569d723fa7bc244aa9ba4517",
+      "source": "02-japanese-ink/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "6cba23f8b6c7ce11b58b7e66e83fa561354d1747248670f5c84368e21e471c83",
+      "source": "02-japanese-ink/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "6c44210b785b0beb93f0d37d52f6c58b92ab576144fb2e3245d5804f086d6d25",
+      "source": "02-japanese-ink/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "07ad8ed41941ff210857b052e21f7d77728f1ae94a8d4956436e65b8d92dcb41",
+      "source": "02-japanese-ink/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "26b1f51238ca66d17db3c17b66ee50b5798172b40c3f2d580188266fbab97abe",
+      "source": "02-japanese-ink/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "12bcb251854dffbe5f96b74bed197681983878773eecb9be88cf263bf2791e3b",
+      "source": "02-japanese-ink/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "9a70b1efaa7fed0cc00ab099148606fd5d9b4d2d378ca0bf9cfcd6c7027571c6",
+      "source": "02-japanese-ink/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "e8ff199d831702a38ba107c4cafe747c650f05e8b8f5ab60f3f5928a1fafea80",
+      "source": "02-japanese-ink/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "833624e02ac68a370ccdaef81cfb867cc98b6d136bb561f2899f63e0e4486ab3",
+      "source": "02-japanese-ink/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "241cc2fe58f07d993c7132a51406fd87af10354b40dfc06de3c3b15ddb7e1b46",
+      "source": "02-japanese-ink/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "66775cac4506c084150504efd6460c04df026bb7f2eb73e9b9a40b5052b51ecc",
+      "source": "02-japanese-ink/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "7e01643776d28eab57c3e3d5bd4cf5679d928292a25f909103b8856c6dec4507",
+      "source": "02-japanese-ink/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "754532a53f0ac6a8c6f126f9b9599f8f96addc1f153960861ff199043e0036f5",
+      "source": "02-japanese-ink/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "f27304cdea552f9e0e29c6a50be148ca8a9637218e61008675bc8c03de1ad856",
+      "source": "02-japanese-ink/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "210bb6317de2c91b3b238f27d5c1d8ccb12da047a0e58693314ca3d0cd73a49c",
+      "source": "02-japanese-ink/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "4aa988d4dbc5d84200e2e831cdb0d85a624fe051964c7ff8d95c35f5d0247bad",
+      "source": "02-japanese-ink/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "8ff0b7a192223b0b74c3e6c4b7c09760822262cc99aeba83378d586a11995e0a",
+      "source": "02-japanese-ink/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "8e04cf709efd479d8f749d89e6c84fa3c5cc44a81796d00ca8ca5d6d57ef6349",
+      "source": "02-japanese-ink/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "0a47d1da3f0977262a7a6db01e6504f747bd6d774483bb7d41ae23d1ac184410",
+      "source": "02-japanese-ink/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "3c243b32f8cffe914728037b9be3e3819d3fa59127fece165470576a9113f9c8",
+      "source": "02-japanese-ink/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "9850138c233a3f391a74ef162cc4c4dbe912d46536f64f40bbb1c79714d8d220",
+      "source": "02-japanese-ink/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "e6280ea9a5d1d503256c112e33ebc235e95803a7bd822c631db9b44d32e38922",
+      "source": "02-japanese-ink/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "2ac9b5e0aef75872cc3d349840457f3f771f2398b5a3fe4e83c73f4818f07270",
+      "source": "02-japanese-ink/cards/wands14.png"
+    }
+  ]
+}

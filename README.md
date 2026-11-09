@@ -6,19 +6,19 @@ A Windows Forms tarot card picker built with .NET Framework 4.8.
 
 ## Deck options
 
-Choose front artwork and a card back independently in Settings:
+Choose front artwork and a card back independently in Settings. Each selection has a thumbnail, name and **Choose…** button. The visual pickers show a grid and larger preview; front decks offer all 78 cards, starting with The World, then the remaining Major Arcana and four suits. **Select** stages a choice; Settings **Apply / Cancel** saves or discards both tabs:
 
-- **Artwork deck:** Classic Tarot, Soimoi Tarot, Woodcut Marseille, Tarot de Viéville, and Lequart Besançon (included). Artwork and back choices are remembered for the next launch.
-- **Card back:** Ten independent designs; Emerald Labyrinth is the default. Changing the back preserves drawn cards and fan slots.
-- **Add deck…:** Import a complete folder of all 78 front images. A back is not required.
+- **Artwork deck:** The Illustrated Arcana, Soimoi Tarot, Woodcut Marseille, Tarot de Viéville, and Lequart Besançon (included). Artwork and back choices are remembered for the next launch.
+- **Card back:** Twenty-one independent designs, including Mauryan Lotus, Gupta Bloom, Chola Bronze, and Mughal Inlay; Emerald Labyrinth is the default. Changing the back preserves drawn cards and fan slots.
+- **Original collection:** All eleven original styles now include their complete 78-card PNG fronts and can be selected immediately. The Add deck import feature has been removed from Settings.
 - **Auto spread:** Spread automatically after shuffling, or turn it off to drag the top card manually.
 - Card selection is currently hidden; the existing saved card-set preference is retained.
 
-All 390 bundled card fronts are organized under `TarotDeck/images/classic/`,
-`soimoi/`, `woodcut-marseille/`, `vieville/`, and `lequart-besancon/` (78 per folder).
-Every image and bundled metadata file is explicitly included in the project and
-copied to the same folder structure in Debug and Release builds. Independent card
-backs remain in `images/cardbacks/`; legacy deck-specific backs stay with their original deck.
+All 1,170 bundled card fronts are organized in 15 named deck folders (78 per folder):
+the eleven original collection styles plus Soimoi, Woodcut Marseille, Tarot de Viéville,
+and Lequart Besançon. Every image and metadata file is explicitly included in the
+project and copied to the matching Debug and Release folder. Independent card backs
+live only in `images/cardbacks/`; unused deck-specific backs have been removed.
 
 ### Image names for custom decks
 
@@ -66,3 +66,16 @@ The runner builds an isolated x86 test output, then checks all 234 newly bundled
 ## Build and run
 
 Open `TarotDeck.sln` in Visual Studio and build the `TarotDeck` project. It targets .NET Framework 4.8 and x86. Card images are copied beside the executable during build.
+
+### Outer-card reading context
+Revealed first and last cards are included as optional supporting context: First / Opening theme and Last / Underlying theme. These are app-defined reading roles; the three selected spread positions remain primary. Outer cards have their own reading tabs, are saved with the reading, and appear in text exports. Older saved three-card readings remain valid.
+
+Original collection PNGs stay unchanged. DISPLAY-BOUNDS.txt records the centered fitted native-canvas bounds for runtime display, removing packaging margins consistently from drawn cards and previews without cutting the original frame.
+
+The original Classic Tarot bundle has been removed. The new RWS-inspired deck is named The Illustrated Arcana, stored in images/the-illustrated-arcana. The eleven collection deck folders use descriptive names without original or numeric prefixes.
+
+Overview previews follow the main-window order: First (when revealed), the three spread positions, then Last (when revealed). All thumbnails share a size and link to their detail tabs; absent context cards leave no empty columns.
+
+Main-window footer: Settings and optional Credits are on the bottom left; Journal and Read Cards are on the bottom right, with Read Cards rightmost.
+
+The front preview dropdown also offers All: a vertically scrolling gallery that wraps into additional columns as the picker is widened. Click a gallery image to return to that individual card.

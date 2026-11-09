@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "81854287446876c3c3c184ad3fa43c6445ee425bc2558bd88e8ab56d17a21141",
+      "source": "04-rose-watercolor/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "169c8d7604bec999df4dc89396b538df5f88f323cf858801557b1bad51040138",
+      "source": "04-rose-watercolor/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "220352e3bc8add68eff465347783efbba9862ed72d5633a68ec0397a3501e6e2",
+      "source": "04-rose-watercolor/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "c5101fc229388aff07e1a39b680508d8f9061a17ca93faa02bf1df71710e92f2",
+      "source": "04-rose-watercolor/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "4a108b73916b9f6ef64279d2ccaf47429f6ba4acc3b93249f517fdfad0e06149",
+      "source": "04-rose-watercolor/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "b2554c9ec02406fe7130980e57076b0eac0bdd004d956c6535a958c34bcca7a4",
+      "source": "04-rose-watercolor/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "1c732a222b339ae6c78f4a7489ad4b62e40b1220e877740877c9c53ee1ec5d7d",
+      "source": "04-rose-watercolor/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "da2de17d7f9a927441f46f16e1ff941b9e12cf1bde9dfd6b658d33786722ee81",
+      "source": "04-rose-watercolor/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "6437da65587770abe4bf6e19957457262282e7608f63782635a4acfc84c2de65",
+      "source": "04-rose-watercolor/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "1e240480404f69dbd4ea9bbf9141ff4d71cd9bfec39713fff2c03411b16ee5c5",
+      "source": "04-rose-watercolor/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "20014b77361bcfb81fca2bc901b5adec00096bbe3268d1b0792f747c10eca73b",
+      "source": "04-rose-watercolor/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "3922f2824fa92d622428888f13a8490af2ec31fd792cc23a32ae28f0d7ee45d9",
+      "source": "04-rose-watercolor/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "2fb2c09f52ecc67b3bf66368d23240e20f7111e7fcc06325f9c6686825f4a351",
+      "source": "04-rose-watercolor/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "aa4e0f0ab7c6a608a9c099c4b057f3fc5eb24e1c841157f0f9014578ba18adeb",
+      "source": "04-rose-watercolor/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "920a73e737b20477bca1a9d3a10add9065ab52a135edc46fbcb7417a82e4d69a",
+      "source": "04-rose-watercolor/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "bd4f62ab3881c34e7dfb3c1b88d9da454cb59ed40dbd0d3209ccc4cceeb86048",
+      "source": "04-rose-watercolor/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "5a746e7e5cb67ab75308b00dd66ff4fc700fce889ab2b64810923f1a485fbb75",
+      "source": "04-rose-watercolor/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "ed4befb56e66131b260a9accdc1f2315c9cf2a935f2d5d08c7e35c9224de3180",
+      "source": "04-rose-watercolor/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "34b527cae2a867627c9665fc4b1538d5602f67b6f70b596ef209f7276f3abeee",
+      "source": "04-rose-watercolor/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "6e7ae5784bf24322b9f69f9b4111a11b4053cee4f9e3c9b27733c687b54d75dc",
+      "source": "04-rose-watercolor/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "2d69e29e1d4f8d1ed50efd2cff164c6fce81591e7c85bddcee48e85290f3258c",
+      "source": "04-rose-watercolor/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "bfa7fb8797d58906a951d230910235fb280c6a862cc264156900834724109308",
+      "source": "04-rose-watercolor/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "538d2722de614f7011f7de0f82e9fe788ffcb4a8cd9ea3c00bc44f8b98f8b74f",
+      "source": "04-rose-watercolor/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "e2d4f02f53791a26ad87801290013c98767f790e1ceae56724e731b2120c2d38",
+      "source": "04-rose-watercolor/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "e5613fbbc7d20d98242ad06f39706cf1bc159fbe512eae88ec2c3fb6f2f88c39",
+      "source": "04-rose-watercolor/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "ffd10a505eeaabc25ffdaa89ac35d04ec0fedda0f2d0607700aefdbeb249546f",
+      "source": "04-rose-watercolor/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "af887a37410c8cd1650d71d94ffb1a478a7083372a24070b367e2958d58c796d",
+      "source": "04-rose-watercolor/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "541429b4038406d59f6755538956228852124f91361531215d038336b38be184",
+      "source": "04-rose-watercolor/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "429e7bee9a531334e29b8ea09943a32e0dfc65afe457c0ccbe795ffe21bf37e9",
+      "source": "04-rose-watercolor/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "4133855872fb9af01d7334d6c55103bc2a32fe8bd2edd271c55f2bb3116116f7",
+      "source": "04-rose-watercolor/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "05eb01151f73e11f6a31cd0c55fc87493529f1f2f4389d85dd49621ad6b0c913",
+      "source": "04-rose-watercolor/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "e909a0023076ffee381c703c8004882d05fd9863ce3cc5a1fc1774ae660166ec",
+      "source": "04-rose-watercolor/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "b57d1f6cb09a2fbdb8d61b5aa21c4a1fb090e79b47b240f6a91fa9b1f111a01b",
+      "source": "04-rose-watercolor/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "7207e069e4f6b22eae9851ade6b469eac09596e7e2a0d14c5d3d73ee88fd269f",
+      "source": "04-rose-watercolor/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "a3ba666b568508b095dcfa026930fcbef6f98d394dbbd785554ae7b6ce2fb4b5",
+      "source": "04-rose-watercolor/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "896634d662ae2385a70d5a2d33fa498b8e3fe0b9819e1a7e2ad9e60be1e2daba",
+      "source": "04-rose-watercolor/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "23a36a3a13b16e695bb3bf3f996cf6ab23b436ad88b8d40f208d164f6540771b",
+      "source": "04-rose-watercolor/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "046351c7f13839de298e9515347032ef0229aa771f6503b149f84695aea80129",
+      "source": "04-rose-watercolor/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "8a490889dc09b7f5f67521d4aae9373f4e519180d944058a1523810be0219a24",
+      "source": "04-rose-watercolor/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "3264fd0e7243c4aea785202120d5ac3d4b40fa3fd654a42dcad98a8098bc9f6d",
+      "source": "04-rose-watercolor/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "309be2af9e1e1daf9e164328c519d037287f91b762981e0408b79799cfaa1a1e",
+      "source": "04-rose-watercolor/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "aa6d3ae814a97092e36b7311fb74176f39401fd25c94f5a3e3c18da1095a7e5e",
+      "source": "04-rose-watercolor/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "304d662c75d3bcd8e1a2a72691d7d26dede52bea8bee0d1ba0cc0748503482fb",
+      "source": "04-rose-watercolor/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "e1bf08462131ee1eaf6c4bf8b58b6a200f56b55abaafbe8265f1431192a13ab7",
+      "source": "04-rose-watercolor/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "b4822794ec0c20fd00774b646307908acdfa3842ce9511394e193b626b358e2c",
+      "source": "04-rose-watercolor/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "2a3bbb0f0cb8d7be96ce38bd10d3a9687435332fa58b8bea80fa469bfd2d3d55",
+      "source": "04-rose-watercolor/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "bc9dc59cbd99b7d9208a6dabb775b1548b76beea7f1df94279184ff1498cf646",
+      "source": "04-rose-watercolor/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "09a79d26b97f169c52b648b4659b49173e31718e922470872c6b7c88a0d79733",
+      "source": "04-rose-watercolor/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "2a2063f168bde08a5b622ea644046cb72fd1dbef2b41eae3bcede61cbe6c0386",
+      "source": "04-rose-watercolor/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "2dd190085f4dc7a51eff945ef42279d8a5f70defaf37ee82b7ea704b2abbad43",
+      "source": "04-rose-watercolor/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "e327a81cd655656e711644ebababb49ba5d26bc988e5eeaecad4a902b868f05b",
+      "source": "04-rose-watercolor/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "56c348b74caca921dbfba30efc4b730ece9e3001613525052de5452801b4ab88",
+      "source": "04-rose-watercolor/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "740830a359f7ceba2651da7d0dea39329cffaaa5bf70a7cbaa26b7efbf5b1ac7",
+      "source": "04-rose-watercolor/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "cf0b61f685c188de4b734a665e9199102826679d176165fcc820e3be5155acf1",
+      "source": "04-rose-watercolor/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "dcc41243c481663748b4d717381d55c840c708fbdec04e9858ffcbfd5d101ee1",
+      "source": "04-rose-watercolor/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "b04168df7e9c4662b1491c6965e3a644370cfa19dd833413841f3179e7be4c43",
+      "source": "04-rose-watercolor/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "268d69f35c866b43bcc769513b4e4d08d3a7384a77d2b8f58b9c2f1946be22aa",
+      "source": "04-rose-watercolor/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "99ad2dae25940c6641a0607357d102fe92a5794ec832f95a7c6c54354a019acc",
+      "source": "04-rose-watercolor/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "16472c349cef1a2387e2c1e507d087323a203aa9dc1d9a9b9543a8e13a17cfc8",
+      "source": "04-rose-watercolor/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "e787f36e293427e8f506eab661bff7dc7b58ad5cdf00e26b60dc202b8dd3a87d",
+      "source": "04-rose-watercolor/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "618923aa28a91a849921dca0e6d4222f9e1d09eeebb8dfeeae7d58cc375285d6",
+      "source": "04-rose-watercolor/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "b7d5ded65169a90e884b03acd047bf9d1a52f127b74bc8678fc81486a6a2e84f",
+      "source": "04-rose-watercolor/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "bc623b2155534dd5fd47d687a461d95eb408100f0c0852ec81fccab87e2aa2b3",
+      "source": "04-rose-watercolor/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "5ca2eb250da902df35cbe6892bdd3b4c4f57df66ee406b03d6afcb590e38a524",
+      "source": "04-rose-watercolor/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "f993cc1ed882c4100be10ef4b2bd2c44c527041c915eb542c1e0d3b6ae12a1ba",
+      "source": "04-rose-watercolor/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "de47f9ffcf7764af51af620995a17f665380e34e0d12053cbf10f309b069b7af",
+      "source": "04-rose-watercolor/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "6342e5f49c048a94bc75ee7bac432a76b1f206a6a016a3aa58bb5bac55f13dc0",
+      "source": "04-rose-watercolor/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "c4167e5f9ea5ec54662095717c8f4ec7874804a435402bbfdcad54bce96da415",
+      "source": "04-rose-watercolor/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "79ff1d71b9e4cac3ef0273df5994693d31058d9865d625a61281484399ff7584",
+      "source": "04-rose-watercolor/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "6cd63d0cb5bd54eacdb2b332c8cc4d04df0bad0871c11fe4a5f2d757f2d793db",
+      "source": "04-rose-watercolor/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "ac24886755547ef089154a7d5d019d5a97a2eb15d001176035868ce11da6fa78",
+      "source": "04-rose-watercolor/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "3fa1bf10cc3a0fec7d66174eff440f3725af499564af7567ea4bfde3c09f4acb",
+      "source": "04-rose-watercolor/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "29d3d52adb01f8bcfad66b766de1e24f07935787d64c78a643c7ce17d2989394",
+      "source": "04-rose-watercolor/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "d6c2f145f94de3196807ac0b98d989cabd93ea7357dc030a29bd47b7f43e77e8",
+      "source": "04-rose-watercolor/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "89fcdcc98c3e961e0bd2b9142453c23a7f867df20397386d3ceeb33b7525ca47",
+      "source": "04-rose-watercolor/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "c086e5262516e1640c813a3b5bfb0ca0595c026ebd76dc655613116c790c489e",
+      "source": "04-rose-watercolor/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "d3c3b98973535de4e15aaf22b8c9fdbf2f765cb770a6a1c43946d1871f101c4a",
+      "source": "04-rose-watercolor/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "f9903ab592b58bbd10cdf62d6367e43f3a20b84b435a0e80306d1377a46cdf6e",
+      "source": "04-rose-watercolor/cards/wands14.png"
+    }
+  ]
+}

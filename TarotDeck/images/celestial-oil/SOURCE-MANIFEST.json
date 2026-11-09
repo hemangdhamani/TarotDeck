@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "41e3fe8399db95bd440f260ebf9d159cd13649b161b33fd4a925d63c22c2c16f",
+      "source": "03-celestial-oil/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "6bf446bb670d390bdb74c7937811e35305ee0490402e4420300ebc0a8222ebe9",
+      "source": "03-celestial-oil/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "cf5077d8b1293d636816272cc735f5a5edfa23124fdea56b813685230d216cfd",
+      "source": "03-celestial-oil/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "a98d8b3621d2807a3ff62af6fb71b4cdd4d73dcaf3462b410e3892ba05415200",
+      "source": "03-celestial-oil/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "7e40562993d1f04d96b2db0f66c038957e08409cc4f12be591a48a2dd8bc9d0c",
+      "source": "03-celestial-oil/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "b51b39d403490a51e4dc7eb1f48773923d64a4f78989651b244b33bb3d04f477",
+      "source": "03-celestial-oil/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "a389e7c9e9d12d86738bd0b084d2439f645f0aff0bb65cb728869e0d58e90a18",
+      "source": "03-celestial-oil/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "040765be83d81cb0dda7110949d9f004e1bb31de594bf47b44f98507ac0ec184",
+      "source": "03-celestial-oil/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "d1252cfafc43a0c1f2b36cbab7781dfec2b2dc8172596c4fc89fbda2032e6a2d",
+      "source": "03-celestial-oil/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "d8f9468d4b2eb4dda5b52cb7941793b7ca419e399b167176635e982ba1bff0e7",
+      "source": "03-celestial-oil/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "67f27f570234c2ecf509bc000e4cb27fa2294d623edeb8b6b5baeb8eb16e6891",
+      "source": "03-celestial-oil/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "71511c183fcf1c2a9545dd533ef906b81beeb3f86779ad065d2cb6351e209ec4",
+      "source": "03-celestial-oil/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "111074031264990e540fad60e3f3d90c66f2bbaa26b63f1c60149dceeb462149",
+      "source": "03-celestial-oil/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "1a32b53b7cd881495f1edc1c95e44d85e2f0a566fb66ade90d1e607ed4789155",
+      "source": "03-celestial-oil/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "38fb092cbf2ae092a64707b3237e03555bab71275f532fd2a6ed3f00ebf6941a",
+      "source": "03-celestial-oil/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "2749722ea4417fbffb5e49f514dda4d6a192348635c2a051a510635874c3d2d0",
+      "source": "03-celestial-oil/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "250b0f8489b73299591bb578074eab1692c4ceb6f49e2f8d761b36547bfe374a",
+      "source": "03-celestial-oil/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "ddc1bf0252bcafc9707fa511bc140e5b0e2205f69621fcc8fd80df96645c2dea",
+      "source": "03-celestial-oil/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "dc6a553ced74b1d8260e45bee53b28e4be64d5f0fb8e02351750d0a64d9af507",
+      "source": "03-celestial-oil/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "44aa2f8fe542aa40a10854063477cee5a3d4a7b6b26247149c992948075d048c",
+      "source": "03-celestial-oil/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "85a3319e24f381fb0712d924418bbb839f394bd651c74a52d943298271732aa7",
+      "source": "03-celestial-oil/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "c7dc05612d1e05291bfd6a9bfd7028f3bb0183c1a3ebaa7d7d03b8d13cfbeba3",
+      "source": "03-celestial-oil/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "a0fca2038eed13fefb43ae1c64772013d45e565879148e6159585c34d9318d9c",
+      "source": "03-celestial-oil/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "a9fc4f9925f0985eeb11adec5f339e6476a1472e007cb05a9cbd84ee8fdf7f1b",
+      "source": "03-celestial-oil/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "67a3eec00336dd15debd648e783a9ed6c492725dd492520c58836952470c9f9b",
+      "source": "03-celestial-oil/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "5a07a2e4b9d437f56b8f849cc8dc7d82c0fd22791241b9d35c3715af439dd4c3",
+      "source": "03-celestial-oil/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "187fec20e3cde976de64dbf4b906fc82634a149beb0e3364057fa4ab5c4b2eb9",
+      "source": "03-celestial-oil/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "bfa5a7f2528bdf9549f3719d4e1ab410b5302c662a05c6eed9fca9668c4769cc",
+      "source": "03-celestial-oil/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "755cad72e8d6c04c774c57ceefd699040b2668a95775ee8dc9e34db493ef70e1",
+      "source": "03-celestial-oil/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "7ef026e91743a299e1230e06ddfb32857b00e09db091f309992a002fb6dddfe9",
+      "source": "03-celestial-oil/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "b7d9d740bb43cf67a28e7340057017ad1a0b73836e1465cda9bb9fbb36e04b81",
+      "source": "03-celestial-oil/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "e92b8a32729002e8fec9006b4924e55428bf25fd1c361f2d9812946133df6c8d",
+      "source": "03-celestial-oil/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "4e624cd746b0404adba73c734c671665ce9736e2126f45d14e0ea4b292e240b6",
+      "source": "03-celestial-oil/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "01eb079a676a100212b839a7b4ddef5b11401344fc487be0d8c8510c3d5fb278",
+      "source": "03-celestial-oil/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "f220be37eaeb5b6dcec03d5b1cff3d8aebd86db73c78dfa9391974d3c33755e7",
+      "source": "03-celestial-oil/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "7af6b80dbb2f5a1d26c29b04c442d52734718e0da4c2c69ba359b1f5936740e7",
+      "source": "03-celestial-oil/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "e1172083cee7b06a2e159ef77b502b518cc4a8a87afdebfa95713d6d2962d8ca",
+      "source": "03-celestial-oil/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "0b157ad33f0815d6a015311c47b4a354ea2d07628c3b0fae1e288d47fc297316",
+      "source": "03-celestial-oil/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "41833702c432197084d7e54b27d99d7f50a2ec3cffd04bb2080ef47d84015883",
+      "source": "03-celestial-oil/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "e1f5d0ecf1a5c0209bb781c5e1022e60e1c4de6234a189017ac2d34a7e4400d1",
+      "source": "03-celestial-oil/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "8a4c86df08d92bdd2fd6996483a5b7b5a5321a0afe55d03996deabcd7e853dff",
+      "source": "03-celestial-oil/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "3b00958da62ddde027508df73fac7bdd774592609a62d0bcf45c22d7f3fc1bb1",
+      "source": "03-celestial-oil/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "fb5084e66d3bcc7d88a91b50c36a80f1ba30c60e068b45dd06f97e1e5cb6e4fb",
+      "source": "03-celestial-oil/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "52895b810a24bac076a9d08d31a763b02ef076b8737992ae0fc84be683a66760",
+      "source": "03-celestial-oil/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "b597b8099a2e3ba8bba8f693e380e6aa99f27cdef306f436f6d431a9243c3b2b",
+      "source": "03-celestial-oil/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "98950e52f9c237eeb13e329d9f6ef3ac48fae5d07db5475af87c2ed36c29c7aa",
+      "source": "03-celestial-oil/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "f1fb4c9fb35898a2e809d91029cb60aea4c017a6e51716862f24a9aef7ed51ad",
+      "source": "03-celestial-oil/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "d157c0dbb6febc297152a3e9ca25516a6e35f89d00f9503bf64369b12d7a23f2",
+      "source": "03-celestial-oil/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "8599d368b0fd81c1713a395cd0cff8e103e70e57cc11eb3b26365e86d7f2f3fb",
+      "source": "03-celestial-oil/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "f5bebf363323ef025f8ae0d89f9fbd1e3731eaf45a20aae88ffbd9c83826db97",
+      "source": "03-celestial-oil/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "1b634ec3181b2611ef6454a19a94461b255cc57c3276f0def087ab738f6ae67f",
+      "source": "03-celestial-oil/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "cd2c922b541bf404e70d118357f24d3a0afc1fcf05d052d630d19b6095654073",
+      "source": "03-celestial-oil/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "40d5cc1a538fc07d1e8468ae96c3fc5c6507ca4c06e54a8ad939ac7e43f76ec4",
+      "source": "03-celestial-oil/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "249de4cfed310c409a817ae3a41e992b7f7bd796686c35881fd5699ac367333e",
+      "source": "03-celestial-oil/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "33a6dfb64331c31e83c3499ca84d45bde49940c9f75d925ff5cd6b642d163dd9",
+      "source": "03-celestial-oil/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "2f4f5662097e5fd69979d7674267beda4d75fd52eaf7fc76547147de8916b557",
+      "source": "03-celestial-oil/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "ec250d5816d580cb75d4507c3fdcf8f40e4a9b0bcd18c93834a17eab0de7d7ae",
+      "source": "03-celestial-oil/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "ebdbea6a4c1c4d053c7bb91d0622ee63c10955622836e2b57f8b3116fb0d33d7",
+      "source": "03-celestial-oil/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "2f0cdf157fe96160cfaa897f836101fc8cb0163b04b0a564862b98c564f719f1",
+      "source": "03-celestial-oil/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "0a4bb6d764446d24e559d7550b5d0847f7ca0d4262e2b8b38d86c20403d5c3cb",
+      "source": "03-celestial-oil/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "33b0981ef146678010b38636b8feb350bebb576038599c5bd3dcc9f8f87a8f8f",
+      "source": "03-celestial-oil/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "0317deef6ed7e11d44b2288daf9f7c21c39cc7a0019d82f8f07b429547ad8d1f",
+      "source": "03-celestial-oil/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "a0a463633b6ece47338d6ffb510db45b263fe8ae7c10ba4afa189c4a2e47d9a6",
+      "source": "03-celestial-oil/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "962958db9f3ef42f0ca866010c1975b2dd4e50375086b9069748784739e033e4",
+      "source": "03-celestial-oil/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "e5d111330b1102103bd668ae8109b5c7b1fad1ea0282c9ac1d178d283fbadd87",
+      "source": "03-celestial-oil/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "45c22cfb2efcb2c3c4bf30d54c2770fc48f290a8904c147325d01b74bbd10846",
+      "source": "03-celestial-oil/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "523c5269f23d738bb296e9e75fc2328d8ce282562d6e3d93a5327a73b026204b",
+      "source": "03-celestial-oil/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "0fc0866bbc75120f3ab28d38ec048ddb471f30ce05aeac2f4a5b8d786498495d",
+      "source": "03-celestial-oil/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "8ea64e52503e42974ecd32ebff84cdd75f336fc587ffdf885d84cc2c00d720dc",
+      "source": "03-celestial-oil/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "616f2653c82a3ef6b8f67612fed71cd07d0ce994bef5a4c778bbc292ffc0f7b3",
+      "source": "03-celestial-oil/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "531ddf2b4c8cc02e2b254426c6c0651d34c05337b3fbdb72876bccbc593ac117",
+      "source": "03-celestial-oil/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "f4aa9354d2d0bd4f01dddd2ba31413a4b9b04567ae966990b878d35c4d9f6fc2",
+      "source": "03-celestial-oil/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "13b492c6d6ea28fa954e884801bdef9775d00136af11dcfafecc170181a9f9cc",
+      "source": "03-celestial-oil/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "db8dec396aa97911941fd1822d480799e0a785ecb84d107dca0db04f9c6b9ced",
+      "source": "03-celestial-oil/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "47c8acc9d26a75fe2253fa977c83a905d7dbcf9e1235f744dc50492a208df4c2",
+      "source": "03-celestial-oil/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "433ab62286fd9f47f5c26e532af57569e7cf7b4c166b92b0f09938659bf6fd72",
+      "source": "03-celestial-oil/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "f22cfb9f6b27f4d3add7b0565568d129c54d9406cdeed96d4088c81089afccfa",
+      "source": "03-celestial-oil/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "10da28e2f771a778b408e6b155a70ce728b4cb8227e3d4d73c01ebd99a4183dd",
+      "source": "03-celestial-oil/cards/wands14.png"
+    }
+  ]
+}

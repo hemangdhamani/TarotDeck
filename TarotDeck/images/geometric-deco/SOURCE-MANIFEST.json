@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "f0ecc22e5abca946af2d93e5673a22d6b04bc31b6751b102e2954ccb2a46f6ee",
+      "source": "05-geometric-deco/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "8abe0498dd8b9e83aa7a574b2ae071048a8713ce699386b1247d91d012e0d009",
+      "source": "05-geometric-deco/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "4c94d7ae7763ecf6bb0233efdb8b20e34c9222b879fc7971e4c6b9dc11c52d98",
+      "source": "05-geometric-deco/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "dd25bf16be68af958d414a98d04a200c828bc835dd9e9046997ce7def3b12b92",
+      "source": "05-geometric-deco/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "f36b5abbd9f9bb4505b7161927116b24c51a5fd1cbd244e989a3ba3b509adecd",
+      "source": "05-geometric-deco/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "48e24ab6c840d8737dfdd29c7ba06e6282365cc91c741470bb7f9c3b042e49b2",
+      "source": "05-geometric-deco/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "5e728554b52f7de218273f4f8ff927945e8345fac351581dade4a084b720a8be",
+      "source": "05-geometric-deco/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "f5240ff28ee04027ea2cbf92b25dc9ae592dbc9c9941db9cc2b7340dceec58f8",
+      "source": "05-geometric-deco/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "e16275fc124f484e196fcf7736b6735e9252d68e01f52cbd3df68bae3f4f2eb8",
+      "source": "05-geometric-deco/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "b053a3cc14999c0f4af9b2cae5761b316d3d792a25ca0c6601d36c4017ba09e2",
+      "source": "05-geometric-deco/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "d1c69f49dd483e0ed71315c1a3fd7f4f532e5050b7e39550f7116d2b48362972",
+      "source": "05-geometric-deco/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "4f1fd40a36e3adfea0b87836edc69fa5230cb0e745f568f96c43e4b98f83acae",
+      "source": "05-geometric-deco/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "687581dea5bf71652020895bd4ad98046a5973a2ab4e045695ea8554df192f1d",
+      "source": "05-geometric-deco/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "fff9a3102f6de2b8e2dd70d401e510f56255a84d5898a86739dafeebe7be2bf0",
+      "source": "05-geometric-deco/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "0a752719f181752d18781c3b10227a5aeaf1a65042cfb030b9f7ab325b664782",
+      "source": "05-geometric-deco/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "bc00eaf7db2d48d16036bc1af77ebd3a3b6f5212801b9b451bc35a9dcf60485d",
+      "source": "05-geometric-deco/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "db8193b01fd68ffbb24ccbbc8838be25b1b6b8f7d87307b392ba4aa7cb2148af",
+      "source": "05-geometric-deco/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "c952348dbe06c88bb1783a291a4c05644bd34355d44160068b5e8be1c95278a7",
+      "source": "05-geometric-deco/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "13a15640aa5c5a4e3a26fa6ab7ae1a751683e3046a7947c2b79494762af3b4cf",
+      "source": "05-geometric-deco/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "7a92a6bf88ae216bbcf6503a512cb79b87f42b951744851d3d9331c1a78a5635",
+      "source": "05-geometric-deco/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "8be3f6ab5090a8cc8e9148370861f9e0c310722e4c325ac6aad7ff7aeecc4cb1",
+      "source": "05-geometric-deco/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "84db2bfebcd56db0c5be772f98e75cb2d3b13790399dce41a1811e468d1f340a",
+      "source": "05-geometric-deco/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "8015085a3b8f779bd0a04a09cab85495657f45b9124756c589c338ec19096c4e",
+      "source": "05-geometric-deco/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "1fe5db700a643479b513406969f28ecd93a1d1922cb1c200d9380a19962099c3",
+      "source": "05-geometric-deco/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "89a3a9a817cb728ec72a8613e43fcd410eb6e69c6d8fe4b79b0d1d8c978f81b4",
+      "source": "05-geometric-deco/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "906a054738847da7278540a2f752bb7ed92d150d0beca322959367e95b92fae4",
+      "source": "05-geometric-deco/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "375fce4dfb578fd3feea05f77e5ac68a5f88931f3e8a44860ed7b3c1bf662bbe",
+      "source": "05-geometric-deco/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "264803a7006412d12502ce3c4414b351b03b43f4ce1b26f04f3a5022d20299b3",
+      "source": "05-geometric-deco/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "f612ff64237a5ef8d38fbdb80fd010158f63da86a278dee78734e4aaac2c3ce8",
+      "source": "05-geometric-deco/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "4a9b70bf500b7ef5654735348b8ed12c5756ac0f136c7c395a39c21910da5692",
+      "source": "05-geometric-deco/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "7f99db2428407850b1c4dc0fcfe2508017a8f08196747ab13edec84c724f9c7a",
+      "source": "05-geometric-deco/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "4079f15c3c342bebf0cdb255f4736cf7066caf81f455eeaa1c97ccc1bd188b9f",
+      "source": "05-geometric-deco/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "5e282b51f715d25080dd152d4ff03514f79aeaf24a7e1a6524c695dc244f0fb0",
+      "source": "05-geometric-deco/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "ad69b6cab27dab7152c0b96c6377aa321766694a3e262fd82fbc33394ac898f4",
+      "source": "05-geometric-deco/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "b378cd71ed6a79036190a48f6d022a5b49e7de2e1d8b1d12b59cb333bcc1113c",
+      "source": "05-geometric-deco/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "026c31be206eee9f12736e928014294566e05ddc3a5d6fc30e18069e5456d78f",
+      "source": "05-geometric-deco/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "34462bae67849c1132f756e0a0e110d15af62fbcd1a249b3591bd304626274c5",
+      "source": "05-geometric-deco/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "cc030cd5b970a782037f190d31f25d5e0a6c2cfd35c6f93ac25814d723e1a5d0",
+      "source": "05-geometric-deco/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "d3a9433ea51dac9b3317777d1e3322487ee76762fe35d6c2bfaee314cc162b9a",
+      "source": "05-geometric-deco/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "2aaedde5f0f3e9d1037b41803e4e4951e0ae3a9d55231f864d5c859c1121ba25",
+      "source": "05-geometric-deco/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "9e22fb81b547c116e2e70c23372e324a597da2ee6d7124d28d3fe868df5b5122",
+      "source": "05-geometric-deco/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "0b328449abe5de4c20edd982255c454c0e6b9bee5dee376098024e5223788e48",
+      "source": "05-geometric-deco/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "ce2037bdd6d7dbdb8e763a5800610e78a6ef7bf0ed7b48104b4ff2d914f13ac5",
+      "source": "05-geometric-deco/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "2f5b2b4a84055dcbdb8f0df92f4982aea88c124e4d74d5ffa7fd20dc700c348e",
+      "source": "05-geometric-deco/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "22bf23563db16311acd3dffda1951b506eb2296854823225133a70ad3bc7c190",
+      "source": "05-geometric-deco/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "c0f5506990ca4c2046d398d34d5eda8bf1e4ca7d5e3a7ec693465bf290e0ae6d",
+      "source": "05-geometric-deco/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "d01ab48025d7fcd873a0cf62e82b6780c6ddad422fc8c69400af950d116fbf0d",
+      "source": "05-geometric-deco/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "705e64cca62db9478f9413c468f691ff3cd5ccf468eb376c013f1d5405da91c3",
+      "source": "05-geometric-deco/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "0f23d63e4040fd05aeb0cb427754d3d7527b3ae1e881576d2d0ec118e1ea4862",
+      "source": "05-geometric-deco/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "1a32686b33daadf80116851a3b1bc659d570aa7d9b9ffdd66447d4ce594d755d",
+      "source": "05-geometric-deco/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "5c510068fcf959c30111bfd389c944795578a0a9b5a8d6f61162f454062179b3",
+      "source": "05-geometric-deco/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "c3f39b8f3b1d85560bcf57d46b7796e27d7a5c0f32d29bd0d90046cbf1e51d25",
+      "source": "05-geometric-deco/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "4f0c2756e86f085293dcb936d2d51fdf753f5820d5fa8b4195eb90c8ec738f6b",
+      "source": "05-geometric-deco/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "83435fa014623bc35111ee16e72b86ca6e34277700efac5c74024fab503692cb",
+      "source": "05-geometric-deco/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "329e8d239427c80691f50302f21dc8c08c97e1fcbfef9c0e8a2318ff0e5e5df7",
+      "source": "05-geometric-deco/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "1fe17b55bb849f3958ddc3df17eb7f35addcd8e36809ac4eee3896c76a45c63a",
+      "source": "05-geometric-deco/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "c5ebb6f0b1591c3ad222838bb27e0f6d2594c77201906fc134d2ad8c2c806cfa",
+      "source": "05-geometric-deco/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "8426d4291a66b99b875f3ab3b3d8e4ca27951cda2054d07d9de82ba40b2abe7a",
+      "source": "05-geometric-deco/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "a76a159c85be212f575eb2f5720e6154d86a15a587ef6b5b2c0dd1de231195df",
+      "source": "05-geometric-deco/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "7796c06145f511c2bfbaf3f143180866474e45d75b518dc6de4cf545f1b009aa",
+      "source": "05-geometric-deco/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "49c0a0a11bbb3ec49e072ad6ad5b22c2ed1844c99d6e42ae49aa929682d64b3b",
+      "source": "05-geometric-deco/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "d13c9033920b3d7e324ad8505fbf935aa624a293382951fc53eed96df9ff3f59",
+      "source": "05-geometric-deco/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "d24872da7363e738db5b090f71543cd6f41e4f403ea21c4befb2e1e5be8ee0f4",
+      "source": "05-geometric-deco/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "401c76ce7edc29f0968cd4cfc259f496ec47e66b26c729848378a47eb8dc8826",
+      "source": "05-geometric-deco/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "cce2b72986d37ae4ace172f66d68faa5066b60fe135d37dc91b3e8a3f65c1e91",
+      "source": "05-geometric-deco/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "455054bd7cdb1fb38add32884eca088ed1652b1c57a55254b63188a3964f07c1",
+      "source": "05-geometric-deco/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "7d006e83cb32e9767e0680eec93cea036cf18e7c40d378b5091ae15d903b49e2",
+      "source": "05-geometric-deco/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "2a6d0aded63aaeaff38e4d13e558bbe8068d17cea43d38d88e8db62bf7f77143",
+      "source": "05-geometric-deco/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "2b7eec98c72f39231e449d0cb4bc940911380dc30463669cd628ea4f2bde437c",
+      "source": "05-geometric-deco/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "2fc13bcc17bf461c14ce2898d8efa4c5c80eda92420b05d049f587db77759667",
+      "source": "05-geometric-deco/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "b73778ad1faeb953735c9e9a0e74ae1f44f7dd65bed9489bbbc21ba437650781",
+      "source": "05-geometric-deco/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "dad7654f45a5ef55d6e0c63d6634fb65c56eec6ba4a5a94e233e6dd071cb89af",
+      "source": "05-geometric-deco/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "d64a5254a3d6d93018cb131a6c434157b5c22dd80ac11b161ef10c0d159c18ef",
+      "source": "05-geometric-deco/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "16f93d0b8d6cb8cf7a1ae4b7f1d05061208f3d5f9c8e8572596790b80c0f5151",
+      "source": "05-geometric-deco/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "f9a38121ec7e7f8dcf47a00fbc87233e9dd67f365ad5e803c37469298a740d85",
+      "source": "05-geometric-deco/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "6b74d51ce7ebb93b8ac998ddf0b72a74ab7478a4ba659550e76a2de059a5cc18",
+      "source": "05-geometric-deco/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "056420090812102db786a26860a5e48631234806690c4151359f97bf7a5a2f60",
+      "source": "05-geometric-deco/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "c0c9e044a65c9ce88eaa413e70900c4db2480dabc5f1e6282df6bd071886729a",
+      "source": "05-geometric-deco/cards/wands14.png"
+    }
+  ]
+}

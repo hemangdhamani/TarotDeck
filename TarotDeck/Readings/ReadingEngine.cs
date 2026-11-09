@@ -53,6 +53,8 @@ namespace TarotCardsDeck.Readings
         public string Artwork { get; set; }
         public string ContentVersion { get; set; }
         public ReadingCard[] Cards { get; set; }
+        public ReadingCard FirstCard { get; set; }
+        public ReadingCard LastCard { get; set; }
         public string Notes { get; set; }
         public string Interpretation { get; set; }
         public ReadingReport Report { get; set; }
@@ -75,7 +77,10 @@ namespace TarotCardsDeck.Readings
             ReadingOptions.Validate(Spread, Topic, Focus);
             if (Cards == null || Cards.Length != 3 || Cards.Any(card => card == null) || Cards.Select(card => card.Id).Distinct(StringComparer.OrdinalIgnoreCase).Count() != 3)
                 throw new ArgumentException("A reading requires three distinct cards.");
-            foreach (var card in Cards)
+            var allCards = Cards.Concat(new[] { FirstCard, LastCard }.Where(card => card != null)).ToArray();
+            if (allCards.Select(card => card.Id).Distinct(StringComparer.OrdinalIgnoreCase).Count() != allCards.Length)
+                throw new ArgumentException("Context and spread cards must be distinct.");
+            foreach (var card in allCards)
             {
                 var meaning = CardMeaningLibrary.Find(card.Id);
                 if (card.Id != meaning.Id || card.Name != meaning.Name || card.Orientation != "Upright") throw new ArgumentException("Invalid card identity or unsupported orientation.");
@@ -90,10 +95,11 @@ namespace TarotCardsDeck.Readings
         public string Summary { get; set; }
         public string[] CardDetails { get; set; }
         public string[] Connections { get; set; }
+        public string[] Context { get; set; }
         public string[] Actions { get; set; }
         public string[] Reflections { get; set; }
         public string Text { get; set; }
-        public ReadingReport() { CardDetails = new string[0]; Connections = new string[0]; Actions = new string[0]; Reflections = new string[0]; }
+        public ReadingReport() { Context = new string[0]; CardDetails = new string[0]; Connections = new string[0]; Actions = new string[0]; Reflections = new string[0]; }
         public static ReadingReport FromSnapshot(ReadingSnapshot snapshot)
         {
             snapshot.Validate();
@@ -123,6 +129,7 @@ namespace TarotCardsDeck.Readings
                     Environment.NewLine + Environment.NewLine + "Explore these themes through " + snapshot.Topic.ToLowerInvariant() +
                     (snapshot.Focus == "Overview" ? "." : ", focusing on " + snapshot.Focus.ToLowerInvariant() + "."),
                 CardDetails = details, Connections = connections, Actions = actions,
+                Context = BuildContext(snapshot, meanings, positions),
                 Reflections = new[] { meanings[0].Reflection, meanings[2].Reflection }.Distinct().ToArray()
             };
             var text = new StringBuilder();
@@ -130,11 +137,39 @@ namespace TarotCardsDeck.Readings
                 .AppendLine(snapshot.Topic + " · " + snapshot.Focus).AppendLine("Upright meanings · Content " + snapshot.ContentVersion)
                 .AppendLine().AppendLine("OVERVIEW").AppendLine(report.Summary);
             for (int i = 0; i < 3; i++) text.AppendLine().AppendLine(positions[i].ToUpperInvariant() + " — " + meanings[i].Name).AppendLine(details[i]);
+            if (report.Context.Length > 0) Append(text, "OUTER CARD CONTEXT", report.Context);
             Append(text, "CONNECTIONS", report.Connections); Append(text, "NEXT STEPS", report.Actions); Append(text, "REFLECTION", report.Reflections);
             text.AppendLine().AppendLine("Symbolic guidance for reflection. Possible directions depend on your choices and circumstances.");
             report.Text = text.ToString();
             return report;
         }
+        private static string[] BuildContext(ReadingSnapshot snapshot, CardMeaning[] spread, string[] positions)
+        {
+            var result = new List<string>();
+            if (snapshot.FirstCard == null && snapshot.LastCard == null) return result.ToArray();
+            result.Add("The first and last revealed cards provide optional supporting context. These roles are this app's reading convention, not a universal tarot rule. The three spread positions remain primary.");
+            if (snapshot.FirstCard != null)
+            {
+                var card = CardMeaningLibrary.Find(snapshot.FirstCard.Id);
+                result.Add("FIRST — OPENING THEME — " + card.Name + ": " + card.Keywords + ". " + card.Meaning +
+                    " Read this as the tone surrounding " + positions[0] + " (" + spread[0].Name + "). Reflection: " + card.Reflection);
+            }
+            if (snapshot.LastCard != null)
+            {
+                var card = CardMeaningLibrary.Find(snapshot.LastCard.Id);
+                int advice = Array.IndexOf(positions, "Advice");
+                if (advice < 0) advice = 2;
+                result.Add("LAST — UNDERLYING THEME — " + card.Name + ": " + card.Keywords + ". " + card.Meaning +
+                    " Consider this background theme alongside " + positions[advice] + " (" + spread[advice].Name +
+                    "), without treating it as proof of hidden facts. Practice: " + TopicAction(card.Action, snapshot.Topic));
+            }
+            if (snapshot.FirstCard != null && snapshot.LastCard != null)
+                result.Add("BRINGING IT TOGETHER — Begin with " + snapshot.FirstCard.Name + " as the opening lens, work through " +
+                    string.Join(" → ", spread.Select((card,index) => positions[index] + " / " + card.Name)) +
+                    ", then reflect on " + snapshot.LastCard.Name + " as background context. Where themes differ, explore both rather than forcing agreement. Your response can change the possible direction.");
+            return result.ToArray();
+        }
+
         private static void Append(StringBuilder text, string title, IEnumerable<string> lines)
         { text.AppendLine().AppendLine(title); foreach (string line in lines) text.AppendLine("• " + line); }
 
