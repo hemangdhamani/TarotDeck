@@ -1,3 +1,4 @@
+using TarotCardsDeck.Assets;
 using System;
 using System.Drawing;
 using System.IO;
@@ -8,20 +9,21 @@ namespace TarotCardsDeck
     {
         internal static string ResolvePath(string path)
         {
-            if (string.IsNullOrWhiteSpace(path) || File.Exists(path)) return path;
+            if (string.IsNullOrWhiteSpace(path) || AssetStore.Exists(path)) return path;
             string renamed = System.Text.RegularExpressions.Regex.Replace(path,
                 @"original-\d{2}-([^\\/]+)", match => match.Value == "original-11-classic-rws" ? "the-illustrated-arcana" : match.Groups[1].Value);
-            return File.Exists(renamed) ? renamed : path;
+            return AssetStore.Exists(renamed) ? renamed : path;
         }
 
         // Bounds describe the fitted native canvas, never the decorative card border.
         internal static Bitmap Load(string path)
         {
-            using (var image = new Bitmap(path = ResolvePath(path)))
+            using (var stream = AssetStore.OpenRead(path = ResolvePath(path)))
+            using (var image = new Bitmap(stream))
             {
                 string boundsFile = Path.Combine(Path.GetDirectoryName(path), "DISPLAY-BOUNDS.txt");
-                if (File.Exists(boundsFile))
-                    foreach (string line in File.ReadLines(boundsFile))
+                if (AssetStore.Exists(boundsFile))
+                    foreach (string line in AssetStore.ReadLines(boundsFile))
                     {
                         var fields = line.Split(',');
                         if (fields.Length != 5 || fields[0] != Path.GetFileNameWithoutExtension(path)) continue;

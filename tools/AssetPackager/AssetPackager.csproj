@@ -1,0 +1,15 @@
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)'==''">Release</Configuration>
+    <Platform Condition="'$(Platform)'==''">AnyCPU</Platform>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <OutputType>Exe</OutputType><AssemblyName>AssetPackager</AssemblyName>
+    <OutputPath>bin\$(Configuration)\</OutputPath><Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System"/><Reference Include="System.Core"/><Reference Include="System.Security"/>
+    <Reference Include="System.IO.Compression"/><Reference Include="System.IO.Compression.FileSystem"/>
+    <Compile Include="Program.cs"/><Compile Include="..\..\TarotDeck\Assets\AssetPackageFormat.cs"/>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+</Project>

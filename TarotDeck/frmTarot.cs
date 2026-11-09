@@ -1,3 +1,4 @@
+using TarotCardsDeck.Assets;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -335,7 +336,7 @@ namespace TarotCardsDeck
             string selectedName = TarotDeck.Properties.Settings.Default.CardBackName;
             ArtworkChoice choice = cardBackSelector.Items.Cast<ArtworkChoice>()
                 .FirstOrDefault(item => item.Name == selectedName) ?? cardBackSelector.Items.Cast<ArtworkChoice>().First(item => item.Name == "Emerald Labyrinth");
-            using (Image image = Image.FromFile(choice.Path)) return new Bitmap(image);
+            return CardArtwork.Load(choice.Path);
         }
 
         private void HideOverlay(Panel panel)
@@ -398,17 +399,17 @@ namespace TarotCardsDeck
             }
             List<ArtworkChoice> choices = new List<ArtworkChoice>();
             string bundledSoimoi = Path.Combine(appImages, "soimoi");
-            if (Directory.Exists(bundledSoimoi)) choices.Add(new ArtworkChoice("Soimoi Tarot", bundledSoimoi));
-            foreach (string directory in Directory.GetDirectories(appImages).OrderBy(path => path, StringComparer.OrdinalIgnoreCase))
+            if (AssetStore.DirectoryExists(bundledSoimoi)) choices.Add(new ArtworkChoice("Soimoi Tarot", bundledSoimoi));
+            foreach (string directory in AssetStore.GetDirectories(appImages).OrderBy(path => path, StringComparer.OrdinalIgnoreCase))
             {
-                if (string.Equals(directory, bundledSoimoi, StringComparison.OrdinalIgnoreCase) || (!HasCompleteArtwork(directory) && !File.Exists(Path.Combine(directory, "PLANNED.txt")))) continue;
+                if (string.Equals(directory, bundledSoimoi, StringComparison.OrdinalIgnoreCase) || (!HasCompleteArtwork(directory) && !AssetStore.Exists(Path.Combine(directory, "PLANNED.txt")))) continue;
                 string titleFile = Path.Combine(directory, "DECKNAME.txt");
-                string title = File.Exists(titleFile) ? File.ReadAllText(titleFile).Trim() : Path.GetFileName(directory);
+                string title = AssetStore.Exists(titleFile) ? AssetStore.ReadAllText(titleFile).Trim() : Path.GetFileName(directory);
                 choices.Add(new ArtworkChoice(string.IsNullOrWhiteSpace(title) ? Path.GetFileName(directory) : title, directory, !HasCompleteArtwork(directory)));
             }
-            if (Directory.Exists(userDecks))
+            if (AssetStore.DirectoryExists(userDecks))
             {
-                foreach (string directory in Directory.GetDirectories(userDecks))
+                foreach (string directory in AssetStore.GetDirectories(userDecks))
                     if (HasCompleteArtwork(directory)) choices.Add(new ArtworkChoice(Path.GetFileName(directory), directory));
             }
 
@@ -480,9 +481,9 @@ namespace TarotCardsDeck
                 foreach (string file in new[] { "CREDITS.txt", "ATTRIBUTION.txt", "LICENSE", "LICENSE.txt", "LICENSE.md" })
                 {
                     string path = Path.Combine(choice.Path, file);
-                    if (File.Exists(path))
+                    if (AssetStore.Exists(path))
                     {
-                        string text = File.ReadAllText(path);
+                        string text = AssetStore.ReadAllText(path);
                         if (!string.IsNullOrWhiteSpace(text)) credits.Add(text.Trim());
                     }
                 }
@@ -490,8 +491,8 @@ namespace TarotCardsDeck
             }
             creditsButton.Visible = !string.IsNullOrWhiteSpace(artworkCredits);
             string attributionRequirement = choice == null ? null : Path.Combine(choice.Path, "ATTRIBUTION_REQUIRED.txt");
-            if (attributionRequirement != null && File.Exists(attributionRequirement) &&
-                string.Equals(File.ReadAllText(attributionRequirement).Trim(), "false", StringComparison.OrdinalIgnoreCase))
+            if (attributionRequirement != null && AssetStore.Exists(attributionRequirement) &&
+                string.Equals(AssetStore.ReadAllText(attributionRequirement).Trim(), "false", StringComparison.OrdinalIgnoreCase))
                 creditsButton.Visible = false;
             if (creditsPanel != null)
             {
@@ -512,7 +513,7 @@ namespace TarotCardsDeck
 
         private static bool HasCompleteArtwork(string directory)
         {
-            if (!Directory.Exists(directory)) return false;
+            if (!AssetStore.DirectoryExists(directory)) return false;
             return HasCompleteArtwork(BuildArtworkFileIndex(directory));
         }
 
@@ -533,7 +534,7 @@ namespace TarotCardsDeck
         {
             Dictionary<string, string> files = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             string[] preferredExtensions = { ".jpg", ".jpeg", ".png", ".bmp" };
-            foreach (string path in Directory.EnumerateFiles(directory, "*", SearchOption.TopDirectoryOnly))
+            foreach (string path in AssetStore.GetFiles(directory))
             {
                 string extension = Path.GetExtension(path);
                 if (!preferredExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase)) continue;
