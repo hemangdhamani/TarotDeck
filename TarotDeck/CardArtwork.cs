@@ -12,7 +12,17 @@ namespace TarotCardsDeck
             if (string.IsNullOrWhiteSpace(path) || AssetStore.Exists(path)) return path;
             string renamed = System.Text.RegularExpressions.Regex.Replace(path,
                 @"original-\d{2}-([^\\/]+)", match => match.Value == "original-11-classic-rws" ? "the-illustrated-arcana" : match.Groups[1].Value);
-            return AssetStore.Exists(renamed) ? renamed : path;
+            if (AssetStore.Exists(renamed)) return renamed;
+            // Journals written before installation can contain absolute paths from
+            // a development folder. Only remap a missing image to its same deck ID.
+            var legacy = System.Text.RegularExpressions.Regex.Match(renamed,
+                @"(?:^|[\\/])images[\\/]([^\\/]+)[\\/]([^\\/]+)$", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            if (legacy.Success)
+            {
+                string installed = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"images",legacy.Groups[1].Value,legacy.Groups[2].Value);
+                if (AssetStore.Exists(installed)) return installed;
+            }
+            return path;
         }
 
         // Bounds describe the fitted native canvas, never the decorative card border.

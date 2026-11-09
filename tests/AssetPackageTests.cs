@@ -83,11 +83,20 @@ class AssetPackageTests
             Probe(isolated,3,true);
             File.Delete(Path.Combine(assets,"soimoi.deck")); Probe(isolated,2,true);
             File.Delete(Path.Combine(assets,"cardbacks.deck")); Probe(isolated,1,false);
+            var artworkType=typeof(AssetStore).Assembly.GetType("TarotCardsDeck.CardArtwork");
+            var resolve=artworkType.GetMethod("ResolvePath",System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.NonPublic);
+            string current=Path.Combine(source,"images","the-illustrated-arcana","maj22.png");
+            string moved=Path.Combine(temp,"old-install","images","the-illustrated-arcana","maj22.png");
+            Check((string)resolve.Invoke(null,new object[]{moved})==current,"Relocated journal image did not resolve");
+            moved=Path.Combine(temp,"old-install","images","original-11-classic-rws","maj22.png");
+            Check((string)resolve.Invoke(null,new object[]{moved})==current,"Renamed and relocated journal image did not resolve");
+            string custom=Path.Combine(temp,"custom.png"); File.WriteAllText(custom,"Existing user artwork");
+            Check((string)resolve.Invoke(null,new object[]{custom})==custom,"Existing external artwork was redirected");
             Console.WriteLine("PASS: {0} asset security and isolated-install checks",checks);
             return 0;
         }
         catch(Exception error) { Console.Error.WriteLine(error); return 1; }
-        finally { Directory.Delete(temp,true); }
+        finally { AssetStore.Close(); Directory.Delete(temp,true); }
     }
     static void Probe(string directory,int count,bool expected)
     {
