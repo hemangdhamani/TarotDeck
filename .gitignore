@@ -5,3 +5,7 @@
 *.user
 *.cache
 Thumbs.db
+.tools/
+/artifacts/
+*.deck
+*.dpapi

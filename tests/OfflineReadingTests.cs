@@ -1,3 +1,4 @@
+using TarotCardsDeck.Assets;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -30,6 +31,7 @@ internal static class OfflineReadingTests
             WebRequest.RegisterPrefix("https://", new BlockedNetwork());
             Reject<InvalidOperationException>(() => WebRequest.Create("https://example.invalid/"), "Test HTTP network guard unavailable.");
             ContentCoverage();
+            Assert(!Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"images")), "Loose artwork remains beside EXE.");
             BundledDecks();
             ContextReadingChecks();
             DeterminismAndOptions();
@@ -60,21 +62,22 @@ internal static class OfflineReadingTests
         foreach (string folder in new[] { "soimoi", "woodcut-marseille", "vieville", "lequart-besancon", "botanical-art-nouveau", "japanese-ink", "celestial-oil", "rose-watercolor", "geometric-deco", "illuminated-engraving", "mauryan-sandstone", "gupta-era-mural", "ramayana-forest", "mahabharata-dharma", "the-illustrated-arcana" })
         {
             string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", folder);
-            Assert(Directory.Exists(directory), "Missing bundled deck: " + folder);
-            var files = Directory.GetFiles(directory).Where(path => new[] { ".png", ".jpg", ".jpeg" }.Contains(Path.GetExtension(path).ToLowerInvariant()) &&
+            Assert(AssetStore.DirectoryExists(directory), "Missing bundled deck: " + folder);
+            var files = AssetStore.GetFiles(directory).Where(path => new[] { ".png", ".jpg", ".jpeg" }.Contains(Path.GetExtension(path).ToLowerInvariant()) &&
                 System.Text.RegularExpressions.Regex.IsMatch(Path.GetFileNameWithoutExtension(path), "^(maj|cups|pents|swords|wands)[0-9]{2}$")).ToArray();
             Assert(files.Length == 78, "Deck must contain exactly 78 faces: " + folder);
             Assert(new HashSet<string>(files.Select(Path.GetFileNameWithoutExtension), StringComparer.OrdinalIgnoreCase)
                 .SetEquals(CardMeaningLibrary.All.Select(card => card.Id)), "Noncanonical artwork IDs: " + folder);
             foreach (string file in files)
-                using (var image = Image.FromFile(file)) Assert(image.Width >= (folder == "classic" ? 350 : folder == "soimoi" ? 720 : 750) &&
+                using (var source = AssetStore.OpenRead(file))
+                using (var image = Image.FromStream(source)) Assert(image.Width >= (folder == "classic" ? 350 : folder == "soimoi" ? 720 : 750) &&
                     image.Height >= (folder == "classic" ? 600 : folder == "soimoi" ? 1080 : 1400), "Invalid or undersized image: " + file);
-            if (File.Exists(Path.Combine(directory, "DISPLAY-BOUNDS.txt")))
-                Assert(File.Exists(Path.Combine(directory, "SOURCE-MANIFEST.json")), "Missing original artwork provenance: " + folder);
+            if (AssetStore.Exists(Path.Combine(directory, "DISPLAY-BOUNDS.txt")))
+                Assert(AssetStore.Exists(Path.Combine(directory, "SOURCE-MANIFEST.json")), "Missing original artwork provenance: " + folder);
             else if (folder != "classic" && folder != "soimoi")
-                Assert(File.Exists(Path.Combine(directory, "LICENSE.txt")) && File.Exists(Path.Combine(directory, "SOURCE-MANIFEST.json")), "Missing provenance: " + folder);
+                Assert(AssetStore.Exists(Path.Combine(directory, "LICENSE.txt")) && AssetStore.Exists(Path.Combine(directory, "SOURCE-MANIFEST.json")), "Missing provenance: " + folder);
         }
-        Assert(!Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images")).Any(path =>
+        Assert(!AssetStore.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images")).Any(path =>
             System.Text.RegularExpressions.Regex.IsMatch(Path.GetFileNameWithoutExtension(path), "^(maj|cups|pents|swords|wands)[0-9]{2}$")), "Loose card fronts remain in images root.");
         Console.WriteLine("PASS bundled decks: all 1170 faces decode in fifteen respective folders with exact canonical IDs.");
     }
@@ -486,7 +489,7 @@ internal static class OfflineReadingTests
                     artwork.SelectedIndex = index;
                     Invoke(form, "RefreshArtworkFileIndex");
                     foreach (var meaning in CardMeaningLibrary.All)
-                        Assert(File.Exists((string)Invoke(form, "FindArtworkFile", meaning.Id + ".jpg")), "Bundled image not resolved: " + title + " / " + meaning.Id);
+                        Assert(AssetStore.Exists((string)Invoke(form, "FindArtworkFile", meaning.Id + ".jpg")), "Bundled image not resolved: " + title + " / " + meaning.Id);
                     if (title != "Soimoi Tarot") Assert(!((Button)Field(form, "creditsButton")).Visible, "Public-domain deck should not require credits display.");
                 }
                 artwork.SelectedIndex = originalArtwork;

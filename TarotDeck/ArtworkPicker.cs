@@ -1,3 +1,4 @@
+using TarotCardsDeck.Assets;
 using System;
 using System.Drawing;
 using System.IO;
@@ -19,7 +20,7 @@ namespace TarotCardsDeck
 
         private static Bitmap ReadPreview(string path)
         {
-            if (path == null || !File.Exists(path)) return null;
+            if (path == null || !AssetStore.Exists(path)) return null;
             try { return CardArtwork.Load(path); }
             catch (Exception error) when (error is ArgumentException || error is IOException || error is OutOfMemoryException)
             { return null; }
@@ -29,7 +30,7 @@ namespace TarotCardsDeck
         {
             if (choice == null) return null;
             if (back) return choice.Path;
-            if (!Directory.Exists(choice.Path)) return null;
+            if (!AssetStore.DirectoryExists(choice.Path)) return null;
             string file;
             return BuildArtworkFileIndex(choice.Path).TryGetValue(card, out file) ? file : null;
         }
@@ -179,7 +180,7 @@ namespace TarotCardsDeck
                         foreach (string filename in new[] { "CREDITS.txt", "ATTRIBUTION.txt" })
                         {
                             string creditPath = Path.Combine(selected.Path, filename);
-                            if (File.Exists(creditPath)) credits += "\r\n\r\n" + File.ReadAllText(creditPath).Trim();
+                            if (AssetStore.Exists(creditPath)) credits += "\r\n\r\n" + AssetStore.ReadAllText(creditPath).Trim();
                         }
                     }
                     status.Text = (!all && large.Image == null ? "This preview is not available yet.\r\n" : "") + availability + credits;

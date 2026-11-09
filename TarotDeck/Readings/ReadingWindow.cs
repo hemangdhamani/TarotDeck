@@ -1,3 +1,4 @@
+using TarotCardsDeck.Assets;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -150,7 +151,7 @@ namespace TarotCardsDeck.Readings
         private Image LoadThumbnail(string path)
         {
             path = CardArtwork.ResolvePath(path);
-            if (string.IsNullOrWhiteSpace(path) || !File.Exists(path)) return null;
+            if (string.IsNullOrWhiteSpace(path) || !AssetStore.Exists(path)) return null;
             try
             {
                 using (Image source = CardArtwork.Load(path))
