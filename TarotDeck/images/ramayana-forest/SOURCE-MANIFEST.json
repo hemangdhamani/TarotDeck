@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "ec3e7596f57a4f6ece26f24099f5dcf3ead2275ca369d0653cecd38ddf027e1e",
+      "source": "09-ramayana-forest/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "89ccd358587f28e694ae17a89bba85b8c0ca4ffe1858390f62915a0329bcca5e",
+      "source": "09-ramayana-forest/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "b8ab0661ad7d9a799977a7c90b37cf56bc7996d6e9f3e1944a233e8719e95f56",
+      "source": "09-ramayana-forest/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "ee4695f1b48411691367cc481b3ac7e5ad3d71bc6eef942984a1b2f0d9c6b5b6",
+      "source": "09-ramayana-forest/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "59c0ef4cd5e2ac8579ae1a7d6e38f73b14a778df62f6543ae456d3ba4f1e6838",
+      "source": "09-ramayana-forest/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "5a80249bb1b0baaa79ff819d00add3fd8bee81be7641d091ebce3c22f1b43fbf",
+      "source": "09-ramayana-forest/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "d5653871ad6558fcf732ed2b087c5f20129c9b03842daa34252331c8ad79addf",
+      "source": "09-ramayana-forest/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "bae13fe476675ebc01c0d8706dfc868648946b2db07c2b410c62e72e89ee5081",
+      "source": "09-ramayana-forest/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "f502df843739f780ab0a104555ef0b91d402132b783204ec7c302c017f6457c7",
+      "source": "09-ramayana-forest/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "e3c2d1521031de1bc5ad31e304950f9bb243ff58add43138c914cce81ecad0ce",
+      "source": "09-ramayana-forest/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "7f541c43da9706660407c62b9c952a4299d491fb64748cf343b4c34d743e723e",
+      "source": "09-ramayana-forest/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "ba557a916532e065ad73b486efeb8422cd251f47f794410bbe177b403f5ac971",
+      "source": "09-ramayana-forest/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "326e559eadb1bb12b4832d153a9daa176b26428ba379dc4098193accf8970287",
+      "source": "09-ramayana-forest/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "56d4edcc7555400c400d05923c687294321f5aa935a235624c4440f7b8b34af9",
+      "source": "09-ramayana-forest/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "860232a9e161c624f2ccf9973ad0af3251e86b1470fcf16ac306d38832c00e5e",
+      "source": "09-ramayana-forest/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "9c55d5eb3253fa2707b693acb3bdc9d53421f9e846e57aa7290ec7ddda616caf",
+      "source": "09-ramayana-forest/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "3868b5e7f04d249893e48a2f0feb46fdb19b80eb6e3c6118c7625ee7f18d7843",
+      "source": "09-ramayana-forest/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "316592a07322fe70c4760550dbb5e51581b60c167869440f4dd84ae3f854ddba",
+      "source": "09-ramayana-forest/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "043d4423f7bcec26ed7f38ea4eabc5272de4424a52707d2fae44707fe49c4f63",
+      "source": "09-ramayana-forest/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "19104caf216b570f8a929480d50089319e807f0f7010e9006c06eac9691855d1",
+      "source": "09-ramayana-forest/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "ba766526bfac33e6313af95fb57a31eedfbd0e58c9940eaf1e07e89115c52bf7",
+      "source": "09-ramayana-forest/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "805c7568a0a7ae0dad459b26b6fdff76c3ff0b73148edaa80e571395dc21128b",
+      "source": "09-ramayana-forest/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "5cea212da0b60cf24f5816d073e1bdf3a28084989ce9b5fcde65b42a81c3365f",
+      "source": "09-ramayana-forest/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "d4d74a0bf11cb5c6154021c54879502cb779068d7f0c8576f183824d634bc35e",
+      "source": "09-ramayana-forest/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "69eab2f63a6df4988ed55e3cc48ae93a1fe74632711e656e84504cd516fb3f7c",
+      "source": "09-ramayana-forest/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "5bc0bc7450dcbaf0307a17f37ae41ab4b7421122420a70affb1d54d401cfa3ad",
+      "source": "09-ramayana-forest/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "11ffcf40bd842a7bcb0be813b9dcfce43f55b70018dd91c5e136dda79717da1c",
+      "source": "09-ramayana-forest/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "e7d6dfc35e20e9180ba371f19caace6940ab3b103f43352401ff1cbed1d5fb6c",
+      "source": "09-ramayana-forest/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "41a41c12a3f82f8d34d1696bb1497f6a98110a563137942cebb2e0d7c4794e61",
+      "source": "09-ramayana-forest/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "30ac20066743b9ebd444beba263b69e99f727c3854705152b6c38b81b9000434",
+      "source": "09-ramayana-forest/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "2716bb669dec304dfe299c381c2eea6711d9864bfc42f64706bf6b7ead3ec325",
+      "source": "09-ramayana-forest/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "0a74b1c22abb76b9c11cc958307fdbe3dc6223f4b696ceb501929a50f316c42c",
+      "source": "09-ramayana-forest/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "0cb87faff87e25546a4222db847b4d9eb1a9976b8f76dc7cfec184967ba4c80b",
+      "source": "09-ramayana-forest/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "a317920dadeb2e0db677e1957c5fe8b0226846e8e57cbec04972063406d36d72",
+      "source": "09-ramayana-forest/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "f54b93a0e9ab7d3b0aae21e9e25dab742f61f90f2a7e95caf5720d822aab645d",
+      "source": "09-ramayana-forest/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "4e7f09e2f8f97d28b399adb21a2622109b3ce9f6bda110aa11341a41bac5aaba",
+      "source": "09-ramayana-forest/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "c4bcd4f7dfad181da29353c8db0c3ed2376538541f3d72bbc903b86a423f75d7",
+      "source": "09-ramayana-forest/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "03d95d8f78bb058369d2a452c6bd8dc0f0ef83a50cb7adb9dc776ecd85c1f219",
+      "source": "09-ramayana-forest/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "2e83ba98532e901355ccb5f7221a73ebd4b777bcaab7b465907997983d82e880",
+      "source": "09-ramayana-forest/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "4a5091d4889aeb263123a76c69aae71f1b99f290d43a42efdcaddc1573d6f5c0",
+      "source": "09-ramayana-forest/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "8e6d6f20cbcc1f81f3b82ac2474220782098d3dcddbc6a50d8f9af4d747efbe6",
+      "source": "09-ramayana-forest/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "3ed1965d665a2e7f3b93ff69894e049f6d392c1c89027a42bec054f2b5e79d33",
+      "source": "09-ramayana-forest/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "5a2273900f3763a478d103a310310a87497342aa17d12d7e4f905657d7bf21e6",
+      "source": "09-ramayana-forest/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "337b90a48159e6ad272c3520172cb86b3bd4db2d80fc304dfc0342eaec6729ce",
+      "source": "09-ramayana-forest/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "f0c94377d311847d9285d5b1d5d6306186f1dfb062b662bac8415799a349d123",
+      "source": "09-ramayana-forest/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "768c79431b23528c96e52e74c76af9da532c562e32b154673633e1494469faf7",
+      "source": "09-ramayana-forest/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "a049683102a5633a6afd4f9f344ab8fde7a34b1a1c5c6532a4814ab4b937824a",
+      "source": "09-ramayana-forest/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "a973ea8ddb86037f7bbb92dec0f48dfa108e7b0518e672697a51abdd1eb1e88d",
+      "source": "09-ramayana-forest/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "17e6cec942fbac7a0ed9dee1cb263b009f6b2e7a6b18f8812d79326abc539b99",
+      "source": "09-ramayana-forest/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "77eb895f27734c662ded288fae7955b846a9eb8ceec941276a2e299eac0f7c05",
+      "source": "09-ramayana-forest/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "3f3129dd2f47367c0f9f9e78708c6e26134aca8abc3f281e53f388f810ed22d0",
+      "source": "09-ramayana-forest/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "2cd12078e2ab8239aff45eedd4bc98f893c64d9737b91d2d7f67b68b68b1fb2a",
+      "source": "09-ramayana-forest/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "f7cff9c2715ceb6ccb27647c93d52efb5e1923fc8a319d29cbc1a09b43e1e507",
+      "source": "09-ramayana-forest/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "f8313f28ced441ad9cab7a1568de3388a5dd6eb5bdc4a1724d5fa495aba1cac8",
+      "source": "09-ramayana-forest/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "4d00b2950f2476aab441f60aa92a49767e1bba0b84dee88ec426104df821f069",
+      "source": "09-ramayana-forest/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "388520cf9dcc0f5d97bde65c0ee8c0ce3fdd59dd9f583cffe7383123fed8b70e",
+      "source": "09-ramayana-forest/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "5e048c3c96cdf6d0d473ff1e70d059e03d291bafcb2bce22675fd2b038ddafe9",
+      "source": "09-ramayana-forest/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "ffd49cee7b36ed1e312a93d7dd042e8f8ef328a27db8efcb2fded53b19dd93b8",
+      "source": "09-ramayana-forest/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "3195d86dd0bf2a6e351348647cc1464033352a9605761fdd776fcfdc99bf9ddc",
+      "source": "09-ramayana-forest/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "f7ebe14c0fa8413201e30469d5d5dcc05fab5e9af1a7ab4f08e17abac8d22fc4",
+      "source": "09-ramayana-forest/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "61f8dca203bb229aa0abb38451eb240ef1938e56e50bfa7a83bed4cd3a044157",
+      "source": "09-ramayana-forest/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "397a4a79c3e7ef9512cffb6704a9e39281c98f45c71de8b9eb3380ff1554a1fb",
+      "source": "09-ramayana-forest/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "ae0dbd6de5b4ba2de4391dc8418fe7de36bae7a5bc5a54db9e740c24f62f0328",
+      "source": "09-ramayana-forest/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "59bcd135ee6b813c1f0515a5e6ca655f79ccdc6ccc5be4943c575eb5089a1f3b",
+      "source": "09-ramayana-forest/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "99a9a6be7addc377445ebf34f66fd0b26e22ade82e7f92bb25b97b07ec165a3d",
+      "source": "09-ramayana-forest/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "6ab2234bd1baac0a713a142f0fa625f14c8b25329b0fb2932b620e290b234ba9",
+      "source": "09-ramayana-forest/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "26f5b1c3768aad14d725a07e90d08895db47b57c8c5bd87a4960fa006a2dd47c",
+      "source": "09-ramayana-forest/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "3dabfe078a893412e28f7723443e0b938630863c8425d53e8f576f58875fa060",
+      "source": "09-ramayana-forest/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "3de021f0a77aa4f375803110de38c1844a19ce774f94e363a4e821c8633501b3",
+      "source": "09-ramayana-forest/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "af121fcd5be7fd3f63dca7e191c7d47d14c6d4e5450e1955125059b759cf0b63",
+      "source": "09-ramayana-forest/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "739c25934cfb526d14da9008c72470aef74839030efdc34801f6b5c670445e23",
+      "source": "09-ramayana-forest/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "061ea042db83d1fcb7eedfdfbb222d3d18484ae4efef8fc2d50f2e1ec41f3b0a",
+      "source": "09-ramayana-forest/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "2b24e9a5e59a872e7b5ca02d96ed2dc7b81269149433d123d574133b235031be",
+      "source": "09-ramayana-forest/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "79103137b2e6a4669060b3ab423da81bb646f992a0e20724d1c2613a2d55b521",
+      "source": "09-ramayana-forest/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "0d1ad1a9608b6f07a9ac59ddcea31ef3e9900a9c32ece89fbeedb0c1528245b4",
+      "source": "09-ramayana-forest/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "31b02d49efa853e194bb78bbb995cd77da065ef7a3e0091e790fd6805d7ce91b",
+      "source": "09-ramayana-forest/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "73b51ed655ce96dbd9c7bbbdbf99fbd7254f69503ac700f69e872ea5d0e0f208",
+      "source": "09-ramayana-forest/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "364791305d1a105f982da2251bb85b9578cc1db8a2ab5806dcfd2ce34c60510e",
+      "source": "09-ramayana-forest/cards/wands14.png"
+    }
+  ]
+}

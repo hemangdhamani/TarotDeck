@@ -11,7 +11,7 @@ namespace TarotCardsDeck
     {
         private Button readCardsButton, readingJournalButton;
         private ComboBox readingSpreadSelector, readingTopicSelector, readingFocusSelector;
-        private readonly Label[] readingPositionLabels = new Label[3];
+        private readonly Label[] readingPositionLabels = new Label[5];
         private string readingSpread, readingTopic, readingFocus;
         private readonly ReadingJournal readingJournal = new ReadingJournal();
 
@@ -28,15 +28,16 @@ namespace TarotCardsDeck
             readCardsButton.Click += (s, e) => ReadDisplayedCards();
             readingJournalButton.Click += (s, e) => new ReadingHistoryWindow(readingJournal).Show(this);
             Controls.AddRange(new Control[] { readCardsButton, readingJournalButton });
-            for (int i = 0; i < 3; i++) readingPositionLabels[i] = new Label { TextAlign = ContentAlignment.MiddleCenter,
+            for (int i = 0; i < 5; i++) readingPositionLabels[i] = new Label { TextAlign = ContentAlignment.MiddleCenter,
                 ForeColor = Color.FromArgb(224, 213, 190), BackColor = Color.Black, AutoEllipsis = true, Visible = false };
             InitializeReadingSettings();
         }
         private void PositionReadingControls()
         {
             if (readCardsButton == null) return;
-            readCardsButton.Location = new Point(20, settingsButton.Top);
-            readingJournalButton.Location = new Point(readCardsButton.Right + 8, settingsButton.Top);
+            Rectangle available = Rectangle.Intersect(ClientRectangle, RectangleToClient(Screen.FromControl(this).WorkingArea));
+            readCardsButton.Location = new Point(Math.Max(available.Left, available.Right - readCardsButton.Width - 20), settingsButton.Top);
+            readingJournalButton.Location = new Point(readCardsButton.Left - readingJournalButton.Width - 8, settingsButton.Top);
         }
         private void RaiseReadingControls()
         {
@@ -46,8 +47,8 @@ namespace TarotCardsDeck
         private void LayoutReadingLabels()
         {
             if (drawnPanel == null || readingPositionLabels[0] == null) return;
-            var pictures = new[] { pcbCard01, pcbCard02, pcbCard03 };
-            for (int i = 0; i < 3; i++)
+            var pictures = new[] { pcbCard01, pcbCard02, pcbCard03, pcbCardFirst, pcbCardLast };
+            for (int i = 0; i < 5; i++)
             {
                 if (readingPositionLabels[i].Parent != drawnPanel) drawnPanel.Controls.Add(readingPositionLabels[i]);
                 readingPositionLabels[i].Bounds = new Rectangle(pictures[i].Left, pictures[i].Bottom + 2, pictures[i].Width,
@@ -66,6 +67,12 @@ namespace TarotCardsDeck
                 readingPositionLabels[i].Text = positions[i];
                 readingPositionLabels[i].Visible = pictures[i].Image != null && pictures[i].Tag is Card;
             }
+            var outer = new[] { pcbCardFirst, pcbCardLast };
+            for (int i = 0; i < 2; i++)
+            {
+                readingPositionLabels[i+3].Text = i == 0 ? "First · Opening theme" : "Last · Underlying theme";
+                readingPositionLabels[i+3].Visible = outer[i].Image != null && outer[i].Tag is Card;
+            }
             readCardsButton.Enabled = pictures.All(picture => picture.Image != null && picture.Tag is Card);
         }
         private ReadingSnapshot CaptureDisplayedReading()
@@ -73,12 +80,23 @@ namespace TarotCardsDeck
             var pictures = new[] { pcbCard01, pcbCard02, pcbCard03 };
             if (pictures.Any(picture => picture.Image == null || !(picture.Tag is Card)))
                 throw new InvalidOperationException("Draw three reading cards first. The outer first/last cards are not part of the three-card reading.");
-            return ReadingSnapshot.Create(pictures.Select(picture => {
+            var snapshot = ReadingSnapshot.Create(pictures.Select(picture => {
                 var card = (Card)picture.Tag;
                 string id = Path.GetFileNameWithoutExtension(card.CardImg).ToLowerInvariant();
                 var meaning = CardMeaningLibrary.Find(id);
                 return new ReadingCard { Id = id, Name = meaning.Name, ImagePath = FindArtworkFile(card.CardImg) };
             }), readingSpread, readingTopic, readingFocus, ((ArtworkChoice)artworkSelector.SelectedItem).Name);
+            snapshot.FirstCard = CaptureContextCard(pcbCardFirst);
+            snapshot.LastCard = CaptureContextCard(pcbCardLast);
+            snapshot.Validate();
+            return snapshot;
+        }
+        private ReadingCard CaptureContextCard(PictureBox picture)
+        {
+            var card = picture.Tag as Card;
+            if (picture.Image == null || card == null) return null;
+            string id = Path.GetFileNameWithoutExtension(card.CardImg).ToLowerInvariant();
+            return new ReadingCard { Id = id, Name = CardMeaningLibrary.Find(id).Name, ImagePath = FindArtworkFile(card.CardImg) };
         }
         private void ReadDisplayedCards()
         {
@@ -108,10 +126,10 @@ namespace TarotCardsDeck
             tabs.TabPages.Add(artworkPage); tabs.TabPages.Add(readingPage);
             settingsPanel.Controls.Add(tabs);
             artworkPage.ClientSizeChanged += (s, e) => {
-                addArtworkButton.Left = artworkPage.ClientSize.Width - 20 - addArtworkButton.Width;
-                artworkSelector.Width = Math.Max(100, addArtworkButton.Left - artworkSelector.Left - 12);
+                artworkSelector.Width = Math.Max(100, artworkPage.ClientSize.Width - 40);
                 cardBackSelector.Width = artworkSelector.Width;
             };
+            InitializeVisualArtworkSettings(artworkPage);
             Func<string, int, ComboBox> choice = (label, top) => {
                 readingPage.Controls.Add(new Label { Text = label, AutoSize = true, ForeColor = Color.White,
                     Location = new Point(20, top) });

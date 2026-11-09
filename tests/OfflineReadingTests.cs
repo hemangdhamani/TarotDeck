@@ -31,6 +31,7 @@ internal static class OfflineReadingTests
             Reject<InvalidOperationException>(() => WebRequest.Create("https://example.invalid/"), "Test HTTP network guard unavailable.");
             ContentCoverage();
             BundledDecks();
+            ContextReadingChecks();
             DeterminismAndOptions();
             InvalidInputs();
             JournalRoundTrips();
@@ -56,7 +57,7 @@ internal static class OfflineReadingTests
 
     private static void BundledDecks()
     {
-        foreach (string folder in new[] { "classic", "soimoi", "woodcut-marseille", "vieville", "lequart-besancon" })
+        foreach (string folder in new[] { "soimoi", "woodcut-marseille", "vieville", "lequart-besancon", "botanical-art-nouveau", "japanese-ink", "celestial-oil", "rose-watercolor", "geometric-deco", "illuminated-engraving", "mauryan-sandstone", "gupta-era-mural", "ramayana-forest", "mahabharata-dharma", "the-illustrated-arcana" })
         {
             string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", folder);
             Assert(Directory.Exists(directory), "Missing bundled deck: " + folder);
@@ -68,12 +69,14 @@ internal static class OfflineReadingTests
             foreach (string file in files)
                 using (var image = Image.FromFile(file)) Assert(image.Width >= (folder == "classic" ? 350 : folder == "soimoi" ? 720 : 750) &&
                     image.Height >= (folder == "classic" ? 600 : folder == "soimoi" ? 1080 : 1400), "Invalid or undersized image: " + file);
-            if (folder != "classic" && folder != "soimoi")
+            if (File.Exists(Path.Combine(directory, "DISPLAY-BOUNDS.txt")))
+                Assert(File.Exists(Path.Combine(directory, "SOURCE-MANIFEST.json")), "Missing original artwork provenance: " + folder);
+            else if (folder != "classic" && folder != "soimoi")
                 Assert(File.Exists(Path.Combine(directory, "LICENSE.txt")) && File.Exists(Path.Combine(directory, "SOURCE-MANIFEST.json")), "Missing provenance: " + folder);
         }
         Assert(!Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images")).Any(path =>
             System.Text.RegularExpressions.Regex.IsMatch(Path.GetFileNameWithoutExtension(path), "^(maj|cups|pents|swords|wands)[0-9]{2}$")), "Loose card fronts remain in images root.");
-        Console.WriteLine("PASS bundled decks: all 390 faces decode in five respective folders with exact canonical IDs.");
+        Console.WriteLine("PASS bundled decks: all 1170 faces decode in fifteen respective folders with exact canonical IDs.");
     }
 
     private static IEnumerable<Control> Descendants(Control parent)
@@ -111,6 +114,15 @@ internal static class OfflineReadingTests
         Console.WriteLine("PASS reading presentation: emphasized headings, plain body text, and preview navigation.");
     }
 
+    private static IEnumerable<Control> AllControls(Control root)
+    {
+        foreach (Control child in root.Controls)
+        {
+            yield return child;
+            foreach (Control descendant in AllControls(child)) yield return descendant;
+        }
+    }
+
     private static void UnifiedSettings()
     {
         var preferencesType = typeof(frmTarot).Assembly.GetType("TarotDeck.Properties.Settings");
@@ -137,6 +149,49 @@ internal static class OfflineReadingTests
                     foreach (var selector in new[] { spread, topic, focus })
                         Assert(selector.Left == tabs.TabPages[1].ClientSize.Width - selector.Right && selector.Right < tabs.TabPages[1].ClientSize.Width,
                             "Reading dropdown overflow or unequal horizontal margins.");
+                }
+                foreach (bool back in new[] { false, true })
+                {
+                    var selection = (ComboBox)Field(form, back ? "cardBackSelector" : "artworkSelector");
+                    var pending = selection.SelectedItem;
+                    Exception pickerError = null;
+                    using (var timer = new Timer { Interval = 100 })
+                    {
+                        timer.Tick += (sender, args) => {
+                            timer.Stop();
+                            var dialog = Application.OpenForms.Cast<Form>().Single(window => window.Text == (back ? "Choose card back" : "Choose artwork deck"));
+                            try
+                            {
+                                using (var capture = new Bitmap(dialog.Width, dialog.Height))
+                                {
+                                    dialog.DrawToBitmap(capture, new Rectangle(Point.Empty, dialog.Size));
+                                    capture.Save(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, back ? "picker-back-check.png" : "picker-front-check.png"), System.Drawing.Imaging.ImageFormat.Png);
+                                }
+                                var controls = AllControls(dialog).ToArray();
+                                var grid = controls.OfType<FlowLayoutPanel>().Single(control => control.AccessibleName == "Available artwork");
+                                Assert(grid.Controls.Count == selection.Items.Count, "Picker omitted available artwork.");
+                                Assert(grid.Controls.Cast<Button>().All(tile => tile.Controls.OfType<PictureBox>().Single().Image != null), "Missing artwork thumbnail.");
+                                var previewChoice = controls.OfType<ComboBox>().Single();
+                                if (!back)
+                                {
+                                    Assert(previewChoice.Items.Count == 78 && previewChoice.Items.Cast<CardMeaning>().Select(card => card.Id).Distinct().Count() == 78, "Need all 78 distinct preview cards.");
+                                    foreach (int index in new[] { 1, 2, 21, 22, 35, 49, 63, 77, 0 }) previewChoice.SelectedIndex = index;
+                                }
+                                var planned = grid.Controls.Cast<Button>().FirstOrDefault(tile => tile.Text.Contains("Coming soon"));
+                                if (planned != null)
+                                {
+                                    typeof(Button).GetMethod("OnClick", Private).Invoke(planned, new object[] { EventArgs.Empty });
+                                    Assert(!controls.OfType<Button>().Single(button => button.Text == "Select").Enabled, "Incomplete deck can be selected.");
+                                }
+                            }
+                            catch (Exception error) { pickerError = error; }
+                            finally { dialog.DialogResult = DialogResult.Cancel; dialog.Close(); }
+                        };
+                        timer.Start();
+                        Invoke(form, "ShowArtworkPicker", selection, back);
+                    }
+                    if (pickerError != null) throw pickerError;
+                    Assert(selection.SelectedItem == pending, "Picker Cancel changed pending selection.");
                 }
                 var auto = (CheckBox)Field(form, "autoSpreadCheckBox");
                 string originalSpread = (string)Field(form, "readingSpread"), originalTopic = (string)Field(form, "readingTopic");
@@ -190,7 +245,52 @@ internal static class OfflineReadingTests
 
     private static ReadingSnapshot Snapshot(params string[] ids)
     {
-        return ReadingSnapshot.Create(ids.Select(Card), ReadingOptions.Spreads[0], "General", "Overview", "Classic Tarot");
+        return ReadingSnapshot.Create(ids.Select(Card), ReadingOptions.Spreads[0], "General", "Overview", "The Illustrated Arcana");
+    }
+
+    private static void ContextReadingChecks()
+    {
+        var snapshot = Snapshot("maj01", "cups01", "pents06");
+        Assert(ReadingEngine.Analyze(snapshot).Context.Length == 0, "Old three-card readings gained context.");
+        snapshot.FirstCard = Card("cups13"); snapshot.LastCard = Card("cups06");
+        var report = ReadingEngine.Analyze(snapshot);
+        Assert(report.Context.Any(line => line.Contains("OPENING THEME")) && report.Context.Any(line => line.Contains("UNDERLYING THEME")), "Outer meanings missing.");
+        Assert(report.Text.Contains("OUTER CARD CONTEXT") && report.CardDetails.Length == 3, "Context displaced core spread.");
+        Assert(report.Text == ReadingEngine.Analyze(snapshot).Text, "Context reading is nondeterministic.");
+        foreach (int outerCount in new[] { 2, 1, 0 })
+        {
+            snapshot.FirstCard = outerCount > 0 ? Card("cups13") : null;
+            snapshot.LastCard = outerCount == 2 ? Card("cups06") : null;
+            var current = ReadingEngine.Analyze(snapshot);
+            using (var window = new ReadingWindow(snapshot, current, new ReadingJournal(Path.Combine(Path.GetTempPath(), "TarotOverviewChecks"))))
+            {
+                var controls = Descendants(window).ToArray();
+                var strip = controls.OfType<TableLayoutPanel>().Single(control => control.AccessibleName == "Your three reading cards");
+                Assert(strip.ColumnCount == 3 + outerCount && strip.Controls.Count == 3 + outerCount, "Overview left empty outer-card slots.");
+                var previews = Descendants(strip).OfType<PictureBox>().ToArray();
+                Assert(previews.Select(picture => picture.Size).Distinct().Count() == 1, "Overview thumbnails differ in size.");
+                if (outerCount > 0)
+                {
+                    var open = Descendants(strip).OfType<Button>().Single(button => button.Text.StartsWith("First ·"));
+                    typeof(Button).GetMethod("OnClick", Private).Invoke(open,new object[]{EventArgs.Empty});
+                    Assert(controls.OfType<TabControl>().Single().SelectedTab.Text.StartsWith("First ·"), "First card preview navigation failed.");
+                }
+            }
+        }
+        snapshot.FirstCard = Card("cups13"); snapshot.LastCard = Card("cups06");
+        using (var stream = new MemoryStream())
+        {
+            var serializer = new XmlSerializer(typeof(ReadingSnapshot)); serializer.Serialize(stream,snapshot); stream.Position=0;
+            var copy = (ReadingSnapshot)serializer.Deserialize(stream); copy.Validate();
+            Assert(copy.FirstCard.Id == snapshot.FirstCard.Id && copy.LastCard.Id == snapshot.LastCard.Id, "Outer cards lost during persistence.");
+        }
+        snapshot.LastCard = Card("maj01");
+        Reject<ArgumentException>(() => snapshot.Validate(), "Duplicate outer card accepted.");
+        string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"images","the-illustrated-arcana","pents06.png");
+        var loader = typeof(frmTarot).Assembly.GetType("TarotCardsDeck.CardArtwork").GetMethod("Load",BindingFlags.Static|BindingFlags.NonPublic);
+        using (var image = (Bitmap)loader.Invoke(null,new object[]{path}))
+            Assert(image.Width == 958 && image.Height < 1642 && image.Height > 1500, "Packaging padding was not removed from Six of Pentacles display.");
+        Console.WriteLine("PASS outer context: optional roles, distinct cards, deterministic text, persistence, and artwork display bounds.");
     }
 
     private static void ContentCoverage()
@@ -373,7 +473,7 @@ internal static class OfflineReadingTests
                 Assert(artworkNames.SequenceEqual(artworkNames.OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase)), "Artwork deck dropdown is not alphabetical.");
                 int originalArtwork = artwork.SelectedIndex;
                 typeof(frmTarot).GetField("loadingSelections", Private).SetValue(form, true);
-                foreach (string title in new[] { "Classic Tarot", "Soimoi Tarot", "Woodcut Marseille", "Tarot de Vieville", "Lequart Besançon" })
+                foreach (string title in new[] { "The Illustrated Arcana", "Soimoi Tarot", "Woodcut Marseille", "Tarot de Vieville", "Lequart Besançon" })
                 {
                     int index = Enumerable.Range(0, artwork.Items.Count).FirstOrDefault(i => artwork.Items[i].ToString() == title);
                     Assert(artwork.Items[index].ToString() == title, "Bundled deck not discovered: " + title);

@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "9918e0cc7cf5c77775ed6aaf31170ef8de060ac1d0f523225dd49e8968762040",
+      "source": "11-classic-rws/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "144d4c26fe5fd69079ca6d8c59aae15eeacf1d26aaade49c7111cc6028bd52ca",
+      "source": "11-classic-rws/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "0f7a1adc5353d0bcdf95485df09b01d155b8d08a1a92eee40bd5fb1c076596d8",
+      "source": "11-classic-rws/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "b72b1280938484b654252b08667d7593b5ed3599a8daf2752442cbd28f40fd79",
+      "source": "11-classic-rws/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "7694d66bff7fc16cd5b366b9f4ff78d0fd8a8da62abf33a5067cfe6a68fe98f2",
+      "source": "11-classic-rws/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "07eb330a778b632b2df7b1949b0e17f27b087a5dbf108196f61c1ac19b7f5477",
+      "source": "11-classic-rws/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "d757638b0afcd72dea487b2bcd30b92765a948b246d3d21d40f42e90641b4451",
+      "source": "11-classic-rws/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "fbd36dab88d1ed56c09d913e82c7277c63481d28d15533454ace204f4f92546d",
+      "source": "11-classic-rws/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "d3be9ecb3a3a8bf2a3c0f31b95b02c6c9aaa2dc5f68eeb598eab355f04ece75e",
+      "source": "11-classic-rws/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "ff661b46547e2976a54e4b0665d3e0a3d3ac81f386732cbba2ddc67ee6507cbd",
+      "source": "11-classic-rws/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "c44334af3d8057a46d1cd00e989149f8ba9ec89429edabf8c7bb695c42d9dcb5",
+      "source": "11-classic-rws/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "93308741ee6a4153fa013759c022f790035695b73d4e6e355276098a6c1e7c9b",
+      "source": "11-classic-rws/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "84f8f346152d0318c2d818d4249a33dc9d5a74ed2f80e522a22d1de66b65e07b",
+      "source": "11-classic-rws/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "b2cf0ab14bbca969153bb2622e72f92076290342657216b2c39022de8ea39b97",
+      "source": "11-classic-rws/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "25bbe00c729dcf5e7813784f71f811c84fe975f96cb7b9cb2df712a57ef97f55",
+      "source": "11-classic-rws/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "fd9ce08e4d977aba0002ac0bc12d5828c030f04d810fe485fb16ddbef15364a0",
+      "source": "11-classic-rws/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "f643188ab4466141ac09d0c70cf323be9b17badb75b9b8a0cab289d37d363431",
+      "source": "11-classic-rws/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "431a010a39c936ee979f3a019ed500cd5f49a94559c424f501c940e89c62fc17",
+      "source": "11-classic-rws/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "bf727100f01446c021065e7ae093d8846b79f84f500b31bf110fa89b78bdc65e",
+      "source": "11-classic-rws/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "c7d4eb9e140037aab8d9e6d14d0566123d7782f585e7a7393bf71dd896363a27",
+      "source": "11-classic-rws/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "d84bad45ad13649998963a72a1d1d451b3494858c454ed8de859a493afd39c46",
+      "source": "11-classic-rws/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "61ebd2e998b9004c3d44b61c49ea738d4f1fef827640e165fb98e90539e3d2e0",
+      "source": "11-classic-rws/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "6a29447b8b57415686efc2df2496f153f26ea887e60f87c5946d6ea1edaaedd3",
+      "source": "11-classic-rws/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "d031e5345c8929b4d83e89901f84df5e8a553cc6d8575800afeebc0a46b41a0b",
+      "source": "11-classic-rws/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "84fac24b219968ae6539d89a5e62c75dad4d758836dcbce5b095b66b8ec12eee",
+      "source": "11-classic-rws/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "42729941722a03a41d5cec2452245e435cc5f974ce1e3f75a9fe3267b31494d3",
+      "source": "11-classic-rws/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "d149748d319d9a3f9f1fd73ef9a22c85b1fdd75ae341b155f8b7540f5f504065",
+      "source": "11-classic-rws/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "0ae1517f0f2517daa28f983b0c74259166681da70909fc763afd0241fa7ae16e",
+      "source": "11-classic-rws/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "045f0415f6d40e036379f5301a60b94ada167d3d7e8c1357916bc16b3f83215a",
+      "source": "11-classic-rws/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "c78cfefe82aae39ff9f25c48e77dc782deb93e50b00753d5b676591f00ecf5cd",
+      "source": "11-classic-rws/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "121873469d807cadbf9d0c85365e5c79467a3bb59c8b611dc5776b45b66c9709",
+      "source": "11-classic-rws/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "e2bedfde170c974e251a20358dc5e612b1e6609ad817fea6cc60f35c23400f0b",
+      "source": "11-classic-rws/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "7e6ceaf82c7698fd2ad44dbabf0cd4de8a4c717e24bd7873c121f0298b747584",
+      "source": "11-classic-rws/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "58a0488cabf1b3fba63a8bb5708fbd10b69d888c067148c41d33d4919a421c0d",
+      "source": "11-classic-rws/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "e618bd9898e967972a4ad8adce34fe7b9c035dff41a5b91fd6069eb1b4c7c8fb",
+      "source": "11-classic-rws/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "3541f8cdd60ae90cdaf5ca468c7d87ccee8acd554ac8406202a71952a7f156ed",
+      "source": "11-classic-rws/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "4c41fd3de9797eb211705dd30ad9aef30e63d975eda32d4385c324e8640f6716",
+      "source": "11-classic-rws/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "44a2153e2c0efb4bb004172b0e6b269e8ce1e78185f28902f36927a9bb2036d3",
+      "source": "11-classic-rws/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "393399c154c23e23144720a9ef3bb5627a18eae9f5e91dda623504fa509ec105",
+      "source": "11-classic-rws/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "3b78ff058126bd88384e3e173447684b2282537c61dfb1a9f434d313e2c9ac4c",
+      "source": "11-classic-rws/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "4d83e65333b4dcab4ba65d8037c3e01ce6479ad0e22fba3c61f6fb7f43540f5b",
+      "source": "11-classic-rws/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "67abd1c06e9de279bf259d60dce15c3599a936ccbaeb2189bdfacb97220a5053",
+      "source": "11-classic-rws/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "1f65b3403c237eac59eee3884c3e9b968861e9547abb5d4b8ae212db29bd7b07",
+      "source": "11-classic-rws/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "60dfc17539c672566dc3f57de2629a95f427d85e2b03b5640b2832b34e12dd9c",
+      "source": "11-classic-rws/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "448d2d274704845234fd1b670f9d1da20967438aadbcd8c4fc616c433d4f916f",
+      "source": "11-classic-rws/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "5f0e95d238c10132461bd84223728fb1fd8e8d154e8f12853983732b824a845b",
+      "source": "11-classic-rws/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "20465a2d88f4f89c846b2f68612da28a5ecc528579f32a5636da3fbf40606003",
+      "source": "11-classic-rws/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "1a53cad2d115e3bc21e0860c17fcea9a4d0bbbe0a5291fe6870d58aa29a5131f",
+      "source": "11-classic-rws/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "3145660d0f7e8a933a39a9758b8df17ea5a9632c045afdcb98c7056c6a427a06",
+      "source": "11-classic-rws/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "a56fde0fe037a065c3a25f955a8db0d46aec59e234aed3b31e680a734bc3ad5e",
+      "source": "11-classic-rws/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "d4bf9f39f24c35a388475d70fcc6d605f5365ec3e79d7548c5d761efe992d1b7",
+      "source": "11-classic-rws/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "441724a0bf483773ec0ad088d8ad3bc07ea29c9b438a836cee5cd2c0b2f0a821",
+      "source": "11-classic-rws/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "8c255da8fa493bdc0e6ae631044b77823009acd2235c3c76771e136c8eab9601",
+      "source": "11-classic-rws/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "4cddba0857254553cfb085e44880e111c49ee6c99582bd59ac44d7ab316f5ac7",
+      "source": "11-classic-rws/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "852eccc221d28402305321bf6ee9369c2ea76cf00c6f994863c5269d9acf76e6",
+      "source": "11-classic-rws/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "d77a430489dc32e494f13709eb466d82c79c962e86b4e8cd4913fa490ac1f7e9",
+      "source": "11-classic-rws/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "dfe6def8dde62df3771afb2d3b93b4bf1a406eb87f8ce63721009ae60ba6c6c8",
+      "source": "11-classic-rws/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "e8932971504dc58113230ab8b83531a431553eb5ee918accce12934f054be8c6",
+      "source": "11-classic-rws/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "8ab5df083b05d24ae2726900d25bb543f6aff94c48be7c364d1dc6647b3c39ae",
+      "source": "11-classic-rws/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "db0290c03ebe6749c3e4933be2bed3c1548bebbf873065c0d33cabb57eca9418",
+      "source": "11-classic-rws/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "e9e93b8e6edd3ee52c6531d12f8e0eb227da2a35ec0f7e2e0ffed69b24e37206",
+      "source": "11-classic-rws/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "20644381758bef106ed239c94811696383b2a84f4f83c577348ba0037dacefce",
+      "source": "11-classic-rws/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "269cee036dc5c12a364980d330477257114d895cf5287fca33dad866794e0037",
+      "source": "11-classic-rws/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "5eba2d9ded70c8b71073510f267a43dd969379d1a64785dc07bf0c6cf2b956b5",
+      "source": "11-classic-rws/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "df5536287ff701803e1f70be1fe84c892d74c662ca7f7ab9b389bc078e4f04cf",
+      "source": "11-classic-rws/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "3bb1a099bcc8813287a4d8ffc985f400a2050018ab979c167edf1e5950d6401f",
+      "source": "11-classic-rws/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "9c868575b6ba3d4077252b11a383fbf8526c7b49f8eb13b863397e945fe78ec7",
+      "source": "11-classic-rws/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "df972abb6e1b3b15622b3464789659cbf730bc6b985c40ed12ac56105d50bc18",
+      "source": "11-classic-rws/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "7b3d8d7faf71df91e034c45ebd3bac790fca3e87d4c98a6cc935a4b9868f70c4",
+      "source": "11-classic-rws/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "1b9b362afa109a046a415f5e91bb7c378655bf16657bf758a364a753d4c305a8",
+      "source": "11-classic-rws/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "f9110efe46ff0799d5b29c4f901f9053b80a4d481f8ae8b45f76b770ee165f17",
+      "source": "11-classic-rws/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "febfea567a73ec31b222511c7ca64ae2e29575eddba0f0d036f80d97439d32ad",
+      "source": "11-classic-rws/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "346918b5a5cd9a54bc280e7479ee264d9951aa5cf3251a2ad593d28a357b59f9",
+      "source": "11-classic-rws/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "99d0ae136352e1f58a1bda28c67fba77e2c0cd729aa886e80749ba0e7a947474",
+      "source": "11-classic-rws/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "12ea6dc050862fd8980ef44a4bb75459c5458d5cae1d21cc4502cf8e48258bb0",
+      "source": "11-classic-rws/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "8c1f5ff40e1c8a74d8ee7f0b0d47071bc597b1fea8d98d4db60c44bb62b9ba91",
+      "source": "11-classic-rws/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "e06ab335980c1f7f2853f0af489ec2af9cb0f9b2d138e36674373e32c93d3f73",
+      "source": "11-classic-rws/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "ca7d050abda4fec845928a8637f400b8d550bdffcec3115551d0a558a94e8076",
+      "source": "11-classic-rws/cards/wands14.png"
+    }
+  ]
+}

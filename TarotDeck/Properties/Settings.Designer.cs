@@ -57,7 +57,7 @@ namespace TarotDeck.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Classic Tarot")]
+        [global::System.Configuration.DefaultSettingValueAttribute("The Illustrated Arcana")]
         public string ArtworkName {
             get { return ((string)(this["ArtworkName"])); }
             set { this["ArtworkName"] = value; }

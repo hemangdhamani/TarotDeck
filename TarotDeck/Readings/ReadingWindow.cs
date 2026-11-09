@@ -25,7 +25,7 @@ namespace TarotCardsDeck.Readings
             this.snapshot = snapshot;
             this.report = report;
             this.journal = journal;
-            ReadingUi.Configure(this, "Your reading", new Size(1100, 840));
+            ReadingUi.Configure(this, "Your reading", new Size(1500, 840), true);
 
             var root = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(18),
                 ColumnCount = 1, RowCount = 4, BackColor = BackColor };
@@ -44,8 +44,10 @@ namespace TarotCardsDeck.Readings
             var overviewLayout = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 2, Padding = new Padding(10) };
             overviewLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 145));
             overviewLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-            var cardStrip = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 3, RowCount = 1, AccessibleName = "Your three reading cards" };
-            for (int i = 0; i < 3; i++) cardStrip.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / 3));
+            int previewCount = 3 + (snapshot.FirstCard == null ? 0 : 1) + (snapshot.LastCard == null ? 0 : 1);
+            int spreadOffset = snapshot.FirstCard == null ? 0 : 1;
+            var cardStrip = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = previewCount, RowCount = 1, AccessibleName = "Your three reading cards" };
+            for (int i = 0; i < previewCount; i++) cardStrip.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / previewCount));
             overviewLayout.Controls.Add(cardStrip, 0, 0);
             overviewLayout.Controls.Add(ReadingUi.ReadOnlyText(BuildOverview(report)), 0, 1);
             overview.Controls.Add(overviewLayout);
@@ -57,18 +59,8 @@ namespace TarotCardsDeck.Readings
             {
                 var card = cards[i];
                 int tabIndex = i + 1;
-                var tile = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 2, Margin = new Padding(6) };
-                tile.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-                tile.RowStyles.Add(new RowStyle(SizeType.Absolute, 45));
-                var preview = new PictureBox { Dock = DockStyle.Fill, SizeMode = PictureBoxSizeMode.Zoom,
-                    Image = LoadThumbnail(card.ImagePath), Cursor = Cursors.Hand, AccessibleName = positions[i] + ": " + card.Name };
-                preview.Click += (s, e) => tabs.SelectedIndex = tabIndex;
-                tile.Controls.Add(preview, 0, 0);
-                var openCard = ReadingUi.Button(positions[i] + " · " + card.Name);
-                openCard.Dock = DockStyle.Fill; openCard.AutoSize = false; openCard.AutoEllipsis = true;
-                openCard.Margin = new Padding(0, 3, 0, 0); openCard.Padding = Padding.Empty;
-                openCard.Click += (s, e) => tabs.SelectedIndex = tabIndex;
-                tile.Controls.Add(openCard, 0, 1); cardStrip.Controls.Add(tile, i, 0);
+                var tile = OverviewCard(card, positions[i], () => tabs.SelectedIndex = tabIndex, false);
+                cardStrip.Controls.Add(tile, i + spreadOffset, 0);
                 var page = ReadingUi.Page((i + 1) + ". " + positions[i]);
                 var split = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1,
                     Padding = new Padding(12), BackColor = BackColor };
@@ -89,6 +81,22 @@ namespace TarotCardsDeck.Readings
                 split.Controls.Add(ReadingUi.ReadOnlyText(detail), 1, 0);
                 page.Controls.Add(split);
                 tabs.TabPages.Add(page);
+            }
+
+            var contextCards = new[] { snapshot.FirstCard, snapshot.LastCard };
+            for (int index = 0; index < contextCards.Length; index++)
+            {
+                var card = contextCards[index];
+                if (card == null) continue;
+                var page = ReadingUi.Page(index == 0 ? "First · Opening theme" : "Last · Underlying theme");
+                var layout = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, Padding = new Padding(12) };
+                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,28)); layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,72));
+                layout.Controls.Add(new PictureBox { Dock = DockStyle.Fill, SizeMode = PictureBoxSizeMode.Zoom, Image = LoadThumbnail(card.ImagePath), AccessibleName = card.Name },0,0);
+                layout.Controls.Add(ReadingUi.ReadOnlyText(card.Name + "\r\n\r\n" + Join(report.Context)),1,0);
+                page.Controls.Add(layout); tabs.TabPages.Add(page);
+                string role = index == 0 ? "First · Opening theme" : "Last · Underlying theme";
+                var outerTile = OverviewCard(card, role, () => tabs.SelectedTab = page, true);
+                cardStrip.Controls.Add(outerTile, index == 0 ? 0 : previewCount - 1, 0);
             }
 
             var notesPage = ReadingUi.Page("Your notes");
@@ -124,12 +132,28 @@ namespace TarotCardsDeck.Readings
             FormClosed += (s, e) => { foreach (Image image in thumbnails) image.Dispose(); thumbnails.Clear(); };
         }
 
+        private Control OverviewCard(ReadingCard card, string role, Action open, bool context)
+        {
+            var tile = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 2, Margin = new Padding(6), AccessibleName = role };
+            tile.RowStyles.Add(new RowStyle(SizeType.Percent,100)); tile.RowStyles.Add(new RowStyle(SizeType.Absolute,45));
+            var preview = new PictureBox { Anchor = AnchorStyles.None, Size = new Size(48,82), SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = LoadThumbnail(card.ImagePath), Cursor = Cursors.Hand, AccessibleName = role + ": " + card.Name };
+            preview.Click += (s,e) => open(); tile.Controls.Add(preview,0,0);
+            var button = ReadingUi.Button(role + " · " + card.Name);
+            button.Dock = DockStyle.Fill; button.AutoSize = false; button.AutoEllipsis = true;
+            button.Margin = new Padding(0,3,0,0); button.Padding = Padding.Empty;
+            button.Click += (s,e) => open(); tile.Controls.Add(button,0,1);
+            if (context) tile.Paint += (s,e) => ControlPaint.DrawBorder(e.Graphics, tile.ClientRectangle, Color.FromArgb(70,70,70), ButtonBorderStyle.Solid);
+            return tile;
+        }
+
         private Image LoadThumbnail(string path)
         {
+            path = CardArtwork.ResolvePath(path);
             if (string.IsNullOrWhiteSpace(path) || !File.Exists(path)) return null;
             try
             {
-                using (Image source = Image.FromFile(path))
+                using (Image source = CardArtwork.Load(path))
                 {
                     var image = new Bitmap(source);
                     thumbnails.Add(image);
@@ -145,7 +169,7 @@ namespace TarotCardsDeck.Readings
         {
             // History intentionally displays its original saved text, not regenerated meanings.
             if (string.IsNullOrWhiteSpace(reading.Summary)) return reading.Text ?? "";
-            return (reading.Summary ?? "") + "\r\n\r\nCONNECTIONS\r\n" + Join(reading.Connections)
+            return (reading.Summary ?? "") + ((reading.Context ?? new string[0]).Length == 0 ? "" : "\r\n\r\nOUTER CARD CONTEXT\r\n" + Join(reading.Context)) + "\r\n\r\nCONNECTIONS\r\n" + Join(reading.Connections)
                 + "\r\n\r\nNEXT STEPS\r\n" + Join(reading.Actions)
                 + "\r\n\r\nREFLECTION\r\n" + Join(reading.Reflections);
         }
@@ -288,7 +312,7 @@ namespace TarotCardsDeck.Readings
 
     internal static class ReadingUi
     {
-        public static void Configure(Form form, string title, Size size)
+        public static void Configure(Form form, string title, Size size, bool wideReading = false)
         {
             form.Text = title;
             form.StartPosition = FormStartPosition.CenterParent;
@@ -303,7 +327,8 @@ namespace TarotCardsDeck.Readings
             {
                 var area = Screen.FromControl(form.Owner ?? form).WorkingArea;
                 form.MinimumSize = new Size(Math.Min(640, area.Width), Math.Min(500, area.Height));
-                form.Size = new Size(Math.Min(form.Width, area.Width), Math.Min(form.Height, area.Height));
+                form.Size = new Size(wideReading ? Math.Max(1, (int)Math.Round(area.Width * 0.83)) : Math.Min(form.Width, area.Width),
+                    wideReading ? Math.Max(1, (int)Math.Round(area.Height * 0.83)) : Math.Min(form.Height, area.Height));
                 Rectangle ownerArea = form.Owner == null ? area : Rectangle.Intersect(area, form.Owner.RectangleToScreen(form.Owner.ClientRectangle));
                 if (ownerArea.Width <= 0 || ownerArea.Height <= 0) ownerArea = area;
                 form.Location = new Point(Math.Max(area.Left, Math.Min(ownerArea.Left + (ownerArea.Width - form.Width) / 2, area.Right - form.Width)),

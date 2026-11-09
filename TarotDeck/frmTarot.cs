@@ -18,7 +18,6 @@ namespace TarotCardsDeck
         private ComboBox deckSelector;
         private ComboBox artworkSelector;
         private ComboBox cardBackSelector;
-        private Button addArtworkButton;
         private Button creditsButton;
         private Button settingsButton;
         private Panel settingsPanel;
@@ -131,20 +130,15 @@ namespace TarotCardsDeck
             artworkLabel.Location = new Point(20, 20);
             settingsPanel.Controls.Add(artworkLabel);
 
-            addArtworkButton = new Button();
-            addArtworkButton.Text = "Add deck...";
-            addArtworkButton.Location = new Point(292, 39);
-            addArtworkButton.Size = new Size(116, 23);
-            addArtworkButton.UseVisualStyleBackColor = true;
-            addArtworkButton.Click += AddArtworkButton_Click;
-            settingsPanel.Controls.Add(addArtworkButton);
             settingsPanel.Controls.Add(new Label { Text = "Card back", AutoSize = true,
                 ForeColor = Color.White, Location = new Point(20, 80) });
             cardBackSelector = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList,
                 Location = new Point(20, 100), Width = 260 };
             string backFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", "cardbacks");
             string[] backNames = { "Celestial Garden", "Moonlit Lotus", "Emerald Labyrinth", "Rosewood Mandala",
-                "Sapphire Tides", "Obsidian Eclipse", "Blush Peony", "Lavender Dream", "Ivory Astrolabe", "Teal Phoenix" };
+                "Sapphire Tides", "Obsidian Eclipse", "Blush Peony", "Lavender Dream", "Ivory Astrolabe", "Teal Phoenix",
+                "Mauryan Lotus", "Gupta Bloom", "Chola Bronze", "Mughal Inlay", "Indigo Shibori", "Persian Starlight", "Nordic Frost",
+                "Desert Mosaic", "Pearl Lace", "Cosmic Aurora", "Obsidian Geometry" };
             foreach (string name in backNames.OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase))
                 cardBackSelector.Items.Add(new ArtworkChoice(name, Path.Combine(backFolder,
                     name.ToLowerInvariant().Replace(' ', '-') + ".png")));
@@ -231,13 +225,13 @@ namespace TarotCardsDeck
             Rectangle available = Rectangle.Intersect(ClientRectangle,
                 RectangleToClient(Screen.FromControl(this).WorkingArea));
             if (available.Width <= 0 || available.Height <= 0) return;
-            settingsButton.Location = new Point(Math.Max(available.Left, available.Right - settingsButton.Width - margin),
+            settingsButton.Location = new Point(available.Left + margin,
                 Math.Max(available.Top, available.Bottom - settingsButton.Height - margin));
-            creditsButton.Location = new Point(settingsButton.Left - creditsButton.Width - 10,
+            creditsButton.Location = new Point(settingsButton.Right + 10,
                 settingsButton.Top);
             PositionReadingControls();
             PositionOverlay(settingsPanel, new Rectangle(
-                new Point(Math.Max(available.Left + margin, available.Right - settingsPanel.Width - margin),
+                new Point(available.Left + margin,
                     Math.Max(available.Top + margin, settingsButton.Top - settingsPanel.Height - 12)),
                 settingsPanel.Size));
             if (creditsPanel != null)
@@ -245,7 +239,7 @@ namespace TarotCardsDeck
                 creditsPanel.Size = new Size(Math.Min(520, Math.Max(240, available.Width - margin * 2)),
                     Math.Min(260, Math.Max(160, settingsButton.Top - available.Top - margin * 2)));
                 PositionOverlay(creditsPanel, new Rectangle(
-                    new Point(Math.Max(available.Left + margin, available.Right - creditsPanel.Width - margin),
+                    new Point(available.Left + margin,
                         Math.Max(available.Top + margin, settingsButton.Top - creditsPanel.Height - 12)),
                     creditsPanel.Size));
             }
@@ -267,7 +261,8 @@ namespace TarotCardsDeck
 
         private void SelectCardBack(string name)
         {
-            cardBackSelector.SelectedIndex = 2; // Emerald Labyrinth is the default.
+            cardBackSelector.SelectedIndex = cardBackSelector.Items.Cast<ArtworkChoice>().ToList()
+                .FindIndex(item => item.Name == "Emerald Labyrinth");
             for (int i = 0; i < cardBackSelector.Items.Count; i++)
                 if (((ArtworkChoice)cardBackSelector.Items[i]).Name == name)
                     cardBackSelector.SelectedIndex = i;
@@ -275,6 +270,13 @@ namespace TarotCardsDeck
 
         private void ApplySettings_Click(object sender, EventArgs e)
         {
+            ArtworkChoice pending = (ArtworkChoice)artworkSelector.SelectedItem;
+            if (!HasCompleteArtwork(pending.Path))
+            {
+                MessageBox.Show(this, "This planned deck is coming soon. Its complete 78-card artwork must be added before it can be applied.",
+                    "Artwork not available yet", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             // Complete closing the panel before changing images or rebuilding controls.
             // Hiding it halfway through Apply leaves native child-window paints mixed
             // with the image updates on the same UI message.
@@ -332,7 +334,7 @@ namespace TarotCardsDeck
         {
             string selectedName = TarotDeck.Properties.Settings.Default.CardBackName;
             ArtworkChoice choice = cardBackSelector.Items.Cast<ArtworkChoice>()
-                .FirstOrDefault(item => item.Name == selectedName) ?? (ArtworkChoice)cardBackSelector.Items[2];
+                .FirstOrDefault(item => item.Name == selectedName) ?? cardBackSelector.Items.Cast<ArtworkChoice>().First(item => item.Name == "Emerald Labyrinth");
             using (Image image = Image.FromFile(choice.Path)) return new Bitmap(image);
         }
 
@@ -387,18 +389,22 @@ namespace TarotCardsDeck
         {
             string appImages = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images");
             string userDecks = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TarotDeck", "Decks");
+            if (preferredName == "Classic Tarot" || preferredName == "Classic RWS — Approved Violet Drapery" ||
+                preferredName == "Classic Rider–Waite–Smith Inspired" || preferredName == "Classic RWS")
+            {
+                preferredName = "The Illustrated Arcana";
+                TarotDeck.Properties.Settings.Default.ArtworkName = preferredName;
+                TarotDeck.Properties.Settings.Default.Save();
+            }
             List<ArtworkChoice> choices = new List<ArtworkChoice>();
-            string bundledClassic = Path.Combine(appImages, "classic");
-            if (HasCompleteArtwork(bundledClassic)) choices.Add(new ArtworkChoice("Classic Tarot", bundledClassic));
             string bundledSoimoi = Path.Combine(appImages, "soimoi");
             if (Directory.Exists(bundledSoimoi)) choices.Add(new ArtworkChoice("Soimoi Tarot", bundledSoimoi));
             foreach (string directory in Directory.GetDirectories(appImages).OrderBy(path => path, StringComparer.OrdinalIgnoreCase))
             {
-                if (string.Equals(directory, bundledClassic, StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(directory, bundledSoimoi, StringComparison.OrdinalIgnoreCase) || !HasCompleteArtwork(directory)) continue;
+                if (string.Equals(directory, bundledSoimoi, StringComparison.OrdinalIgnoreCase) || (!HasCompleteArtwork(directory) && !File.Exists(Path.Combine(directory, "PLANNED.txt")))) continue;
                 string titleFile = Path.Combine(directory, "DECKNAME.txt");
                 string title = File.Exists(titleFile) ? File.ReadAllText(titleFile).Trim() : Path.GetFileName(directory);
-                choices.Add(new ArtworkChoice(string.IsNullOrWhiteSpace(title) ? Path.GetFileName(directory) : title, directory));
+                choices.Add(new ArtworkChoice(string.IsNullOrWhiteSpace(title) ? Path.GetFileName(directory) : title, directory, !HasCompleteArtwork(directory)));
             }
             if (Directory.Exists(userDecks))
             {
@@ -410,53 +416,7 @@ namespace TarotCardsDeck
             artworkSelector.Items.Clear();
             foreach (ArtworkChoice choice in choices) artworkSelector.Items.Add(choice);
             int selected = choices.FindIndex(x => string.Equals(x.Name, preferredName, StringComparison.OrdinalIgnoreCase));
-            artworkSelector.SelectedIndex = selected < 0 ? 0 : selected;
-        }
-
-        private void AddArtworkButton_Click(object sender, EventArgs e)
-        {
-            using (FolderBrowserDialog picker = new FolderBrowserDialog())
-            {
-                picker.Description = "Choose a folder containing all 78 tarot card front images.";
-                if (picker.ShowDialog(this) != DialogResult.OK) return;
-                Dictionary<string, string> sourceArtwork = BuildArtworkFileIndex(picker.SelectedPath);
-                if (!HasCompleteArtwork(sourceArtwork))
-                {
-                    MessageBox.Show(this, "This folder is missing one or more required cards. See README.md for the required filenames.", "Incomplete tarot deck", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                string root = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TarotDeck", "Decks");
-                Directory.CreateDirectory(root);
-                string deckName = Path.GetFileName(picker.SelectedPath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
-                if (string.IsNullOrWhiteSpace(deckName)) deckName = "Custom Tarot";
-                string destination = Path.Combine(root, deckName);
-                int suffix = 2;
-                while (Directory.Exists(destination) && !string.Equals(Path.GetFullPath(destination), Path.GetFullPath(picker.SelectedPath), StringComparison.OrdinalIgnoreCase))
-                    destination = Path.Combine(root, deckName + " " + suffix++);
-
-                if (!string.Equals(Path.GetFullPath(destination), Path.GetFullPath(picker.SelectedPath), StringComparison.OrdinalIgnoreCase))
-                {
-                    Directory.CreateDirectory(destination);
-                    foreach (string file in GetRequiredImageNames())
-                        File.Copy(sourceArtwork[Path.GetFileNameWithoutExtension(file)], Path.Combine(destination, file), true);
-                    foreach (string creditFile in new[] { "LICENSE", "LICENSE.txt", "LICENSE.md", "CREDITS.txt", "ATTRIBUTION.txt" })
-                    {
-                        string creditPath = Path.Combine(picker.SelectedPath, creditFile);
-                        if (File.Exists(creditPath)) File.Copy(creditPath, Path.Combine(destination, creditFile), true);
-                    }
-                }
-
-                loadingSelections = true;
-                PopulateArtworkChoices(Path.GetFileName(destination));
-                if (settingsPanel.Visible) { loadingSelections = false; return; }
-                RefreshArtworkFileIndex();
-                loadingSelections = false;
-                SaveSelection();
-                StartNewDeck();
-                Shuffle();
-                SpreadDeck();
-            }
+            artworkSelector.SelectedIndex = selected < 0 || choices[selected].IsPlanned ? choices.FindIndex(choice => !choice.IsPlanned) : selected;
         }
 
         private void CreditsButton_Click(object sender, EventArgs e)
@@ -514,7 +474,7 @@ namespace TarotCardsDeck
             artworkCredits = null;
             if (choice != null && choice.Name == "Soimoi Tarot")
                 artworkCredits = "Soimoi Tarot artwork by Mike Koz (https://koz.tv/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). The artwork was adapted to this app's card filename format. The custom card back was created for TarotDeck.";
-            else if (choice != null && choice.Name != "Classic Tarot")
+            else if (choice != null)
             {
                 List<string> credits = new List<string>();
                 foreach (string file in new[] { "CREDITS.txt", "ATTRIBUTION.txt", "LICENSE", "LICENSE.txt", "LICENSE.md" })
@@ -586,7 +546,7 @@ namespace TarotCardsDeck
         private void RefreshArtworkFileIndex()
         {
             ArtworkChoice choice = artworkSelector.SelectedItem as ArtworkChoice;
-            string directory = choice == null ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", "classic") : choice.Path;
+            string directory = choice == null ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", "the-illustrated-arcana") : choice.Path;
             activeArtworkFiles = BuildArtworkFileIndex(directory);
             UpdateArtworkCredits();
         }
@@ -602,8 +562,9 @@ namespace TarotCardsDeck
         {
             public string Name { get; private set; }
             public string Path { get; private set; }
-            public ArtworkChoice(string name, string path) { Name = name; Path = path; }
-            public override string ToString() { return Name; }
+            public bool IsPlanned { get; private set; }
+            public ArtworkChoice(string name, string path, bool isPlanned = false) { Name = name; Path = path; IsPlanned = isPlanned; }
+            public override string ToString() { return Name + (IsPlanned ? " (Coming soon)" : ""); }
         }
 
         private void StartNewDeck()
@@ -1013,7 +974,6 @@ namespace TarotCardsDeck
             RaiseMainControls();
             deckSelector.BringToFront();
             artworkSelector.BringToFront();
-            addArtworkButton.BringToFront();
             creditsButton.BringToFront();
             foreach (Control control in Controls)
                 if (control is Label) control.BringToFront();
@@ -1298,7 +1258,7 @@ namespace TarotCardsDeck
         {
             string path = FindArtworkFile(fileName);
             if (path == null) throw new FileNotFoundException("Missing artwork image " + fileName);
-            using (Image image = Image.FromFile(path)) return new Bitmap(image);
+            return CardArtwork.Load(path);
         }
 
         private void SetPictureImage(PictureBox pictureBox, Image image, Card card = null)
