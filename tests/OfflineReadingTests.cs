@@ -174,8 +174,14 @@ internal static class OfflineReadingTests
                                 var previewChoice = controls.OfType<ComboBox>().Single();
                                 if (!back)
                                 {
-                                    Assert(previewChoice.Items.Count == 78 && previewChoice.Items.Cast<CardMeaning>().Select(card => card.Id).Distinct().Count() == 78, "Need all 78 distinct preview cards.");
+                                    Assert(previewChoice.Items.Count == 79 && previewChoice.Items.OfType<CardMeaning>().Select(card => card.Id).Distinct().Count() == 78, "Need All plus 78 distinct preview cards.");
                                     foreach (int index in new[] { 1, 2, 21, 22, 35, 49, 63, 77, 0 }) previewChoice.SelectedIndex = index;
+                                    var gallery = Descendants(dialog).OfType<FlowLayoutPanel>().Single(galleryPanel => galleryPanel.AccessibleName == "All card previews");
+                                    Assert(gallery.Controls.Count == 78, "All preview omitted cards.");
+                                    dialog.Width += 650; Application.DoEvents(); gallery.PerformLayout();
+                                    Assert(gallery.Controls[0].Top == gallery.Controls[1].Top, "All preview does not wrap into more columns when widened.");
+                                    previewChoice.SelectedIndex = 1;
+                                    Assert(!gallery.Visible, "Individual preview did not hide All gallery.");
                                 }
                                 var planned = grid.Controls.Cast<Button>().FirstOrDefault(tile => tile.Text.Contains("Coming soon"));
                                 if (planned != null)

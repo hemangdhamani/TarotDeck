@@ -77,3 +77,5 @@ The original Classic Tarot bundle has been removed. The new RWS-inspired deck is
 Overview previews follow the main-window order: First (when revealed), the three spread positions, then Last (when revealed). All thumbnails share a size and link to their detail tabs; absent context cards leave no empty columns.
 
 Main-window footer: Settings and optional Credits are on the bottom left; Journal and Read Cards are on the bottom right, with Read Cards rightmost.
+
+The front preview dropdown also offers All: a vertically scrolling gallery that wraps into additional columns as the picker is widened. Click a gallery image to return to that individual card.

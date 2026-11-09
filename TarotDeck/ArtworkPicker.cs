@@ -101,10 +101,27 @@ namespace TarotCardsDeck
                         card.Id.StartsWith("cups", StringComparison.Ordinal) ? 3 : card.Id.StartsWith("pents", StringComparison.Ordinal) ? 4 :
                         card.Id.StartsWith("swords", StringComparison.Ordinal) ? 5 : 6)
                     .ThenBy(card => card.Id, StringComparer.Ordinal).Cast<object>().ToArray());
-                options.SelectedIndex = 0;
+                options.Items.Insert(0, "All");
+                options.SelectedIndex = 1;
                 var large = new PictureBox { AccessibleName = "Main-size artwork preview", Anchor = AnchorStyles.None, Size = previewSize, Margin = Padding.Empty, SizeMode = PictureBoxSizeMode.StretchImage };
+                var previewHost = new Panel { Dock = DockStyle.Fill, Margin = Padding.Empty };
+                var gallery = new FlowLayoutPanel { Dock = DockStyle.Fill, AutoScroll = true, WrapContents = true,
+                    Padding = new Padding(spacing), Margin = Padding.Empty, Visible = false, AccessibleName = "All card previews" };
+                previewHost.Controls.Add(large); previewHost.Controls.Add(gallery);
+                Action layoutGallery = () => {
+                    int width = Math.Max(40, Math.Min(previewSize.Width, gallery.ClientSize.Width - spacing * 3 - SystemInformation.VerticalScrollBarWidth));
+                    int height = (int)Math.Round((double)width * previewSize.Height / previewSize.Width);
+                    foreach (Panel tile in gallery.Controls)
+                    {
+                        tile.Size = new Size(width, height + nameHeight);
+                        tile.Controls.OfType<PictureBox>().Single().Bounds = new Rectangle(0,0,width,height);
+                        tile.Controls.OfType<Label>().Single().Bounds = new Rectangle(0,height,width,nameHeight);
+                    }
+                };
+                gallery.ClientSizeChanged += (s,e) => layoutGallery();
+                previewHost.ClientSizeChanged += (s,e) => large.Location = new Point((previewHost.ClientSize.Width-large.Width)/2,(previewHost.ClientSize.Height-large.Height)/2);
                 var status = new Label { Margin = new Padding(0, spacing, 0, spacing), Dock = DockStyle.Fill, ForeColor = Color.Gainsboro, AutoEllipsis = true, AccessibleName = "Artwork availability and credits" };
-                detail.Controls.Add(heading,0,0); detail.Controls.Add(options,0,1); detail.Controls.Add(large,0,2); detail.Controls.Add(status,0,3);
+                detail.Controls.Add(heading,0,0); detail.Controls.Add(options,0,1); detail.Controls.Add(previewHost,0,2); detail.Controls.Add(status,0,3);
                 body.Controls.Add(grid,0,0); body.Controls.Add(detail,1,0);
                 var actions = new FlowLayoutPanel { Dock = DockStyle.Bottom, Height = 52, FlowDirection = FlowDirection.RightToLeft, Padding = new Padding(8) };
                 var cancel = new Button { Text = "Back", DialogResult = DialogResult.Cancel, Size = new Size(110, 30), BackColor = Color.WhiteSmoke, UseVisualStyleBackColor = false, ForeColor = btnDrawCards.ForeColor };
@@ -112,11 +129,49 @@ namespace TarotCardsDeck
                 actions.Controls.Add(cancel); actions.Controls.Add(use); picker.Controls.Add(body); picker.Controls.Add(actions);
                 picker.CancelButton = cancel; picker.AcceptButton = use;
                 ArtworkChoice selected = selector.SelectedItem as ArtworkChoice;
+                ArtworkChoice galleryChoice = null;
                 Action show = () => {
                     heading.Text = selected == null ? "Choose an item" : selected.Name;
-                    string id = ((Readings.CardMeaning)options.SelectedItem).Id;
-                    Image old = large.Image; large.Image = ReadPreview(PreviewPath(selected, back, id)); if (old != null) old.Dispose();
-                    use.Enabled = selected != null && !selected.IsPlanned && large.Image != null;
+                    bool all = !back && options.SelectedItem is string;
+                    gallery.Visible = all; large.Visible = !all;
+                    if (all)
+                    {
+                        if (galleryChoice != selected)
+                        {
+                            foreach (Control tile in gallery.Controls.Cast<Control>().ToArray()) tile.Dispose();
+                            gallery.Controls.Clear(); gallery.SuspendLayout();
+                            try
+                            {
+                                foreach (var card in options.Items.OfType<Readings.CardMeaning>())
+                                {
+                                    using (var full = ReadPreview(PreviewPath(selected,false,card.Id)))
+                                    {
+                                        if (full == null) continue;
+                                        var bitmap = new Bitmap(previewSize.Width, previewSize.Height);
+                                        using (var graphics = Graphics.FromImage(bitmap))
+                                        {
+                                            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                                            graphics.DrawImage(full,new Rectangle(Point.Empty,bitmap.Size));
+                                        }
+                                        var tile = new Panel { BackColor = Color.WhiteSmoke, Margin = new Padding(0,0,spacing,spacing) };
+                                        var picture = new PictureBox { Image = bitmap, SizeMode = PictureBoxSizeMode.StretchImage, AccessibleName = card.Name };
+                                        picture.Disposed += (s,e) => bitmap.Dispose();
+                                        var caption = new Label { Text = card.Name, ForeColor = Color.Black, TextAlign = ContentAlignment.MiddleCenter, AutoEllipsis = true };
+                                        tile.Controls.Add(picture); tile.Controls.Add(caption); gallery.Controls.Add(tile);
+                                        picture.Click += (s,e) => options.SelectedItem = card;
+                                    }
+                                }
+                                galleryChoice = selected; layoutGallery();
+                            }
+                            finally { gallery.ResumeLayout(); }
+                        }
+                    }
+                    else
+                    {
+                        string id = ((Readings.CardMeaning)options.SelectedItem).Id;
+                        Image old = large.Image; large.Image = ReadPreview(PreviewPath(selected, back, id)); if (old != null) old.Dispose();
+                    }
+                    use.Enabled = selected != null && !selected.IsPlanned && (all ? gallery.Controls.Count > 0 : large.Image != null);
                     string availability = selected != null && selected.IsPlanned ? "Coming soon — the complete 78-card deck is not available yet." : "Select returns to Settings. Apply saves your choices; Cancel discards them.";
                     string credits = "";
                     if (!back && selected != null)
@@ -127,7 +182,7 @@ namespace TarotCardsDeck
                             if (File.Exists(creditPath)) credits += "\r\n\r\n" + File.ReadAllText(creditPath).Trim();
                         }
                     }
-                    status.Text = (large.Image == null ? "This preview is not available yet.\r\n" : "") + availability + credits;
+                    status.Text = (!all && large.Image == null ? "This preview is not available yet.\r\n" : "") + availability + credits;
                     foreach (Control tile in grid.Controls) tile.BackColor = tile.Tag == selected ? Color.LightSteelBlue : Color.WhiteSmoke;
                 };
                 foreach (ArtworkChoice choice in selector.Items)
@@ -171,6 +226,8 @@ namespace TarotCardsDeck
                         int previewWidth = Math.Max(1, detail.ClientSize.Width - gap * 2);
                         double scale = Math.Min(1.0, Math.Min((double)previewWidth / previewSize.Width, (double)Math.Max(1, detail.ClientSize.Height - previewChrome) / previewSize.Height));
                         large.Size = new Size(Math.Max(1, (int)(previewSize.Width * scale)), Math.Max(1, (int)(previewSize.Height * scale)));
+                        large.Location = new Point((previewHost.ClientSize.Width-large.Width)/2,(previewHost.ClientSize.Height-large.Height)/2);
+                        layoutGallery();
                     }
                     finally { grid.ResumeLayout(); layingOut = false; }
                 };
