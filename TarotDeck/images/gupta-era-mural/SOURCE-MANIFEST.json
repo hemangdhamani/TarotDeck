@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "524de733d6d1d1c7559df0070bf12bf3f979ca9cbf8138c79c36ca3123158c61",
+      "source": "08-gupta-era-mural/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "c85b593df6c028c2910aa6da488f74baa95385668facff1e19b3e9aca992c2d4",
+      "source": "08-gupta-era-mural/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "f292f0a74d2aa219d33cfac0aedb767139e987727fb783f332044da9c4d14f66",
+      "source": "08-gupta-era-mural/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "274ad55fe3780b3e780df52ce5046e27af5cddf8671e85cb84f93e9c5eef72c7",
+      "source": "08-gupta-era-mural/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "7abeccec48f29de28076c32c12168dbcd097a823979a469ebaf8c8185db285ac",
+      "source": "08-gupta-era-mural/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "9c57de876dd25787fd3a3970539a4c9de12aac37299e4c071cf57fbf7773d3f3",
+      "source": "08-gupta-era-mural/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "553b9d1918a4a0dc7ed52ce8176cf7d837cc1da06345026708cdfea692287fbe",
+      "source": "08-gupta-era-mural/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "d4bf0d151e97fe712cbb4ffdbaa1e5c2bac0d419bccf866acc8b5ae732e0078d",
+      "source": "08-gupta-era-mural/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "954299ef595fc76a58d02caf2d86dabf93f7a6a4e9f5128f9f5a44e7d9d2c21b",
+      "source": "08-gupta-era-mural/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "98577ebd5262999d36376b62de7e18879ab34be953e3811983d48f6c480f7f98",
+      "source": "08-gupta-era-mural/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "81e023f04e028451120158f54ab42044752fa938edcdfc436307d4b4bc22c477",
+      "source": "08-gupta-era-mural/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "ac94f0fff9397abbd6035ebd5fa6ca5305b74a0a02ac1058a473e0d4c76a6430",
+      "source": "08-gupta-era-mural/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "e01c715069d7ccfc8c87e7def25c495283146bb0965078caaeeecbcedda155ec",
+      "source": "08-gupta-era-mural/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "096c3df30024f274593a1cd62233ea2451511301221ee1ea8c1155feef213c37",
+      "source": "08-gupta-era-mural/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "b725850a87b6c2af0df125c9f08e4cb7e8a4f093e2310cc88012bcad97cf4c50",
+      "source": "08-gupta-era-mural/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "43d78763a2301df803e093cbc253502e36c346efe63fb7547377247d89ddd544",
+      "source": "08-gupta-era-mural/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "fcece2c57243f54bf195e5b46b98c76cedfcc4261ae4452afe6edef8d9f6b3cf",
+      "source": "08-gupta-era-mural/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "adbde33e523c98a9b9d0280e3d2a3230bbbba3d24d440eef94f842c32978bcb0",
+      "source": "08-gupta-era-mural/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "6286a2e2699067665e5a6b69a250a4ed427b630789ebf49f3ba2d81436630dcf",
+      "source": "08-gupta-era-mural/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "c9a29b61d8873abe1301dfee438a773287a27f2b3ab7cd1136f43cceae627021",
+      "source": "08-gupta-era-mural/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "3db1940e8f8814a867193f1e7d21405fe0a02bc43602731adab1080d8c176466",
+      "source": "08-gupta-era-mural/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "076e7e84508103dc00da4cb2d2260446f65be743617222fc8e301e413099fcb3",
+      "source": "08-gupta-era-mural/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "4fbcd9d6efceb4f59e7ebcbbbe1abd3bb453333a75c16a808ea57d7b6b555f43",
+      "source": "08-gupta-era-mural/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "ef3182c8a802d977d4719f15c0169957d0f34b4bf18947694d7f51ab67708e8d",
+      "source": "08-gupta-era-mural/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "6b38e0caa711c34d324533bfd5f4e9e101decb8398dff92019d29fa58d95f69e",
+      "source": "08-gupta-era-mural/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "17894d8dfa2c886b9509e1cb6899dd0c2b1a64e07edd65b0ab41dd8445130054",
+      "source": "08-gupta-era-mural/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "694181a5ebe761f0633e6f48968e858711852e3d94fa0bb62fe5dc42c6982d34",
+      "source": "08-gupta-era-mural/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "675040b016cead5a979afe4d3dd02e573f22f9bb12ac9d02d95e2634dc35179e",
+      "source": "08-gupta-era-mural/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "5f107b0c7a223ae08e783ff85da3d6b3553c0fc5621dd15b39b3c63d9db5771a",
+      "source": "08-gupta-era-mural/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "aee0233ac5e732354a6e61ee1103838ef2f47aea8873cf46a8e9045f48a685d2",
+      "source": "08-gupta-era-mural/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "969c35e7d1f01547eedef45e73087a87d504bc81c8bb5931487a8f29089a5630",
+      "source": "08-gupta-era-mural/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "3968a4365fa64503b93dc9b6a403d6f5ff1c86955ec3f4cdbc841968427e2932",
+      "source": "08-gupta-era-mural/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "629de49df221a28720af075560bad319fee988f7a0e9c7dd8eea734a9b215161",
+      "source": "08-gupta-era-mural/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "451cd07977e5adc4c180f5dab627b5bc2bc4d589af36934b06c243a2d6660f20",
+      "source": "08-gupta-era-mural/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "55e934af1175c489c563dcf32e27ef4e9efc9a83607e73ce6bb50587e70aaaef",
+      "source": "08-gupta-era-mural/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "2783b8044f04e9cdb3c1a673c103cd7b41fbaaab5d7f3aae86de4c595b5b3570",
+      "source": "08-gupta-era-mural/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "ce4ca53e7d0b5c1b9f22a4c758cef6a526f3f679188db7924c0c4a4f355d73aa",
+      "source": "08-gupta-era-mural/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "78ac1ab69933dfe9d0b78961715fd8e2e16014faadf0a6cb90e3abde3ea14eb7",
+      "source": "08-gupta-era-mural/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "3237837ff46ba312b0f518334fa40475d79c02d8726c19667af2c4382669877d",
+      "source": "08-gupta-era-mural/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "c04e0c0f14b8dcbbbc0e8f092939c6b0cc2b2c6e220dd3043bb0feb089a53e76",
+      "source": "08-gupta-era-mural/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "8cb2b8cfff48967c880325174c8296d6bdfce1e8b6440952e55fd088e1baff5f",
+      "source": "08-gupta-era-mural/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "2bbe441b2d06a37128570198000eb22422a2c79d24c8b9bf66f516bf4dc03f6c",
+      "source": "08-gupta-era-mural/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "689be4f2e697b3a3fba6117040de70425d003482f78b5af69d20d2bd6a4c6552",
+      "source": "08-gupta-era-mural/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "99d33491c9923ece8e4edf4a94235b738dc5b6c45137df564be80975b4882f99",
+      "source": "08-gupta-era-mural/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "02214ca0b90966eb80a3f69c765f850b55eb9e0e16c71d544d601d68aa35a1c1",
+      "source": "08-gupta-era-mural/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "80f401ef577b99b42b666a7bb606e9448270bcf113394b6b70d9ee58f071ed5b",
+      "source": "08-gupta-era-mural/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "9adf331393a50f49c281a43465b156d8622a1c946e2425145c93c1857de50ee6",
+      "source": "08-gupta-era-mural/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "25cc1301cce06b606bfbe853b985a10033c59600de1771b9d1bb458a6e7d7c07",
+      "source": "08-gupta-era-mural/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "11adba5e8257ff0d967242dae5de5fd47b77b9fcba596ebd3a035910d6f95268",
+      "source": "08-gupta-era-mural/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "8a9c86519441555627ec3b8e798b8dac058246706aa08a864e35e61570158c34",
+      "source": "08-gupta-era-mural/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "6ddfd743e5acc937fd515b3c1912d6884d32fc6df287daf202b8732dd822afe9",
+      "source": "08-gupta-era-mural/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "4e4f8498ca726f13dd4d296085b4de9e4d0a3ac8718dd74dbfc39eadd6847e30",
+      "source": "08-gupta-era-mural/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "c5293aad52cc5a7923a64ba62d1f37378ace383b617799303dc7c128d87b1380",
+      "source": "08-gupta-era-mural/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "7625596e585af47fc18775d0a0e86c48200a6c104a9d4e462fb4c782306f4e2e",
+      "source": "08-gupta-era-mural/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "8a56c3590b2ed12c6ec356592b15e10111958380b0a7ddcafff07f45b3f77cd3",
+      "source": "08-gupta-era-mural/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "a91a0bdcac8a875e74d63883ad42400a2c6d506b2efa3b42a7550ece11cf66be",
+      "source": "08-gupta-era-mural/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "22cfde15d68fb4dfee385d970fc55ef6862402e891d549fec44c2a07b4f1de8a",
+      "source": "08-gupta-era-mural/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "1e198e67e717b80a9f8dc5561c8747149f66d94379927f83669d519a6bf9a44c",
+      "source": "08-gupta-era-mural/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "1d7f4b01c026a888e8bbf92aed403177bbe7bca6d41e744ac2d5e66629376a1f",
+      "source": "08-gupta-era-mural/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "7ef157aac9c7bd11d0929e32041017891fb6308395391daa2e52d0d2e7c4af25",
+      "source": "08-gupta-era-mural/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "9ae2af300fae0ee15f60300acea8e335e56778fdd610e3f9e3b2acb1f73ff202",
+      "source": "08-gupta-era-mural/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "b918379bc46a11ce5ad65bc038c5eabb19c8fa901d569f0be8f6b16a12acbff7",
+      "source": "08-gupta-era-mural/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "2af8c8bfeb664b1b2f4fe7d2d203f7973fd7926fd4ba7a6321c9d9b4b7dc773f",
+      "source": "08-gupta-era-mural/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "f54818fb0769155e0c34784a845412ca88472f4a44bd771d6bd6ed5342fd9de1",
+      "source": "08-gupta-era-mural/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "7eaa896ed2c222c8a97d7ba3de09b618fbc99ff12926cd067f756568394005cf",
+      "source": "08-gupta-era-mural/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "6472489631102e3758c0182392edb53adc868eefdb1cd9f185c863a9f85370f0",
+      "source": "08-gupta-era-mural/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "2483fc51eeb25f1bc3764b354c851ebb1a13debd43a95283829063fb2a8b48ee",
+      "source": "08-gupta-era-mural/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "d9dc9c19b4c6cf5804c96cd8d219d45c86047909c084df703a547d5e2075ba05",
+      "source": "08-gupta-era-mural/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "689cc897e5ec8903c1045e86f2029f531453d2a4d4df3b6bf3bcee0ad5f77c09",
+      "source": "08-gupta-era-mural/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "c3ffab613da5421bbc76a3fcce43c21a78b9063f914bc432af8fc0e302aa108c",
+      "source": "08-gupta-era-mural/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "35410a9e36f94ade5ca51b440ca61d54db0e8ae7a735125f1dab4a06bffe2ca8",
+      "source": "08-gupta-era-mural/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "f2d0eb011035fa3df334ce495f5d32d92971f8b0e0f75d688baa6459bd0f2dee",
+      "source": "08-gupta-era-mural/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "56376b415f6c6f0b0454fff7e7638fe226c2acdd84ee08a38e5605a48d41c710",
+      "source": "08-gupta-era-mural/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "e902d78040aedeae836f4fd9873c47ee3f4eb9d74f38788fd3f26c453c9bfbc1",
+      "source": "08-gupta-era-mural/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "a1403d71b180291568d1a6fd95a90e8f70f433762d654404b4e1c3bf160d7100",
+      "source": "08-gupta-era-mural/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "8690011b2826c4e013e0013c3ba166fa12561db953976c3bf766539693ac7c81",
+      "source": "08-gupta-era-mural/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "368a6bf3cbbfff676a872bb307d7be67fcf04442acec399ca35f9b80d5de89cb",
+      "source": "08-gupta-era-mural/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "502dcc80e404f7241959284cf8ca9e88b0b0274498814b0a86921524ae66dace",
+      "source": "08-gupta-era-mural/cards/wands14.png"
+    }
+  ]
+}

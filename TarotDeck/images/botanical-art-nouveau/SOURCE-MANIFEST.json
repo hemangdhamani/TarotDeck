@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "c178316d412bd499c9030b9ef3f500c4a928ab585fe234c55023e60c27fdf74a",
+      "source": "01-botanical-art-nouveau/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "319c7cd98d916dde954252584c9be5d9d66791d29e23c8ffa3e13d50a1f7a09d",
+      "source": "01-botanical-art-nouveau/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "72897211958b02f87b8f6cfa8f8f7cb089cfae52ce2e0ca2f05ae0869c5712a8",
+      "source": "01-botanical-art-nouveau/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "b0e6107be73dd581126db6c4404dbd6caa167a57da13487dcddd78d4e09b8bc3",
+      "source": "01-botanical-art-nouveau/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "f12e938186d4b1a9c2870ca9d50f0c5e6cd45accfaeca05327e529b97e4d4634",
+      "source": "01-botanical-art-nouveau/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "ed700cc7b45d7220eb59f205aa8ec989e4e5921386926d8bc504a9598e42fe7d",
+      "source": "01-botanical-art-nouveau/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "0d27ed4628ddf347805130fa87b4e477f85a3924b1a5db8812aef6d922adb910",
+      "source": "01-botanical-art-nouveau/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "12baad12810708224a00d8c8c2382f9c2de706722ff681c895f4fa683c4d8682",
+      "source": "01-botanical-art-nouveau/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "177fad0a9bcf05cd070bbdcd0b0a8590c5effd66822e1a5cc0b9509ad9ddc808",
+      "source": "01-botanical-art-nouveau/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "f746f2859d018e9e7c775d31082d0d596be4e197e3f48b8f411e7e87979b10b4",
+      "source": "01-botanical-art-nouveau/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "142714be5b391ae955a9e1065969d4e1c0bb42925f755e2c2177c91a692c4bc5",
+      "source": "01-botanical-art-nouveau/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "4e99ffa756526f2352748ffb01c71df99065e916b9f8060a04f991462c4b3034",
+      "source": "01-botanical-art-nouveau/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "a94d5542d620f3d9dd72b407dfd81288c3f4f9bb9c72e89af0d6658f74a6b7f4",
+      "source": "01-botanical-art-nouveau/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "79f39fb1a511065d560aace1df2f2eeed17792c0def95747145dcd4ec67d81e4",
+      "source": "01-botanical-art-nouveau/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "b0c01f6ae7b1faed52e505e7c244d13f0c4cc3714ba7e36f7f964b6397a9a378",
+      "source": "01-botanical-art-nouveau/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "a0301b0a9fecbdb1ce1f28c05fc861000b5a54f7d70ef75af71b693bdc4d20e1",
+      "source": "01-botanical-art-nouveau/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "f53dd0baefbfd6e81883a440ed402aff872f24573467242894fa56c1b781ae0c",
+      "source": "01-botanical-art-nouveau/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "dbaa4e3d06a98fc859abcd4d4df0e6ff087010d2e20aed8ef59af10e83a9f46c",
+      "source": "01-botanical-art-nouveau/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "0ff0308c3bc0c3094f85ea11b769a1e01252b4f9624b278dc79b2c367728df18",
+      "source": "01-botanical-art-nouveau/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "e9b44c9d97089f23fd903eb476a56cbb2e653b1a56d166435a201245dfa5c185",
+      "source": "01-botanical-art-nouveau/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "b5d9a8e4f5366beb07eed93fbfd6f835fbca1487aeb6a09a05435e618cbeff8d",
+      "source": "01-botanical-art-nouveau/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "19504f98e6cd88b8ed48e762454f8d7b974ba1642d89e442803328d4ba0dda4d",
+      "source": "01-botanical-art-nouveau/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "b3d3fcd73f147b53903d40b57ec6f1ec71a696fc0bd89b17ca87b25c414d1d6a",
+      "source": "01-botanical-art-nouveau/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "d61608205be2af8c18ee34fa417ed9821c2d4e701c01daf22550c3da42623ff6",
+      "source": "01-botanical-art-nouveau/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "769978937c4bbcf423945fb89720efb955adfe9a0fbd05eae7ead38c0ed43863",
+      "source": "01-botanical-art-nouveau/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "b851438b2422800f7a1e8c48f1254e2bec5119c7e10f8b0f3542d0dca5a6dea8",
+      "source": "01-botanical-art-nouveau/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "ea0f603ff56729db81e8c15bd5d1c96f598c51406e8774bdb3b6f6f244880606",
+      "source": "01-botanical-art-nouveau/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "7c3fb4c98dc55fac3c0fcc980bd9c13fbc430fab386ee3a527aa128b1f2b1a43",
+      "source": "01-botanical-art-nouveau/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "ec32243665f72870bbde8997f340c2bdbfe762c919481c61ad6330817a0dc6c1",
+      "source": "01-botanical-art-nouveau/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "cbd8f1666687d458c89161b763defadf6185587cf9d69394a3ccad22be5b975e",
+      "source": "01-botanical-art-nouveau/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "5e6cb900f577da66514016cdd049103d98411a0ea03d7670ee6838a2e7c678d7",
+      "source": "01-botanical-art-nouveau/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "3838a14237cb9bc3f67eba4c36f53afa817e41800831bafc89071e7aa22b09ff",
+      "source": "01-botanical-art-nouveau/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "f4c986b6d6087ef6489a4643eac99844224f66b4ca34f5857c5a916241e0bfe5",
+      "source": "01-botanical-art-nouveau/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "7921845ac2976b3b91d0e5c9c55635049810ee9858ccf7bee3999c9593f99fcf",
+      "source": "01-botanical-art-nouveau/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "1b8ba603e36dc179294c1daedaabd3e0eddfbc5e6da081e0f752bb13f39de462",
+      "source": "01-botanical-art-nouveau/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "2d6ab7b66341597503ffab7e92584aa0fe0145b59cf91519e46295ef177955de",
+      "source": "01-botanical-art-nouveau/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "d9d9df5e2bf38829def364dda1917d6b2eb227c9bd1bd718180423541631ecfa",
+      "source": "01-botanical-art-nouveau/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "e0ae2191e692e466982a47616de2c39f9501ed8f51ace8fad687dad0ba7b7dd7",
+      "source": "01-botanical-art-nouveau/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "17a48b091a1fba753ede62d0bb5622a21ec99c35554a96e05ef6b0ed4f0ee2e5",
+      "source": "01-botanical-art-nouveau/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "3439073b3af3ac63eb26b1f1fe7bf3d12c43842629bf4cd3033fb864077de587",
+      "source": "01-botanical-art-nouveau/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "42c7fc86dd39c56aa16880c7a6d1d887e86a7ff0f56ae86454c9f5dc38a01f93",
+      "source": "01-botanical-art-nouveau/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "9130c18aa2ecf77766887bba46b9b8d39a1f1cc7f7c41d1c25f2796b662d208b",
+      "source": "01-botanical-art-nouveau/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "99c4d829979e139ac89eedd986e45c154a7345392bf05b6776efed091d1aa98d",
+      "source": "01-botanical-art-nouveau/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "2910209ebb63e35f5ba57a4bdf446c9525e7a102853459a389c54415c2cc4464",
+      "source": "01-botanical-art-nouveau/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "a116b7a3a8151d2d3198f5f5b4f9c3fec9340b951f544e2fb2de4a54a180015a",
+      "source": "01-botanical-art-nouveau/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "ce4695272759b7dfa7f7a894cf265ad416f060fc540a91da2bc12f1781e54a00",
+      "source": "01-botanical-art-nouveau/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "b43357833c3692f87dc639a9d3a5eea004766c3942e51f5fa1a18eccf39a52ca",
+      "source": "01-botanical-art-nouveau/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "b7745e2f01d2d6448d3f6df56d027eec47a93b711f28ba7ebec1b61e1dd273b6",
+      "source": "01-botanical-art-nouveau/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "f2130a2e2e4015789316bae6508e076d170a4e6fc5e15348828efe602f45a79c",
+      "source": "01-botanical-art-nouveau/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "7912042d4946c05a469991a628a196567258d4397f6d710ca2f25ea9082c601c",
+      "source": "01-botanical-art-nouveau/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "3a834afb61a7ef3c1a89347f769f19c600b566d994315fad932a7b65acaab13c",
+      "source": "01-botanical-art-nouveau/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "06d0808b9dea4051e16cd760b436f3cac8153ecc39daf1945646a9f4421bb808",
+      "source": "01-botanical-art-nouveau/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "f80a51241f3d57abdca5cd90901565a3ee1210c94c68d9fe0ebdf5bfcc9e4091",
+      "source": "01-botanical-art-nouveau/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "c20a1b680ea10f46acc1be39888941b0b8eaea9d95d80e2b4ffee43f90b2a256",
+      "source": "01-botanical-art-nouveau/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "bed6074707c88bd18f54d6a3ab0100d22a5fdc0fd8d50b18e7290789f506a318",
+      "source": "01-botanical-art-nouveau/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "6ae014b28a9e60ca15212839622c7005d31c92f9045d17923f2a64f0859d9123",
+      "source": "01-botanical-art-nouveau/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "94bb35e364c8eb0e43069924033d7a48e635b5f57d50e5ac388043a97638b86a",
+      "source": "01-botanical-art-nouveau/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "650cd88c187703ad4af39b8cf36b2c1ba94e0c38bc88877be9ed3307631b5d76",
+      "source": "01-botanical-art-nouveau/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "f91b7654badd166a6edb76ef42344c5e3763d493729b4b5966b3f68932df6e30",
+      "source": "01-botanical-art-nouveau/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "7a1a6458a1c3e022936812066332e7fd5db0613005eb22813fa218c893b3f6e6",
+      "source": "01-botanical-art-nouveau/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "cf231e0be8bcdb8e60f7f4064f8ffc473d1c93b1a2b19c98b1869d440949140d",
+      "source": "01-botanical-art-nouveau/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "1f62f5803cd5acfce3073db678dc2ab1272ce2b66de2f6bfaac5dc3305df9c62",
+      "source": "01-botanical-art-nouveau/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "7285876e59202fa29d609775cf883161fbcfeb1d5dbfa20f90011a13268381b4",
+      "source": "01-botanical-art-nouveau/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "dbcf2f9ac2a9393d086ca70de5aa4c616e43056df1c046a52db702231e1680eb",
+      "source": "01-botanical-art-nouveau/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "cfd081993d2a6a417be3b7724711a08084eef73353f9a7202a91fd9c6736b197",
+      "source": "01-botanical-art-nouveau/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "0b16e0ff9d489ac905fd369e8720bd32bcdffdeeeb3e9859bed5fe8629845dd9",
+      "source": "01-botanical-art-nouveau/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "be3e9be007a739f18fa7e26305bbf1629eb46f45198206dbc9e1d5b6d9e2a76c",
+      "source": "01-botanical-art-nouveau/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "c12d99517cc8d05901f614bb441003596e76f015184b1776bf9496573ad61bda",
+      "source": "01-botanical-art-nouveau/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "a5d6ee022ae1c3ea1d585e4c4ab9785ca28c5bee2695c1e78c73e60b984723fc",
+      "source": "01-botanical-art-nouveau/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "6a2b915c4bf321936b4e393ccc20bb5bddcbb77f0eddd9c0501d905362f9111b",
+      "source": "01-botanical-art-nouveau/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "d1cc4ed2f36bd8f329bd3e26e9d0c9858bee2f07f7e18067a9ab7195ebaabc08",
+      "source": "01-botanical-art-nouveau/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "e95665ec188880c29fbf18f8d6e3dfe9a32ee6de57ba0234cc5aed5717234757",
+      "source": "01-botanical-art-nouveau/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "de4b87c54c6ec941d01839fee1b17df6f326589b778b153d099bb8efbf911c41",
+      "source": "01-botanical-art-nouveau/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "56f163a9451dced9a1b39a6852a2cfe36c95d0a71cdae8bafad3b4f74c95d0c0",
+      "source": "01-botanical-art-nouveau/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "aec0a8368f38bdfa0ec8d23e3b93c97637a6f688424ae0b3d65ddbb957a9c3b3",
+      "source": "01-botanical-art-nouveau/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "cc494ac729422a8301941f6da390ab795e6ebd68c2b75285ff50d637dbb155ca",
+      "source": "01-botanical-art-nouveau/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "b7682e23f73fc9e9f3c6842eecb5f978cac38f3d1686dd0c0c9cd87b051fe1e6",
+      "source": "01-botanical-art-nouveau/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "9662f850f54c18e0528062dce3aec5d1314f3a67d2d41c06ee09f7483af72232",
+      "source": "01-botanical-art-nouveau/cards/wands14.png"
+    }
+  ]
+}
