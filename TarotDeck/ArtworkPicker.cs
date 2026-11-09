@@ -72,23 +72,27 @@ namespace TarotCardsDeck
                 Size thumbnailSize = new Size(tileSize.Width - imageMargin * 2,
                     tileSize.Height - nameHeight - imageMargin * 3);
                 int imageGap = spacing;
+                int headingHeight = Font.Height + spacing * 2;
+                int optionHeight = back ? 0 : Font.Height + 8 + spacing * 2;
+                int statusHeight = Font.Height * 4 + spacing * 2;
+                int previewChrome = headingHeight + optionHeight + statusHeight + spacing * 2;
                 Size previewSize = pcbCard01.Size;
                 if (previewSize.Width < 40 || previewSize.Height < 70) previewSize = new Size(175,300);
                 // Match the main card exactly unless the monitor cannot contain the dialog.
-                double fit = Math.Min(1.0, Math.Min((work.Height - 280.0) / previewSize.Height,
+                double fit = Math.Min(1.0, Math.Min((work.Height - previewChrome - 52.0 - spacing * 2 - 80) / previewSize.Height,
                     (work.Width - 240.0) / previewSize.Width));
                 previewSize = new Size(Math.Max(1,(int)(previewSize.Width * fit)), Math.Max(1,(int)(previewSize.Height * fit)));
                 int desiredLeft = 3 * tileSize.Width + 3 * tileGap + SystemInformation.VerticalScrollBarWidth;
                 picker.ClientSize = new Size(Math.Min(work.Width - 48, desiredLeft + previewSize.Width + imageGap * 2 + spacing * 2),
-                    Math.Min(work.Height - 80, previewSize.Height + 58 + 36 + 95 + 52 + spacing * 2));
+                    Math.Min(work.Height - 80, previewSize.Height + previewChrome + 52 + spacing * 2));
                 var body = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, Padding = new Padding(spacing) };
                 body.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 450)); body.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
                 var grid = new FlowLayoutPanel { Dock = DockStyle.Fill, AutoScroll = true, Margin = Padding.Empty, Padding = Padding.Empty, AccessibleName = "Available artwork" };
                 var detail = new TableLayoutPanel { Dock = DockStyle.Fill, RowCount = 4, ColumnCount = 1, Margin = Padding.Empty, Padding = new Padding(12,0,12,0) };
-                detail.RowStyles.Add(new RowStyle(SizeType.Absolute, 58)); detail.RowStyles.Add(new RowStyle(SizeType.Absolute, 36));
-                detail.RowStyles.Add(new RowStyle(SizeType.Percent, 100)); detail.RowStyles.Add(new RowStyle(SizeType.Absolute, 95));
-                var heading = new Label { Dock = DockStyle.Fill, ForeColor = Color.White, AutoEllipsis = true };
-                var options = new ComboBox { Dock = DockStyle.Top, DropDownStyle = ComboBoxStyle.DropDownList, AccessibleName = "Preview card", Visible = !back };
+                detail.RowStyles.Add(new RowStyle(SizeType.Absolute, headingHeight)); detail.RowStyles.Add(new RowStyle(SizeType.Absolute, optionHeight));
+                detail.RowStyles.Add(new RowStyle(SizeType.Percent, 100)); detail.RowStyles.Add(new RowStyle(SizeType.Absolute, statusHeight));
+                var heading = new Label { Margin = new Padding(0, spacing, 0, spacing), Dock = DockStyle.Fill, ForeColor = Color.White, AutoEllipsis = true };
+                var options = new ComboBox { Margin = new Padding(0, spacing, 0, spacing), Dock = DockStyle.Top, DropDownStyle = ComboBoxStyle.DropDownList, AccessibleName = "Preview card", Visible = !back };
                 options.DisplayMember = "Name";
                 options.MaxDropDownItems = 18;
                 options.DropDownWidth = 280;
@@ -98,8 +102,8 @@ namespace TarotCardsDeck
                         card.Id.StartsWith("swords", StringComparison.Ordinal) ? 5 : 6)
                     .ThenBy(card => card.Id, StringComparer.Ordinal).Cast<object>().ToArray());
                 options.SelectedIndex = 0;
-                var large = new PictureBox { Anchor = AnchorStyles.None, Size = previewSize, Margin = Padding.Empty, SizeMode = PictureBoxSizeMode.StretchImage };
-                var status = new Label { Dock = DockStyle.Fill, ForeColor = Color.Gainsboro, AutoEllipsis = true, AccessibleName = "Artwork availability and credits" };
+                var large = new PictureBox { AccessibleName = "Main-size artwork preview", Anchor = AnchorStyles.None, Size = previewSize, Margin = Padding.Empty, SizeMode = PictureBoxSizeMode.StretchImage };
+                var status = new Label { Margin = new Padding(0, spacing, 0, spacing), Dock = DockStyle.Fill, ForeColor = Color.Gainsboro, AutoEllipsis = true, AccessibleName = "Artwork availability and credits" };
                 detail.Controls.Add(heading,0,0); detail.Controls.Add(options,0,1); detail.Controls.Add(large,0,2); detail.Controls.Add(status,0,3);
                 body.Controls.Add(grid,0,0); body.Controls.Add(detail,1,0);
                 var actions = new FlowLayoutPanel { Dock = DockStyle.Bottom, Height = 52, FlowDirection = FlowDirection.RightToLeft, Padding = new Padding(8) };
@@ -165,7 +169,7 @@ namespace TarotCardsDeck
                         }
                         detail.Padding = new Padding(gap, 0, gap, 0);
                         int previewWidth = Math.Max(1, detail.ClientSize.Width - gap * 2);
-                        double scale = Math.Min(1.0, Math.Min((double)previewWidth / previewSize.Width, (double)Math.Max(1, detail.ClientSize.Height - 189) / previewSize.Height));
+                        double scale = Math.Min(1.0, Math.Min((double)previewWidth / previewSize.Width, (double)Math.Max(1, detail.ClientSize.Height - previewChrome) / previewSize.Height));
                         large.Size = new Size(Math.Max(1, (int)(previewSize.Width * scale)), Math.Max(1, (int)(previewSize.Height * scale)));
                     }
                     finally { grid.ResumeLayout(); layingOut = false; }
