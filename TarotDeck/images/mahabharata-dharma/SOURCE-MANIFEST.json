@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "7e781c8b293d878da8317b83218ed6ecf4f65c0d6158ced2cdc26fa3f5766ad8",
+      "source": "10-mahabharata-dharma/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "f1d64be9d21c248d35a2a5763eef66b0096c941c4a48668a680a2ef6f2ee05ab",
+      "source": "10-mahabharata-dharma/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "3c541f4be5a9ae1e539f603d19334833157c7ea546847a41f81201ce023a4ae5",
+      "source": "10-mahabharata-dharma/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "b72784867667121fabaa5dcbb3d0988c3dc2d08bceab1e161d4b261cd6e5dbc4",
+      "source": "10-mahabharata-dharma/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "007db1fe480118fd7b169658cb33ce8ddc59c363ccba5afc817b941e8cac895a",
+      "source": "10-mahabharata-dharma/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "a70d206eeadd786073c5061495b14d7c3de67685a41b4f1685eca82933ffbcbe",
+      "source": "10-mahabharata-dharma/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "edd74f59c331973d8f4b45697120fc21b514c30c65f4cc3faf4fadfd32abfb0c",
+      "source": "10-mahabharata-dharma/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "b596aa2fdc4faeff544a68114577f44633f54a1ceed12abe6905bdae8ff9d1f7",
+      "source": "10-mahabharata-dharma/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "7c6786918a50687fa661baad24ccaf6e964a888a1b49ebbc30b0d3cbe1dd5f08",
+      "source": "10-mahabharata-dharma/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "10bf69ddbf9c031d4429d2b11da30a5e364f8e9b2bba5ca7f4dde8267802b577",
+      "source": "10-mahabharata-dharma/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "248d6fcd670e1a97a12c97cd62f1caaa89455fec4fca52970633dd8308b40db0",
+      "source": "10-mahabharata-dharma/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "8ae2de95c4e5096950764de7ae0fbf0c8b739070ba23cf3105e09249973e6856",
+      "source": "10-mahabharata-dharma/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "b7cbbf3675305d954dd97da6fb7ce4c7751e42d3d01a6e2761a7efd7b89e282d",
+      "source": "10-mahabharata-dharma/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "a8e50d8f355f2714c387cd8558730d952a83e54bc232ebae06ed0f2b57b64ea4",
+      "source": "10-mahabharata-dharma/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "803e47ff74407108b2bab5b7a2ac0aadd5ef2286ecf5181c248311cd434afd4c",
+      "source": "10-mahabharata-dharma/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "3e0d75e187f3aee988937ebe6be50c3335dd2cc3e820a1947587b2c76412a0be",
+      "source": "10-mahabharata-dharma/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "66036bdcba412f638a8bfc06259de530f19ef2f602e3aec61c56d7e4145b9cf0",
+      "source": "10-mahabharata-dharma/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "124dc515804025c3eb4f20f4dfa39d7a4895bd60bda0826a4d3cc1515fcc3b41",
+      "source": "10-mahabharata-dharma/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "c3225db412c74b5e86ef2ea7b2a39b1288dd9762ce937522af166f31714bcc41",
+      "source": "10-mahabharata-dharma/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "c93b3f79382b7dfffb16182bf3f186bc7e1c80baa772c3efce427dd8262a8d33",
+      "source": "10-mahabharata-dharma/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "1683acb637f4e5c6ab4ff1d850d9cdbac60b8b4508ffea03d43f4404c179c7ec",
+      "source": "10-mahabharata-dharma/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "d4b2ee510d2dfaa84bb06b6eeee8a16b796ea7e5c8886fd66860a0667f29d103",
+      "source": "10-mahabharata-dharma/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "ab5e162ccb61d95cfe90e61cf1dcf78dd3d793c9dc73c82de5adcedfd87eee83",
+      "source": "10-mahabharata-dharma/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "61c6e073d1c51336a3c4e86debc8fc108f3ec69d008c110f75cdd5f952842a10",
+      "source": "10-mahabharata-dharma/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "692ff584e652380d47fb869978230cb323b44d64bd89f1d4ca37bbb80fcc30c9",
+      "source": "10-mahabharata-dharma/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "e3063e2be59639bec1066f7345540b6cfdf79f7fb3081704e9f159aa93250fc5",
+      "source": "10-mahabharata-dharma/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "e27ad81260304b2234aa08b0cec48fc3df4e8c574f0f1cc547da593ebd60c6b4",
+      "source": "10-mahabharata-dharma/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "ddd5108359c683cb829fcfdec23480fd67b5c72634c037323b5c7e5f937577a0",
+      "source": "10-mahabharata-dharma/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "bcc1c1a2665b7ac7c9a54b4a2f718c69f9b7854a0c56fa38b4ea7834699eb7c7",
+      "source": "10-mahabharata-dharma/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "108bdc40d6fff003564933005264a71c03404254ce90f8a813492c8ac08ac3d8",
+      "source": "10-mahabharata-dharma/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "74b2021f9938fa53da0a58218ec1cfb1349232437f8c3b81e4b69e880de31054",
+      "source": "10-mahabharata-dharma/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "30d331144a22c9a77f9a532558cd15ac71c52a973e70df2d8020a4dd97fcdfa0",
+      "source": "10-mahabharata-dharma/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "f7387d20fc9ddf0a0cd401f3373db9c965492b853ac7e7271b0cea6b7e826f66",
+      "source": "10-mahabharata-dharma/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "9cf53fd77d1ce49db68f18a996ed967850dcfb0f7767bbbdc0b54b81d25cce7d",
+      "source": "10-mahabharata-dharma/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "12388f35155db112c469e7eddaefa25cf311c147274680f00f7d29825328ce03",
+      "source": "10-mahabharata-dharma/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "62fa5fe4fa3d58a4e54f5ade21f663095ba79a86e14581ab6f48e5e6da18c732",
+      "source": "10-mahabharata-dharma/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "18f16d41928ff54191c7531c90924a5b0f3f5244bf102373d5a48d6a376e1d9c",
+      "source": "10-mahabharata-dharma/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "659edc60d94dc51606b669fe894c42beb846b670e8a58363186c0f4757834a65",
+      "source": "10-mahabharata-dharma/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "f7d3d0bcb55b0954a5b1495e7e6995d26279ced73bb325a1e62fcded048195d2",
+      "source": "10-mahabharata-dharma/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "1d96aa36300ef111bb41646d772377813360159228c94f348688d06533bcded9",
+      "source": "10-mahabharata-dharma/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "006aa3666e85fa867a0efcbe619af0eebd945b745263ec73fa58df619011e90d",
+      "source": "10-mahabharata-dharma/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "5394bf90a97c34b45dd1f76e85fef12854ddfe32bd336eaa11df2cb616595e51",
+      "source": "10-mahabharata-dharma/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "35cd9c4625b7c5b07978cca1be83df6a017b18f698c88e1ce7babb190b5a4063",
+      "source": "10-mahabharata-dharma/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "41f3b513f775a1aa984a71586c0fd6287ab68091079827854622e916b5669cd7",
+      "source": "10-mahabharata-dharma/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "132bc63925e1f81ceadad9fe5373aa50dab4c4e9813523027c789b0ebb4b5574",
+      "source": "10-mahabharata-dharma/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "5970705fd59ef9715f30ebc90593d23d2d6e0b5e0d5efc903cff758f203999fd",
+      "source": "10-mahabharata-dharma/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "28e5a852043a991bc1d490717799af5ca35c24e42061c2ea264bda64b73a1a81",
+      "source": "10-mahabharata-dharma/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "e52027c22d45194e0507b51c702363762f3c1bebadea3b43e5935fafcf1b1910",
+      "source": "10-mahabharata-dharma/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "167da61d599189aa2375557aa43442375f8caf3151df259140fad9abc3682a17",
+      "source": "10-mahabharata-dharma/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "b20606b21469da37a5b37e4bfb66363794184d688ce9f266145b025e625027a7",
+      "source": "10-mahabharata-dharma/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "b3e3cbd90ecc83c6fe5a02511392a1286e895026724f28de265ca7855cbf818a",
+      "source": "10-mahabharata-dharma/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "bbc47b0dcebbc17ca5d7228d844935292de35ec8679c94adfc58b6dec1584fde",
+      "source": "10-mahabharata-dharma/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "ce318e5c88da14a8ac3505ac237a5a4488710c5192af056c30f099aa92be333b",
+      "source": "10-mahabharata-dharma/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "8c34d57c4abd2975da771897165803c06909770701706a3d969e90c35afa21e0",
+      "source": "10-mahabharata-dharma/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "0208f8128dedef3626f823e2583c7caad89322cd1e73cbc3a4ca771577ebc757",
+      "source": "10-mahabharata-dharma/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "7485e5f72516fb5e8aa3da68eac357d3ad191edaa6bb7a2548e63008c26f6aae",
+      "source": "10-mahabharata-dharma/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "6f6ce0d2712d214d7c684ca287391958ca98255e6b4c834a35e91c04aa5d908f",
+      "source": "10-mahabharata-dharma/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "aec2cbfdb88ba5f26a0aebfbc0f81d51a57a82c5538a0db48d4b864c3fffe575",
+      "source": "10-mahabharata-dharma/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "bc86aa50317881d7903871b342da090cda9869d3c07fe4f2a137ea5f4a84515a",
+      "source": "10-mahabharata-dharma/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "72e344131ebf1828cbd49a9312ea651a85b59c5957479328ccb66be33d3c4c7e",
+      "source": "10-mahabharata-dharma/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "ebf2971c68f5708c6692fbd49d56cd821bd14631a7273e910042c62ac59a44a6",
+      "source": "10-mahabharata-dharma/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "070536a8a193618c69d8cb2f4535e0b660880624ef6494a5b61d83355dcf2c2f",
+      "source": "10-mahabharata-dharma/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "65cccc59946e28ef50072fee6cf0bbf6c4da662b37cead8098469b3a54b09751",
+      "source": "10-mahabharata-dharma/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "7c97272bebec5824a742e5c56fe1dcc0c5c8a6560fe3dae3ee0c77655382ceb5",
+      "source": "10-mahabharata-dharma/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "4648460a8a2cf3915c9dfec8ca9ed1a8d654823bfda23b5cceaa1fbb356bd762",
+      "source": "10-mahabharata-dharma/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "06acbc1c73cd84b85e7650e4035ff1e16036256562096924f6f24098accee546",
+      "source": "10-mahabharata-dharma/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "e992435cafcbf938526440d13fcdf7370f9f91184e2fbe43cc1bef4cfb3885c4",
+      "source": "10-mahabharata-dharma/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "19984cb1ebcff5996aa2f29ea60af6082c28e3ff3ec7c2d1354b3826e376b332",
+      "source": "10-mahabharata-dharma/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "a7da4988bc963a055813292deab352ca0be593a9281615210252c51634de3057",
+      "source": "10-mahabharata-dharma/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "283efdcc7dc59c9dce268907a3071eec4a67148ad0ebe868fc8ddbfdaea07fe1",
+      "source": "10-mahabharata-dharma/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "c670700caaffa23eb38da679bd3f0d4872ef4bbaaf735d2e6a48ad273d8b1ca6",
+      "source": "10-mahabharata-dharma/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "d8d3a2bf615812be9b7c3f62f631f5175a3f03713513fa2319fe0539ccbd9c82",
+      "source": "10-mahabharata-dharma/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "97fd92a191f671e480be24d8c5f43cf8665b046267742b5f34a8fe0c49d9540e",
+      "source": "10-mahabharata-dharma/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "b7745b0eb297dfaea3a47a70a48a52263f273e8e4291f5868d5b4dfb8a218c93",
+      "source": "10-mahabharata-dharma/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "13178b7618c74d2e3ffed1f95fdd1a8c27abac30f0ba84be34e077c99ddd7c36",
+      "source": "10-mahabharata-dharma/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "99a93a7021c2096e3c3106061246e281f59869860ba904309c405e1fef323270",
+      "source": "10-mahabharata-dharma/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "461cab385c37292fa4859de0bfa4afd854dced8745f8017444a72f24e062b820",
+      "source": "10-mahabharata-dharma/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "1f49ba8e161bb0c6c9282a1355500a16a0cf6cf14327d28d97cc8bd6efbfec5f",
+      "source": "10-mahabharata-dharma/cards/wands14.png"
+    }
+  ]
+}

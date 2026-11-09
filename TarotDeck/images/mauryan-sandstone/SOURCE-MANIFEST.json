@@ -1,0 +1,395 @@
+{
+  "origin": "User-provided Tarot Collection, verified original archive SHA-256 36200f2fbee0ca13a6d4017deee5a659080cf13898793a7ca07c1d8ab286d1f4",
+  "images": [
+    {
+      "card_id": "maj22",
+      "sha256": "398cdb5c6e05926ec9263cddaf36839e090e6fd040a7d08c75e80b0148937fe0",
+      "source": "07-mauryan-sandstone/cards/maj22.png"
+    },
+    {
+      "card_id": "maj01",
+      "sha256": "f6f41e099f64882b53e92b9483d2fdfa60b940a81ac276f42790e8ea5431dece",
+      "source": "07-mauryan-sandstone/cards/maj01.png"
+    },
+    {
+      "card_id": "maj02",
+      "sha256": "f022118133b14aa7b21708eb8d0e89d101ae2a0b9508398197418a4714a08b8b",
+      "source": "07-mauryan-sandstone/cards/maj02.png"
+    },
+    {
+      "card_id": "maj03",
+      "sha256": "07a512c50a5328c64ecb0d2a9dee4dec8863fae991b3f92273b185edfd3da22d",
+      "source": "07-mauryan-sandstone/cards/maj03.png"
+    },
+    {
+      "card_id": "maj04",
+      "sha256": "d4e770f7860bf8d85dfba958f47ae25d23839654d06f7e958d4bb7b1e5e4ca1e",
+      "source": "07-mauryan-sandstone/cards/maj04.png"
+    },
+    {
+      "card_id": "maj05",
+      "sha256": "bde5beba8738cc9419f22c283df9e102e1ac6f17b2310f0d0e70bd5aa66006d1",
+      "source": "07-mauryan-sandstone/cards/maj05.png"
+    },
+    {
+      "card_id": "maj06",
+      "sha256": "37fed0fc5f2c09a74140105c393221214c4230e918585bfff49167d2183bf689",
+      "source": "07-mauryan-sandstone/cards/maj06.png"
+    },
+    {
+      "card_id": "maj07",
+      "sha256": "ff8b1895a72db39fe1a8043f10163a39ede5335f7d071a314250b9615552ef4d",
+      "source": "07-mauryan-sandstone/cards/maj07.png"
+    },
+    {
+      "card_id": "maj08",
+      "sha256": "2dd62679aa0d1b9bbcad6d5cfcbe0bbc691e90166894a2bec28ad767dabbd88f",
+      "source": "07-mauryan-sandstone/cards/maj08.png"
+    },
+    {
+      "card_id": "maj09",
+      "sha256": "a58ce264c70b7d9857795d50d3230e31a149bec86b6260b55917f1ea2053799c",
+      "source": "07-mauryan-sandstone/cards/maj09.png"
+    },
+    {
+      "card_id": "maj10",
+      "sha256": "e8f66b9b7d8550dab6b4a82a22a42786d97f41f829974e78b39fdc9518006985",
+      "source": "07-mauryan-sandstone/cards/maj10.png"
+    },
+    {
+      "card_id": "maj11",
+      "sha256": "cf4d9fac5b8201517924ee38936160c233561e6f26d8838b420edeed771a0d07",
+      "source": "07-mauryan-sandstone/cards/maj11.png"
+    },
+    {
+      "card_id": "maj12",
+      "sha256": "1564a0104f7d698de4f9e113727bc8d4bf5f08950aa7380f9d40f737302cf1c0",
+      "source": "07-mauryan-sandstone/cards/maj12.png"
+    },
+    {
+      "card_id": "maj13",
+      "sha256": "cbbcc03a13f5001d6d624db6696d5c9862d8bb37feb128da69bfe100e630202d",
+      "source": "07-mauryan-sandstone/cards/maj13.png"
+    },
+    {
+      "card_id": "maj14",
+      "sha256": "e00ad45429844f70c7ee2b40b1d4a24f896e895767924ade6c7fe0b7fc4db4c6",
+      "source": "07-mauryan-sandstone/cards/maj14.png"
+    },
+    {
+      "card_id": "maj15",
+      "sha256": "525e32eb237b3eb0ebacaa305b160560b0020184e48e240497c170c998eff16d",
+      "source": "07-mauryan-sandstone/cards/maj15.png"
+    },
+    {
+      "card_id": "maj16",
+      "sha256": "073fb979b3fd444d30e87bd8a4dff1d10e7d265d691f24db5ef7f1c7ef499faf",
+      "source": "07-mauryan-sandstone/cards/maj16.png"
+    },
+    {
+      "card_id": "maj17",
+      "sha256": "6bdf14f9cc63a56ea10665f9b17db44d65bab8c09c385fe02efee9c99a7fe7b0",
+      "source": "07-mauryan-sandstone/cards/maj17.png"
+    },
+    {
+      "card_id": "maj18",
+      "sha256": "0749f86278cdd4b2fc38d50501fe7bd8bb4d21eda35a0c55369fd64fe12389ca",
+      "source": "07-mauryan-sandstone/cards/maj18.png"
+    },
+    {
+      "card_id": "maj19",
+      "sha256": "c7b766faaf1007f46cce12a2dfc1325df1758879e9bbf82f00c2bf12344450e5",
+      "source": "07-mauryan-sandstone/cards/maj19.png"
+    },
+    {
+      "card_id": "maj20",
+      "sha256": "0c89e626ef6d1b1d8369cb5f05ec68e0fc52d030f898705036398d4d6bc0b4fb",
+      "source": "07-mauryan-sandstone/cards/maj20.png"
+    },
+    {
+      "card_id": "maj21",
+      "sha256": "81ce171a29f9c6dc3635ad5cab6f9de96ad20a557e914fa625f30b796560250a",
+      "source": "07-mauryan-sandstone/cards/maj21.png"
+    },
+    {
+      "card_id": "cups01",
+      "sha256": "2912b6cef5dcc4537abbf964a872c3b743a480bcad6503caf2b718a5ee8e49e6",
+      "source": "07-mauryan-sandstone/cards/cups01.png"
+    },
+    {
+      "card_id": "cups02",
+      "sha256": "d2b30ceac0690b97bb0050c3751387d32e45481a8bd88bb0c2dca8e66794d4f8",
+      "source": "07-mauryan-sandstone/cards/cups02.png"
+    },
+    {
+      "card_id": "cups03",
+      "sha256": "ba993c925ccc4e19fb75e6750e5b90fee8a540d03ced12aecf6f26b6c3c5f2fb",
+      "source": "07-mauryan-sandstone/cards/cups03.png"
+    },
+    {
+      "card_id": "cups04",
+      "sha256": "34de30464789bad0a3c142d2b8cb8d3b51871b6f7b0f13e04e8e9e12c8417a70",
+      "source": "07-mauryan-sandstone/cards/cups04.png"
+    },
+    {
+      "card_id": "cups05",
+      "sha256": "d862e5db5aff92a9ba821d5e96143f1bd177bdeb3ae9b0068f21cbff914a5fc3",
+      "source": "07-mauryan-sandstone/cards/cups05.png"
+    },
+    {
+      "card_id": "cups06",
+      "sha256": "ced0ba82ee94d2d0a2f44a5feacafc7e452c81f11d47f39bf824797e56ef41ae",
+      "source": "07-mauryan-sandstone/cards/cups06.png"
+    },
+    {
+      "card_id": "cups07",
+      "sha256": "79fe769c021a79195e7d0056216813d3fc1bff760b4f33c53aa10247a98761b3",
+      "source": "07-mauryan-sandstone/cards/cups07.png"
+    },
+    {
+      "card_id": "cups08",
+      "sha256": "d0fd35c659fee5d14274bdcb1cb3860b6bf9d79852d839c22eab459b8bec86da",
+      "source": "07-mauryan-sandstone/cards/cups08.png"
+    },
+    {
+      "card_id": "cups09",
+      "sha256": "c6ba43bed332a2a6971eed24ba0078205a548be7a99e29a8e80a3faaabc1f563",
+      "source": "07-mauryan-sandstone/cards/cups09.png"
+    },
+    {
+      "card_id": "cups10",
+      "sha256": "3d05bf239f1720889e97c38ab50314b3f45c237cd0a43eb903ea93648d9aeccd",
+      "source": "07-mauryan-sandstone/cards/cups10.png"
+    },
+    {
+      "card_id": "cups11",
+      "sha256": "af552e1a9e303ddf2a480fc1b8ff96625cfb544da019673dbc8b1c4474b54071",
+      "source": "07-mauryan-sandstone/cards/cups11.png"
+    },
+    {
+      "card_id": "cups12",
+      "sha256": "94dc507623c76ceaa8d4547be2b20884e7ff7c125951cf24d759312ff84fdbbc",
+      "source": "07-mauryan-sandstone/cards/cups12.png"
+    },
+    {
+      "card_id": "cups13",
+      "sha256": "39860f2f4f4434857920c5065c1c961d67ace62c9ecaf69e5e25638cfed4cc03",
+      "source": "07-mauryan-sandstone/cards/cups13.png"
+    },
+    {
+      "card_id": "cups14",
+      "sha256": "3e8ee4059f104cb1e2b1d68dea0789b3d33c1f886bb0dc0a7ac8fa897c11b79b",
+      "source": "07-mauryan-sandstone/cards/cups14.png"
+    },
+    {
+      "card_id": "pents01",
+      "sha256": "02eafad8ea4f677b44cdec7dfb2ccfd2286fcb0ae7535f0c13917ab40f343c75",
+      "source": "07-mauryan-sandstone/cards/pents01.png"
+    },
+    {
+      "card_id": "pents02",
+      "sha256": "7bd32c229309ff81e98289c234ce3f77bcf58e62aec5870c0cd57ad416d623df",
+      "source": "07-mauryan-sandstone/cards/pents02.png"
+    },
+    {
+      "card_id": "pents03",
+      "sha256": "a3362ecf1d72c684b818b7b9e9b1f22f46d77aed9544c48644e32582de6ff465",
+      "source": "07-mauryan-sandstone/cards/pents03.png"
+    },
+    {
+      "card_id": "pents04",
+      "sha256": "bc598a7f2beee4448638b5a623d0baa41b68a7be9c066172882b97170914a11f",
+      "source": "07-mauryan-sandstone/cards/pents04.png"
+    },
+    {
+      "card_id": "pents05",
+      "sha256": "e01eaa01ab6fa7a0caae03e2e8be812d747857228efb2a73825adb8bc738bf06",
+      "source": "07-mauryan-sandstone/cards/pents05.png"
+    },
+    {
+      "card_id": "pents06",
+      "sha256": "452090bb31f94c0d20579de86907c1b27c0dae6cfc3ed381c02174ce30bda602",
+      "source": "07-mauryan-sandstone/cards/pents06.png"
+    },
+    {
+      "card_id": "pents07",
+      "sha256": "9099b66e54d8789635008813cfb2589f1092596de9a89c203d3ba27f30698b66",
+      "source": "07-mauryan-sandstone/cards/pents07.png"
+    },
+    {
+      "card_id": "pents08",
+      "sha256": "826c56a4111e83e51efabf77b2a92537d974c3602fdeef5d730ffa2e2a6178c0",
+      "source": "07-mauryan-sandstone/cards/pents08.png"
+    },
+    {
+      "card_id": "pents09",
+      "sha256": "10a04beab7b76a74ae786b343427aa7accbd8a07c4b976c5471ae0b8ca05e479",
+      "source": "07-mauryan-sandstone/cards/pents09.png"
+    },
+    {
+      "card_id": "pents10",
+      "sha256": "93acefd70981eea7612f7a3c56bf7d2fb7814a4714ffc5af779e9011aadbc0a6",
+      "source": "07-mauryan-sandstone/cards/pents10.png"
+    },
+    {
+      "card_id": "pents11",
+      "sha256": "bbb51f9afd4795bbf4377cffe4ff867a998dd1abd9a347e78b8e313304032124",
+      "source": "07-mauryan-sandstone/cards/pents11.png"
+    },
+    {
+      "card_id": "pents12",
+      "sha256": "b6fc3b9c6d3e9a0ce7962c01215a6e919c7a145bcabf6911adcc3b5c664b772b",
+      "source": "07-mauryan-sandstone/cards/pents12.png"
+    },
+    {
+      "card_id": "pents13",
+      "sha256": "d2e0f25538445339dc2101dd131e8d9b0ca592b01b3b1a66643242e02ee334e7",
+      "source": "07-mauryan-sandstone/cards/pents13.png"
+    },
+    {
+      "card_id": "pents14",
+      "sha256": "a887716780fe39a596330fbc28c933e9d47050f5a91bb40d56e8abaab57ccd76",
+      "source": "07-mauryan-sandstone/cards/pents14.png"
+    },
+    {
+      "card_id": "swords01",
+      "sha256": "de7b2b8320a7bf43468cf71cd638571122918d24111475b2983bc136c3b36ab9",
+      "source": "07-mauryan-sandstone/cards/swords01.png"
+    },
+    {
+      "card_id": "swords02",
+      "sha256": "d2f8364b1567fc508b6a7a66568112b23ec16dd6ed4f7a6ef9ed7d1ec0ef053f",
+      "source": "07-mauryan-sandstone/cards/swords02.png"
+    },
+    {
+      "card_id": "swords03",
+      "sha256": "20f2e1386350c0eeccc97f0d6a94be989bc6b62275300574570d91a6a6aacd53",
+      "source": "07-mauryan-sandstone/cards/swords03.png"
+    },
+    {
+      "card_id": "swords04",
+      "sha256": "a1f9a0a72558105ed2fffc56e12bd70e83194303967f57c9df0ae2330512e923",
+      "source": "07-mauryan-sandstone/cards/swords04.png"
+    },
+    {
+      "card_id": "swords05",
+      "sha256": "2c925921ae23b24f14f3a94025c75bc4a91ffe95567fd13f270bbbd819cd535a",
+      "source": "07-mauryan-sandstone/cards/swords05.png"
+    },
+    {
+      "card_id": "swords06",
+      "sha256": "089b111d118270693f980d0222cac4c5621ffd5bf1d9d2575a440f8d97d623d9",
+      "source": "07-mauryan-sandstone/cards/swords06.png"
+    },
+    {
+      "card_id": "swords07",
+      "sha256": "408fb13cb9a6c71649ebd69a0f0d918e0fab539ef50a7f0f9d4c76b9ea6dd14d",
+      "source": "07-mauryan-sandstone/cards/swords07.png"
+    },
+    {
+      "card_id": "swords08",
+      "sha256": "a82d8f0a36aa2401f46df80595b669f4631e81836f06e3092b679781aa8201ee",
+      "source": "07-mauryan-sandstone/cards/swords08.png"
+    },
+    {
+      "card_id": "swords09",
+      "sha256": "715c4e9af3eaaade50c6e39285057ea2d6c4899d58ffa80701cfb50da62b6fe3",
+      "source": "07-mauryan-sandstone/cards/swords09.png"
+    },
+    {
+      "card_id": "swords10",
+      "sha256": "c093ab009cbc05dd321b136256f220d3ea58700808696d2c98756ed1b4491f1d",
+      "source": "07-mauryan-sandstone/cards/swords10.png"
+    },
+    {
+      "card_id": "swords11",
+      "sha256": "fc3fd848cf66447baebca8646d5ca5e1bc6ca4acfa7393cde6ba05f7060fe4af",
+      "source": "07-mauryan-sandstone/cards/swords11.png"
+    },
+    {
+      "card_id": "swords12",
+      "sha256": "e2525cf6dbfccde9ef2357298364574e9ec7d38672521adfab75c6cd70a4e265",
+      "source": "07-mauryan-sandstone/cards/swords12.png"
+    },
+    {
+      "card_id": "swords13",
+      "sha256": "fdf637333c29b52b48c2cb5e2627fd4a0debf69ec104804626b44babc2183f67",
+      "source": "07-mauryan-sandstone/cards/swords13.png"
+    },
+    {
+      "card_id": "swords14",
+      "sha256": "b8825786bd94b3b68a26e5ad6965805c85788bb28d271758fd64343f8f48134c",
+      "source": "07-mauryan-sandstone/cards/swords14.png"
+    },
+    {
+      "card_id": "wands01",
+      "sha256": "b93d1c7cce0c503bb8692030656e1d3aa984d1d72ddb77b01a56bc9bf283b93c",
+      "source": "07-mauryan-sandstone/cards/wands01.png"
+    },
+    {
+      "card_id": "wands02",
+      "sha256": "41d6ec76c7d8eccb6b5c3c0d5086c415613fe85ddcef9e92e1c7860c1daa24d0",
+      "source": "07-mauryan-sandstone/cards/wands02.png"
+    },
+    {
+      "card_id": "wands03",
+      "sha256": "5b22cf25ea1aab05eb58017d731c23512bea8b8675f480c218e5541857401f1b",
+      "source": "07-mauryan-sandstone/cards/wands03.png"
+    },
+    {
+      "card_id": "wands04",
+      "sha256": "a7bebcf9fd7bccb326090ebdc11d4963ebdfdf6f23cf8d4068a1d540d5b1f02b",
+      "source": "07-mauryan-sandstone/cards/wands04.png"
+    },
+    {
+      "card_id": "wands05",
+      "sha256": "cb7d94a617759ad785adc0bcfe0bba79918ff790b15e96077ef19dd55857fe27",
+      "source": "07-mauryan-sandstone/cards/wands05.png"
+    },
+    {
+      "card_id": "wands06",
+      "sha256": "db0a384c010b45dce17588a138f187ff13bffdeb4a34d0a8791a307aea4fb68d",
+      "source": "07-mauryan-sandstone/cards/wands06.png"
+    },
+    {
+      "card_id": "wands07",
+      "sha256": "5069463660501c73a117dafe5ad13b88743c2864e9224bd67e0344f4b31ab707",
+      "source": "07-mauryan-sandstone/cards/wands07.png"
+    },
+    {
+      "card_id": "wands08",
+      "sha256": "24460d3a80a84107ec99188b2c13c1216bdd0bb5cbe9123958034a29446773d1",
+      "source": "07-mauryan-sandstone/cards/wands08.png"
+    },
+    {
+      "card_id": "wands09",
+      "sha256": "590c283308bb77730afe7bb18c5da2b80aa5c118aa12d6c3c57b8df483b2357c",
+      "source": "07-mauryan-sandstone/cards/wands09.png"
+    },
+    {
+      "card_id": "wands10",
+      "sha256": "f19feda14ca7ec7b08d5435209040d22fa292b4d23ce196689fa38b9dc5831ab",
+      "source": "07-mauryan-sandstone/cards/wands10.png"
+    },
+    {
+      "card_id": "wands11",
+      "sha256": "4c913246a81cd2866ac06f511b08bd794505efbff2cd6fc7aa4a01accd2a2677",
+      "source": "07-mauryan-sandstone/cards/wands11.png"
+    },
+    {
+      "card_id": "wands12",
+      "sha256": "82c5a8702d874e3ad6a9cb9de15d35cd3e1465600d72f9ebb30f6ed1123f5f22",
+      "source": "07-mauryan-sandstone/cards/wands12.png"
+    },
+    {
+      "card_id": "wands13",
+      "sha256": "7a4f67d5a02dc3a117c56d091238fb66d4269c5fa311ffc94bb04d02062ae9ac",
+      "source": "07-mauryan-sandstone/cards/wands13.png"
+    },
+    {
+      "card_id": "wands14",
+      "sha256": "dac1aaeedfe3a3be46c05dbb583ff3a938bcfafca6e0feeb5dfa68a383fc0a0d",
+      "source": "07-mauryan-sandstone/cards/wands14.png"
+    }
+  ]
+}
